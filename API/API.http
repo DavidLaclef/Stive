@@ -1,0 +1,253 @@
+@API_HostAddress = https://localhost:7080
+
+
+GET {{API_HostAddress}}/api/chateaux
+Accept: application/json
+
+### GET CHATEAUX
+
+GET {{API_HostAddress}}/api/chateaux/3222
+Accept: application/json
+
+### GET CHATEAU ID
+
+POST {{API_HostAddress}}/api/chateaux/
+Content-Type: application/json
+
+{
+  "nom": "Malartic Lagravière"
+}
+### POST CHATEAU
+
+PUT {{API_HostAddress}}/api/chateaux/6
+Content-Type: application/json
+
+{
+  "id": 6,
+  "nom": "La Terre Tourmentée",
+  "produits": null
+}
+### PUT CHATEAU
+
+DELETE {{API_HostAddress}}/api/chateaux/8
+Accept: application/json
+
+### DELETE CHATEAU
+
+
+
+GET {{API_HostAddress}}/api/clients
+Accept: application/json
+
+### GET CLIENTS
+GET {{API_HostAddress}}/api/clients/13
+Accept: application/json
+
+### GET CLIENT ID
+POST {{API_HostAddress}}/api/clients/
+Content-Type: application/json
+
+{
+  "codeClient": "C0001",
+  "nom": "Belnades",
+  "prenom": "Sypha",
+  "adresseMail": "sypha.belnades@mail.fr",
+  "motDePasse": "$2y$10$e/YYleAiaKWpKv73lbZJNO8jidopZ84XoGj4BMp8lBc/W.DaRh3dC",
+  "entreprise": "",
+  "numeroTelephone": "0764126200",
+  "nomLivraison": "",
+  "prenomLivraison": "",
+  "dateNaissance": "1995-07-25T00:00:00.000Z",
+  "adressePostale": "12 impasse des magiciens",
+  "codePostal": "05671",
+  "ville": "Abra Cada",
+  "instructionLivraison": "",
+  "estMembreSite": true
+}
+### POST CLIENT
+PUT {{API_HostAddress}}/api/clients/13
+Content-Type: application/json
+
+{
+  "codeClient": "C0013",
+  "nom": "Roux",
+  "prenom": "Pierre",
+  "adresseMail": "pierre.roux@mail.fr",
+  "motDePasse": "$2y$10$bF61ECPXybkV8fExVWci0Ohr1qS6gDmR6o/xkwEZ9HFlRQZdERe4u",
+  "entreprise": "",
+  "numeroTelephone": "0712345678",
+  "nomLivraison": "Lefevre",
+  "prenomLivraison": "Sophie",
+  "dateNaissance": "1995-11-22T00:00:00.000Z",
+  "adressePostale": "789 Rue de la Nature",
+  "codePostal": "33000",
+  "ville": "Bordeaux",
+  "instructionLivraison": "Livrer à l'arrière de la maison",
+  "estMembreSite": true
+}
+### PUT CLIENT
+DELETE {{API_HostAddress}}/api/clients/17
+Accept: application/json
+
+### DELETE CLIENT
+
+  
+GET {{API_HostAddress}}/api/commandes
+Accept: application/json
+
+### GET COMMANDES
+GET {{API_HostAddress}}/api/commandes/8
+Accept: application/json
+
+### GET COMMANDE ID
+POST {{API_HostAddress}}/api/commandes/
+Content-Type: application/json
+
+{
+  "numeroMouvement": "COM0002",
+  "date": "2024-01-20T18:45:00.000Z",
+  "quantite": 1,
+  "remise": 0,
+  "statut": 2,
+  "montant": 2500,
+  "fournisseurId": 3,
+  "listeMouvementStock": [
+    {
+      "numeroMouvement": "COM0002",
+      "date": "2024-01-20T18:45:00.000Z",
+      "quantite": 1,
+      "remise": 0,
+      "statut": 2,
+      "produitId": 4,
+      "montant": 2500,
+      "fournisseurId": 3
+    },
+    {
+      "numeroMouvement": "COM0002",
+      "date": "2024-01-20T18:45:00.000Z",
+      "quantite": 1,
+      "remise": 0,
+      "statut": 2,
+      "produitId": 5,
+      "montant": 2500,
+      "fournisseurId": 3
+    },
+    {
+      "numeroMouvement": "COM0002",
+      "date": "2024-01-20T18:45:00.000Z",
+      "quantite": 1,
+      "remise": 0,
+      "statut": 2,
+      "produitId": 1,
+      "montant": 2500,
+      "fournisseurId": 3
+    },
+    {
+      "numeroMouvement": "COM0002",
+      "date": "2024-01-20T18:45:00.000Z",
+      "quantite": 1,
+      "remise": 0,
+      "statut": 2,
+      "produitId": 1,
+
+      "montant": 2500,
+      "fournisseurId": 3
+    }
+  ]
+}
+### POST COMMANDE
+POST {{API_HostAddress}}/api/commandes/
+Content-Type: application/json
+
+{
+  "numeroMouvement": "COM0002",
+  "date": "2024-01-20T18:45:00.000Z",
+  "quantite": 1,
+  "remise": 0,
+  "statut": 2,
+  "produitId": 4,
+  "montant": 2500,
+  "fournisseurId": 3
+}
+### POST COMMANDE
+POST {{API_HostAddress}}/api/commandes/
+Content-Type: application/json
+
+{
+  "numeroMouvement": "COM0002",
+  "date": "2024-01-20T18:45:00.000Z",
+  "quantite": 1,
+  "remise": 0,
+  "statut": 2,
+  "produitId": 5,
+  "montant": 2500,
+  "fournisseurId": 3
+}
+### POST COMMANDE
+POST {{API_HostAddress}}/api/commandes/
+Content-Type: application/json
+
+{
+  "numeroMouvement": "COM0002",
+  "date": "2024-01-20T18:45:00.000Z",
+  "quantite": 1,
+  "remise": 0,
+  "statut": 2,
+  "produitId": 9,
+  "montant": 2500,
+  "fournisseurId": 3
+}
+### POST COMMANDE
+POST {{API_HostAddress}}/api/commandes/
+Content-Type: application/json
+
+{
+  "numeroMouvement": "COM0002",
+  "date": "2024-01-20T18:45:00.000Z",
+  "quantite": 1,
+  "remise": 0,
+  "statut": 2,
+  "produitId": 1,
+  "montant": 2500,
+  "fournisseurId": 3
+}
+### POST COMMANDE
+POST {{API_HostAddress}}/api/commandes/
+Content-Type: application/json
+
+{
+  "numeroMouvement": "COM0002",
+  "date": "2024-01-20T18:45:00.000Z",
+  "quantite": 1,
+  "remise": 0,
+  "statut": 2,
+  "produitId": 1
+  "montant": 2500,
+  "fournisseurId": 3
+}
+### POST COMMANDE
+PUT {{API_HostAddress}}/api/commandes/6
+Content-Type: application/json
+
+{
+
+}
+### PUT COMMANDE
+DELETE {{API_HostAddress}}/api/commandes/6
+Accept: application/json
+
+### DELETE COMMANDE
+
+POST {{API_HostAddress}}/api/CorrectionsStock/
+Content-Type: application/json
+
+{
+  "numeroMouvement": "COR0002",
+  "date": "2024-01-23T14:20:00.000Z",
+  "quantite": -1,
+  "remise": 0,
+  "produitId": 9,
+  "nature": "Adeline a ENCORE cassé une bouteille..."
+}
+### POST COMMANDE
+

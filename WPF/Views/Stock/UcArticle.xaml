@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="WPF.Views.Stock.UcArticle"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    <Grid>
+        <Grid Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" Text="Familles"/>
+            <TextBlock Grid.Column="1" Text="Chateau"/>
+            <TextBlock Grid.Column="2" Text="Nom"/>
+            <TextBlock Grid.Column="3" Text="Millesime"/>
+            <TextBlock Grid.Column="4" Text="Quantité"/>
+            <TextBlock Grid.Column="5" Text="Seuil"/>
+            <TextBlock Grid.Column="6" Text="Statut"/>
+            <TextBlock Grid.Column="7" Text="Prix unitaire"/>
+            <TextBlock Grid.Column="8" Text="Prix carton"/>
+        </Grid>
+
+        <ListBox ItemsSource="{Binding ListProduitLights}" Margin="5,20,20,20" Grid.Row="3" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="{Binding Familles[0].Nom}"/>
+                        <TextBlock Grid.Column="1" Text="{Binding Chateau.Nom}"/>
+                        <TextBlock Grid.Column="2" Text="{Binding Nom}"/>
+                        <TextBlock Grid.Column="3" Text="{Binding Millesime}"/>
+                        <TextBlock Grid.Column="4" Text="{Binding Quantite}"/>
+                        <TextBlock Grid.Column="5" Text="{Binding SeuilReapprovisionnement}"/>
+                        <TextBlock Grid.Column="6" Text="{Binding Statut}"/>
+                        <StackPanel Grid.Column="7" Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock Grid.Column="7" Text="{Binding PrixUnitaireVente}"/>
+                            <materialDesign:PackIcon Kind="Euro"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="8" Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock Grid.Column="8" Text="{Binding PrixCartonVente}"/>
+                            <materialDesign:PackIcon Kind="Euro"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+
+        </ListBox>
+    </Grid>
+</UserControl>
