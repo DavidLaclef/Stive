@@ -11,7 +11,7 @@ using Models.Context;
 namespace Models.Migrations
 {
     [DbContext(typeof(StiveContext))]
-    [Migration("20240130232750_Initiale")]
+    [Migration("20240211182907_Initiale")]
     partial class Initiale
     {
         /// <inheritdoc />
