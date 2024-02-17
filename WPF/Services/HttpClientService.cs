@@ -51,6 +51,21 @@ namespace WPF.Services
             throw new Exception(response.ReasonPhrase);
         }
 
+        // methode pour les post
+        public static async Task<bool> PostClient(ClientDto client)
+        {
+            string uri = "Clients";
+            var json = JsonConvert.SerializeObject(client);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await Client.PostAsync(uri, content);
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            throw new Exception(response.ReasonPhrase);
+        }
+
         public static async Task<List<CommandeDto>> GetCommandeLights()
         {
             string uri = "Commandes";
