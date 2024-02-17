@@ -1,7 +1,7 @@
 ﻿using Models.Dto;
 using System.Collections.ObjectModel;
 using WPF.Services;
-
+using Models.Dao;
 
 namespace WPF.ViewModels;
 
@@ -32,5 +32,15 @@ public class ChateauxViewModel : BaseViewModel
             }   
             OnPropertyChanged(nameof(NombreChateaux));
         }, TaskScheduler.FromCurrentSynchronizationContext() ) ; 
+    }
+
+    public void AjouterChateau(Chateau newChateau)
+    {
+        Task.Run(async () => await HttpClientService.PostChateau(newChateau));
+    }
+
+    internal void AjouterChateau(Client client)
+    {
+        throw new NotImplementedException();
     }
 }

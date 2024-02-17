@@ -18,6 +18,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Label>Nom:</Label>
@@ -31,9 +32,11 @@
         <Label Grid.Row="4">Addresse postal:</Label>
         <TextBox x:Name="adresse" Grid.Row="4" Grid.Column="1" />
         <Label Grid.Row="5">Code postal:</Label>
-        <ComboBox x:Name="codePostal" Grid.Row="5" Grid.Column="1" />
+        <Label x:Name="codePostal" Grid.Row="5" Grid.Column="1" />
+        <Label Grid.Row="6">Date de naissance:</Label>
+        <DatePicker x:Name="dateNaissance" Grid.Row="6" Grid.Column="1" />
 
-        <Button Name="cancel" Grid.Row="6" Grid.Column="2" Content="Cancel" Width="100" HorizontalAlignment="Left" />
-        <Button Name="ajouter"  Click="ajouter_Click" Grid.Row="6" Grid.Column="1" Content="Save" Width="100" HorizontalAlignment="Right" />
+        <Button Name="cancel" Grid.Row="7" Grid.Column="2" Content="Cancel" Width="100" HorizontalAlignment="Left" />
+        <Button Name="ajouter"  Click="ajouter_Click" Grid.Row="7" Grid.Column="1" Content="Save" Width="100" HorizontalAlignment="Right" />
     </Grid>
 </UserControl>
