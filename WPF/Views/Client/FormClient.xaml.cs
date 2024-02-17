@@ -34,7 +34,7 @@ namespace WPF.Views.Client
                 AdresseMail = email.Text,
                 NumeroTelephone = telephone.Text,
                 AdressePostale = adresse.Text,
-                CodePostal = codePostal.Text,
+                //CodePostal = codePostal.Text,
                 DateNaissance = dateNaissance.SelectedDate ?? DateTime.Now,
             });
         }

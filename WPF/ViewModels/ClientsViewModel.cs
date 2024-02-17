@@ -32,7 +32,7 @@ public class ClientsViewModel : BaseViewModel
                 ListClientLights.Add(ClientLight);
             }   
             OnPropertyChanged(nameof(NombreClients));
-        }, TaskScheduler.FromCurrentSynchronizationContext() ) ; 
+        }, TaskScheduler.FromCurrentSynchronizationContext() ); 
     }
 
     public void AjouterClient(Client newClient)
