@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF.ViewModels;
 
 namespace WPF.Views.Stock
 {
@@ -23,6 +24,15 @@ namespace WPF.Views.Stock
         public FormFamille()
         {
             InitializeComponent();
+        }
+
+        private void ajouter_Click(object sender, RoutedEventArgs e)
+        {
+            var vm = (FamillesViewModel)this.DataContext;
+            vm.AjouterFamille(new Models.Dao.Famille
+            {
+                Nom = nom.Text,
+            });
         }
     }
 }

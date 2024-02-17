@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Models.Dao;
 using Models.Dto;
 using Newtonsoft.Json;
 
@@ -38,6 +39,20 @@ namespace WPF.Services
             }
             throw new Exception(response.ReasonPhrase);
         }
+        
+        public static async Task<bool> PostChateau(Chateau chateau)
+        {
+            string uri = "Chateaux";
+            var json = JsonConvert.SerializeObject(chateau);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await Client.PostAsync(uri, content);
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            throw new Exception(response.ReasonPhrase);
+        }
 
         public static async Task<List<ClientLightDto>> GetClientLights()
         {
@@ -52,7 +67,7 @@ namespace WPF.Services
         }
 
         // methode pour les post
-        public static async Task<bool> PostClient(ClientDto client)
+        public static async Task<bool> PostClient(Client client)
         {
             string uri = "Clients";
             var json = JsonConvert.SerializeObject(client);
@@ -86,6 +101,20 @@ namespace WPF.Services
             {
                 string result = await response.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<List<FamilleLightDto>>(result) ?? throw new FormatException($"Erreur Http : {uri}");
+            }
+            throw new Exception(response.ReasonPhrase);
+        }
+
+        public static async Task<bool> PostFamille(Famille famille)
+        {
+            string uri = "Familles";
+            var json = JsonConvert.SerializeObject(famille);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await Client.PostAsync(uri, content);
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
             }
             throw new Exception(response.ReasonPhrase);
         }
