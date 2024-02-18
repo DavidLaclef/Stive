@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF.ViewModels;
+using WPF.Views.Client;
 
 namespace WPF.Views.Utilisateur
 {
@@ -23,6 +25,15 @@ namespace WPF.Views.Utilisateur
         public UcUtilisateur()
         {
             InitializeComponent();
+        }
+
+        private void AddUtilisateur_Click(object sender, RoutedEventArgs e)
+        {
+                SecondCC.Content = null;
+                var uc = new FormUtilisateur();
+                uc.DataContext = new UtilisateursViewModel();
+                SecondCC.Content = uc;
+           
         }
     }
 }

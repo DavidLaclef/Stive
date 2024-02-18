@@ -1,4 +1,5 @@
-﻿using Models.Dto;
+﻿using Models.Dao;
+using Models.Dto;
 using System.Collections.ObjectModel;
 using WPF.Services;
 
@@ -33,4 +34,9 @@ public class UtilisateursViewModel : BaseViewModel
             OnPropertyChanged(nameof(NombreUtilisateurs));
         }, TaskScheduler.FromCurrentSynchronizationContext() ) ; 
     }
+    public void AjouterUtilisateur(Utilisateur newUtilisateur)
+    {
+        Task.Run(async () => await HttpClientService.PostUtilisateur(newUtilisateur));
+    }
+
 }
