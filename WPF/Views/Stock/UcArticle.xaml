@@ -31,7 +31,7 @@
             <TextBlock Grid.Column="8" Text="Prix carton"/>
         </Grid>
 
-        <ListBox ItemsSource="{Binding ListProduitLights}" Margin="5,20,20,20" Grid.Row="3" >
+        <ListBox ItemsSource="{Binding ListProduitLights}" Margin="5,20,20,20" Grid.Row="3" MouseDoubleClick="ListBox_MouseDoubleClick">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -73,5 +73,42 @@
             </ListBox.ItemContainerStyle>
 
         </ListBox>
+
+        <!-- Pop-up -->
+        <Popup Name="myPopup" IsOpen="False" StaysOpen="True">
+            <Border BorderBrush="Black" BorderThickness="1" Background="White">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="Vin Rouge" />
+                    <TextBlock Grid.Row="1"  Text="NomVin" />
+                    <TextBlock Grid.Row="2" Text="Chateau" />
+                    <TextBlock Grid.Row="3"  Text="2011" />
+                    <TextBlock Grid.Row="4" Text="Photo" />
+                    <TextBlock Grid.Row="5" Text="Description Description Description Description Description Description Description Description Description"/>
+                    <TextBlock Grid.Row="6"  Text="En stock : 4" />
+                    <TextBlock Grid.Row="7"  Text="Seuil de réapprovisionnement : 2" />
+                    <TextBlock Grid.Row="8" Text="Statut : blabla" />
+                    <TextBlock Grid.Row="9" Text="Prix unitaire vente : 10" />
+                    <TextBlock Grid.Row="10" Text="Prix carton vente : 55" />
+                    <TextBlock Grid.Row="11" Text="Prix carton commande : 50" />
+                   
+                </Grid>
+            </Border>
+        </Popup>
     </Grid>
 </UserControl>
+

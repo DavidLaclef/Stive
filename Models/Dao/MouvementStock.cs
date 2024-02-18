@@ -12,10 +12,10 @@ public class MouvementStock
     [StringLength(10)]
     public string NumeroMouvement { get; set; } = string.Empty;
 
-    [Required]
+    [Required(ErrorMessage = "La date est requise.")]
     public DateTime Date { get; set; }
 
-    [Required]
+    [Required(ErrorMessage = "La quantité est requise.")]
     public int Quantite { get; set; }
 
     // La remise peut être null car il peut y en avoir une... ou non

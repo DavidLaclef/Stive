@@ -10,7 +10,7 @@ public class Vente : MouvementStock
     [StringLength(10)]
     public string NumeroVente { get; set; } = string.Empty;
 
-    [Required]
+    [Required(ErrorMessage = "Le lieu de vente est requis.")]
     public LieuVente Lieu { get; set; }
 
     [ForeignKey(nameof(Client))]
