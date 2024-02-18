@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System; 
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -73,6 +73,23 @@ namespace WPF.Views.Stock
             var uc = new FormChateau();
             uc.DataContext = new ChateauxViewModel();
             SecondCC.Content = uc;
+        }
+
+        private void AddFamille_Click(object sender, RoutedEventArgs e)
+        {
+            SecondCC.Content = null;
+            var uc = new FormFamille();
+            uc.DataContext = new FamillesViewModel();
+            SecondCC.Content = uc;
+        }
+
+        private void AddArticle_Click(object sender, RoutedEventArgs e)
+        {
+            SecondCC.Content = null;
+            var uc = new FormProduit();
+            uc.DataContext = new ChateauProduitViewModel();
+            SecondCC.Content = uc;
+
         }
     }
 }

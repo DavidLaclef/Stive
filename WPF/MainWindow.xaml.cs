@@ -64,13 +64,6 @@ namespace WPF
             mainCC.Content = uc;
         }
 
-        private void BtnProduit_Click(object sender, RoutedEventArgs e)
-        {
-            mainCC.Content = null;
-            var uc = new FormUtilisateur();
-            uc.DataContext = new ClientsViewModel();
-            mainCC.Content = uc;
-        }
     }
 
 

@@ -39,7 +39,7 @@ namespace WPF.Services
             }
             throw new Exception(response.ReasonPhrase);
         }
-        
+
         public static async Task<bool> PostChateau(Chateau chateau)
         {
             string uri = "Chateaux";
@@ -192,6 +192,20 @@ namespace WPF.Services
             {
                 string result = await response.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<List<ProduitLightDto>>(result) ?? throw new FormatException($"Erreur Http : {uri}");
+            }
+            throw new Exception(response.ReasonPhrase);
+        }
+
+        public static async Task<bool> PostProduit(Produit produit)
+        {
+            string uri = "Produits";
+            var json = JsonConvert.SerializeObject(produit);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await Client.PostAsync(uri, content);
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
             }
             throw new Exception(response.ReasonPhrase);
         }

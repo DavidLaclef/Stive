@@ -1,4 +1,5 @@
-﻿using Models.Dto;
+﻿using Models.Dao;
+using Models.Dto;
 using System.Collections.ObjectModel;
 using WPF.Services;
 
@@ -32,5 +33,10 @@ public class ProduitsViewModel : BaseViewModel
             }   
             OnPropertyChanged(nameof(NombreProduits));
         }, TaskScheduler.FromCurrentSynchronizationContext() ) ; 
+    }
+
+    public void AjouterProduit(Produit newProduit)
+    {
+        Task.Run(async () => await HttpClientService.PostProduit(newProduit));
     }
 }
