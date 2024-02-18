@@ -157,6 +157,17 @@ namespace WPF.Services
             throw new Exception(response.ReasonPhrase);
         }
 
+        public static async Task DeleteFournisseur(int id)
+        {
+            string route = $"Fournisseurs/{id}";
+            var response = await Client.DeleteAsync(route);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception(response.ReasonPhrase);
+            }
+        }
+
         public static async Task<List<UtilisateurLightDto>> GetUtilisateurLights()
         {
             string uri = "Utilisateurs";
