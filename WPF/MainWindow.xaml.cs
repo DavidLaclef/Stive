@@ -68,6 +68,7 @@ namespace WPF
         {
             mainCC.Content = null;
             var uc = new FormClient();
+            uc.DataContext = new ClientsViewModel();
             mainCC.Content = uc;
         }
     }

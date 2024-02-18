@@ -6,14 +6,17 @@
              xmlns:local="clr-namespace:WPF.Views.Accueil"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
     <Grid Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" HorizontalAlignment="Left">
+        <StackPanel Grid.Row="0" HorizontalAlignment="Left" Orientation="Horizontal">
             <Button Margin="5" Content="Nouveau client" FontSize="11" MaxWidth="180" MinWidth="80"/>
+            <Button Margin="5" Content="Nouvelle vente" FontSize="11" MaxWidth="180" MinWidth="80"/>
         </StackPanel>
 
         <Border Grid.Row="1" CornerRadius="10,10,10,10" Background="white" Margin="5,20,10,20" >
@@ -38,19 +41,15 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Column="0" Text="Code Client"/>
-                <TextBlock Grid.Column="1" Text="Nom"/>
-                <TextBlock Grid.Column="2" Text="Prénom"/>
-                <TextBlock Grid.Column="3" Text="Entreprise"/>
-                <TextBlock Grid.Column="4" Text="Mail"/>
-                <TextBlock Grid.Column="5" Text="Code Postal"/>
+                <TextBlock Grid.Column="0" Text="Date"/>
+                <TextBlock Grid.Column="1" Text="Numéro"/>
+                <TextBlock Grid.Column="2" Text="Client"/>
+                <TextBlock Grid.Column="3" Text="Statut"/>
             </Grid>
 
-            <TextBlock Text="Clients" FontSize="18" FontWeight="Normal" Margin="20,35,10,20"/>
+            <TextBlock Text="Vente en ligne" FontSize="18" FontWeight="Normal" Margin="20,15,10,20"/>
             <Rectangle Grid.Row="1"  Fill="DarkGray" />
 
             <ListBox ItemsSource="{Binding ListClientLights}" Margin="5,20,20,20" Grid.Row="3" >
@@ -62,7 +61,70 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" Text="{Binding CodeClient}"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Nom}"/>
+                            <TextBlock Grid.Column="2" Text="{Binding Prenom}"/>
+                            <TextBlock Grid.Column="3" Text="{Binding Entreprise}"/>
+                            <!--<TextBlock Grid.Column="4" Text="{Binding Code_client}"/>-->
+
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+
+            </ListBox>
+        </Grid>
+
+
+
+        <Border Grid.Row="2" CornerRadius="10,10,10,10" Background="white" Margin="5,20,10,20" >
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="0" Direction="0" 
+                            Opacity="0.5" BlurRadius="10" 
+                            Color="Black" />
+            </Border.Effect>
+        </Border>
+
+        <Grid Grid.Row="2" Margin="15,25,15,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="2" Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Text="Date"/>
+                <TextBlock Grid.Column="1" Text="Numéro"/>
+                <TextBlock Grid.Column="2" Text="Client"/>
+                <TextBlock Grid.Column="3" Text="Statut"/>
+            </Grid>
+
+            <TextBlock Text="Commande automatique" FontSize="18" FontWeight="Normal" Margin="20,15,10,20"/>
+            <Rectangle Grid.Row="1"  Fill="DarkGray" />
+
+            <ListBox ItemsSource="{Binding ListClientLights}" Margin="5,20,20,20" Grid.Row="3" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
@@ -70,8 +132,6 @@
                             <TextBlock Grid.Column="1" Text="{Binding Nom}"/>
                             <TextBlock Grid.Column="2" Text="{Binding Prenom}"/>
                             <TextBlock Grid.Column="3" Text="{Binding Entreprise}"/>
-                            <TextBlock Grid.Column="4" Text="{Binding AdresseMail}"/>
-                            <TextBlock Grid.Column="5" Text="{Binding CodePostal}"/>
                             <!--<TextBlock Grid.Column="4" Text="{Binding Code_client}"/>-->
 
                         </Grid>
@@ -88,4 +148,5 @@
         </Grid>
 
     </Grid>
+
 </UserControl>

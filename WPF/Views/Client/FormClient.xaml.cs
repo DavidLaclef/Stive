@@ -40,7 +40,7 @@ namespace WPF.Views.Client
                 CodeClient = "test",//codeClient.Text,
                 EstMembreSite = true,
                 MotDePasse = "test",
-                DateNaissance = dateNaissance.SelectedDate ?? DateTime.Now,
+                DateNaissance =DateTime.Now,
                 CodePostal = "test",
                 Prenom = "test",
 
