@@ -24,9 +24,13 @@ namespace Models.Extensions
                 Chateau = produit.Chateau?.ToLightDto(),
                 HistoriquesPrix = produit.HistoriquesPrix,
                 Familles = [],
+                FamillesConcatenees = string.Empty,
                 MouvementsStock = []
 
             };
+
+            // Créer une chaîne pour stocker les noms des familles concaténés
+            StringBuilder famillesConcat = new();
 
             if (produit.Familles != null)
             {
@@ -34,8 +38,15 @@ namespace Models.Extensions
                 {
                     FamilleLightDto familleLightDto = famille.ToLightDto();
                     produitDto.Familles?.Add(familleLightDto);
+
+                    // Ajouter le nom de la famille à la chaîne concaténée
+                    famillesConcat.Append(famille.Nom);
+                    famillesConcat.Append(' '); // Ajouter un espace entre les noms des familles
                 }
             }
+
+            // Assigner la chaîne de familles concaténées à l'attribut correspondant dans le DTO
+            produitDto.FamillesConcatenees = famillesConcat.ToString().Trim(); // Retirer les espaces inutiles en fin de chaîne
 
             if (produit.MouvementsStock != null)
             {

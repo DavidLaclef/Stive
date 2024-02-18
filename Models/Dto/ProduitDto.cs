@@ -33,6 +33,8 @@ public class ProduitDto
 
     public ICollection<FamilleLightDto>? Familles { get; set; }
 
+    public string FamillesConcatenees { get; set; } = string.Empty;
+
     public ICollection<MouvementStockLightDto>? MouvementsStock { get; set; }
 
 }
