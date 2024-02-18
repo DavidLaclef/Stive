@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPF.Views.Accueil;
 using WPF.ViewModels;
+using WPF.Views.Client;
 
 namespace WPF.Views.Stock
 {
@@ -59,6 +60,19 @@ namespace WPF.Views.Stock
             var uc = new UcFamille();
             uc.DataContext = new FamillesViewModel();
             StockCC.Content = uc;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddChateau_Click(object sender, RoutedEventArgs e)
+        {
+            SecondCC.Content = null;
+            var uc = new FormChateau();
+            uc.DataContext = new ChateauxViewModel();
+            SecondCC.Content = uc;
         }
     }
 }

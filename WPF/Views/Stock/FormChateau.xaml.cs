@@ -29,7 +29,7 @@ namespace WPF.Views.Stock
         private void ajouter_Click(object sender, RoutedEventArgs e)
         {
             var vm = (ChateauxViewModel)this.DataContext;
-            vm.AjouterChateau(new Models.Dao.Client
+            vm.AjouterChateau(new Models.Dao.Chateau
             {
                 Nom = nom.Text,
             });

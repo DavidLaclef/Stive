@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPF.ViewModels;
+using WPF.Views.Client;
 using WPF.Views.Stock;
 
 namespace WPF.Views.Fournisseur
@@ -27,6 +28,12 @@ namespace WPF.Views.Fournisseur
             InitializeComponent();
         }
 
-        
+        private void AddFournisseur_Click(object sender, RoutedEventArgs e)
+        {
+            SecondCC.Content = null;
+            var uc = new FormFournisseur();
+            uc.DataContext = new FournisseursViewModel();
+            SecondCC.Content = uc;
+        }
     }
 }

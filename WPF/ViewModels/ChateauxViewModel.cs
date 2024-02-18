@@ -39,8 +39,9 @@ public class ChateauxViewModel : BaseViewModel
         Task.Run(async () => await HttpClientService.PostChateau(newChateau));
     }
 
-    internal void AjouterChateau(Client client)
-    {
-        throw new NotImplementedException();
-    }
+
+    /*    internal void AjouterChateau(Client client)
+        {
+            throw new NotImplementedException();
+        }*/
 }
