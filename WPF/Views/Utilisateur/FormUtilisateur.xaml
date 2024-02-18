@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:WPF.Views.Utilisateur"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Margin="10">
+    <Grid Margin="10" Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
@@ -17,19 +17,24 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Label>Name:</Label>
-        <TextBox Grid.Column="1" Margin="0,0,0,10" />
         <Label Grid.Row="1">Nom:</Label>
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="0,0,0,10" />
+        <TextBox x:Name="nom" Grid.Row="1" Grid.Column="1" Margin="0,0,0,10" />
         <Label Grid.Row="2">Prénom:</Label>
-        <TextBox Grid.Row="2" Grid.Column="1" AcceptsReturn="True" />
+        <TextBox x:Name="prenom" Grid.Row="2" Grid.Column="1" AcceptsReturn="True" />
         <Label Grid.Row="3">Address mail:</Label>
-        <TextBox Grid.Row="3" Grid.Column="1" AcceptsReturn="True" />
-        <Label Grid.Row="4">Mots de passe:</Label>
-        <TextBox Grid.Row="4" Grid.Column="1" />
-        <Button Grid.Row="5" Grid.Column="2" Content="Cancel" Width="100" HorizontalAlignment="Left" />
-        <Button Grid.Row="5" Grid.Column="1" Content="Save" Width="100" HorizontalAlignment="Right" />
+        <TextBox x:Name="email" Grid.Row="3" Grid.Column="1" AcceptsReturn="True" />
+        <Label Grid.Row="4">Est gérant:</Label>
+        <CheckBox x:Name="estAdmin" Grid.Row="4" Grid.Column="1" />
+        <Label Grid.Row="5">Code utilisateur:</Label>
+        <TextBox x:Name="codeUtilisateur" Grid.Row="5" Grid.Column="1" AcceptsReturn="True" />
+
+        <StackPanel Grid.Row="6" Orientation="Horizontal">
+            <Button Margin="10" Name="cancel" Content="retour" Width="100" HorizontalAlignment="Left" />
+            <Button Margin="10" Name="ajouter"  Click="ajouter_Click" Content="Enregistrer" Width="100" HorizontalAlignment="Right" />
+        </StackPanel>
     </Grid>
 </UserControl>
