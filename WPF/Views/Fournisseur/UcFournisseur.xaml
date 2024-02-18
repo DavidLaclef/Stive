@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" HorizontalAlignment="Left">
-            <Button Margin="5" Content="Nouveau fournisseur" FontSize="11" MaxWidth="180" MinWidth="80"/>
+            <Button Margin="5" Content="Nouveau fournisseur" Name="AddFournisseur" Click="AddFournisseur_Click" FontSize="11" MaxWidth="180" MinWidth="80"/>
         </StackPanel>
 
         <Border Grid.Row="1" CornerRadius="10,10,10,10" Background="white" Margin="5,20,10,20" >
@@ -80,7 +80,7 @@
             </ListBox>
         </Grid>
 
-
+        <ContentControl Grid.Row="0" Grid.RowSpan="4" Margin="-10,-20" x:Name="SecondCC"  Grid.Column="0" />
 
     </Grid>
 </UserControl>

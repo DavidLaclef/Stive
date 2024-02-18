@@ -131,6 +131,20 @@ namespace WPF.Services
             throw new Exception(response.ReasonPhrase);
         }
 
+        public static async Task<bool> PostFournisseur(Fournisseur fournisseur)
+        {
+            string uri = "Fournisseurs";
+            var json = JsonConvert.SerializeObject(fournisseur);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await Client.PostAsync(uri, content);
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            throw new Exception(response.ReasonPhrase);
+        }
+
         public static async Task<List<UtilisateurLightDto>> GetUtilisateurLights()
         {
             string uri = "Utilisateurs";

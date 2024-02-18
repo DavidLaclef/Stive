@@ -1,4 +1,5 @@
-﻿using Models.Dto;
+﻿using Models.Dao;
+using Models.Dto;
 using System.Collections.ObjectModel;
 using WPF.Services;
 
@@ -32,5 +33,10 @@ public class FournisseursViewModel : BaseViewModel
             }   
             OnPropertyChanged(nameof(NombreFournisseurs));
         }, TaskScheduler.FromCurrentSynchronizationContext() ) ; 
+    }
+
+    public void AjouterFournisseur(Fournisseur newFournisseur)
+    {
+        Task.Run(async () => await HttpClientService.PostFournisseur(newFournisseur));
     }
 }
