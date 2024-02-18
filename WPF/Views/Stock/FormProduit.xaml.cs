@@ -43,7 +43,7 @@ namespace WPF.Views.Stock
                 PrixUnitaireVente = decimal.Parse(prixUnitaire.Text),
                 PrixCartonVente = decimal.Parse(PrixCartonVente.Text),
                 PrixCartonCommande = decimal.Parse(prixcartoncommande.Text),
-                ChateauId = 3,
+                ChateauId = (int)ChateauId.SelectedValue,
               
 
             });

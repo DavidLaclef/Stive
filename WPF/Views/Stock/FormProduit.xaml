@@ -44,9 +44,11 @@
         <Label Grid.Row="8">Prix Carton Commande:</Label>
         <TextBox  x:Name="prixcartoncommande"  Grid.Row="8" Grid.Column="1" Margin="0,0,10,10" />
         <Label Grid.Row="9">Chateau:</Label>
-        <ComboBox Grid.Row="9" Grid.Column="1" x:Name="ChateauId" ItemsSource="{Binding ListChateauLights}"
+        <ComboBox Grid.Row="9" Grid.Column="1" x:Name="ChateauId" MaxDropDownHeight="Auto" ItemsSource="{Binding ListChateauLights}"
           DisplayMemberPath="Nom"
           SelectedValuePath="Id"
+                  SelectedValue="{Binding SelectedChateauId}"
+                  
                  
           />
 
