@@ -31,6 +31,7 @@
                 <Button Name="BtnClient" Click="BtnClient_Click"  BorderThickness="0"  Foreground="Black" Background="Transparent" Content="Client"/>
                 <Button Name="BtnFournisseur" Click="BtnFournisseur_Click" BorderThickness="0"  Foreground="Black" Background="Transparent" Content="Fournisseur"/>
                 <Button Name="BtnUtilisateur" Click="BtnUtilisateur_Click" BorderThickness="0"  Foreground="Black" Background="Transparent"  Content="Utilisateur"/>
+                <Button Name="BtnProduit" Click="BtnProduit_Click" BorderThickness="0"  Foreground="Black" Background="Transparent"  Content="AjouterClient"/>
             </StackPanel>
         </Grid>
     

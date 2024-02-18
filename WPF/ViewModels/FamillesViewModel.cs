@@ -1,4 +1,5 @@
-﻿using Models.Dto;
+﻿using Models.Dao;
+using Models.Dto;
 using System.Collections.ObjectModel;
 using WPF.Services;
 
@@ -33,4 +34,10 @@ public class FamillesViewModel : BaseViewModel
             OnPropertyChanged(nameof(NombreFamilles));
         }, TaskScheduler.FromCurrentSynchronizationContext() ) ; 
     }
+
+    public void AjouterFamille(Famille newFamille)
+    {
+        Task.Run(async () => await HttpClientService.PostFamille(newFamille));
+    }
+
 }

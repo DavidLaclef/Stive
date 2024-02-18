@@ -1,4 +1,5 @@
-﻿using Models.Dto;
+﻿using Models.Dao;
+using Models.Dto;
 using System.Collections.ObjectModel;
 using WPF.Services;
 
@@ -31,6 +32,13 @@ public class ClientsViewModel : BaseViewModel
                 ListClientLights.Add(ClientLight);
             }   
             OnPropertyChanged(nameof(NombreClients));
-        }, TaskScheduler.FromCurrentSynchronizationContext() ) ; 
+        }, TaskScheduler.FromCurrentSynchronizationContext() ); 
+    }
+
+    public void AjouterClient(Client newClient)
+    {
+        Task.Run(async () => await HttpClientService.PostClient(newClient));
     }
 }
+
+
