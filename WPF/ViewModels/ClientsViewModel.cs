@@ -39,6 +39,11 @@ public class ClientsViewModel : BaseViewModel
     {
         Task.Run(async () => await HttpClientService.PostClient(newClient));
     }
+
+    public void SupprimerClient(int Id)
+    {
+        Task.Run(async () => await HttpClientService.DeleteClient(Id));
+    }
 }
 
 

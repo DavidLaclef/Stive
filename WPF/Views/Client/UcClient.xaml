@@ -40,6 +40,9 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Column="0" Text="Code Client"/>
@@ -48,6 +51,8 @@
                 <TextBlock Grid.Column="3" Text="Entreprise"/>
                 <TextBlock Grid.Column="4" Text="Mail"/>
                 <TextBlock Grid.Column="5" Text="Code Postal"/>
+                <TextBlock Grid.Column="6" Text="Modifier" Margin="0,0,10,0"/>
+                <TextBlock Grid.Column="7" Text="Supprimer"/>
             </Grid>
 
             <TextBlock Text="Clients" FontSize="18" FontWeight="Normal" Margin="20,35,10,20"/>
@@ -64,6 +69,8 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Grid.Column="0" Text="{Binding CodeClient}"/>
@@ -72,6 +79,9 @@
                             <TextBlock Grid.Column="3" Text="{Binding Entreprise}"/>
                             <TextBlock Grid.Column="4" Text="{Binding AdresseMail}"/>
                             <TextBlock Grid.Column="5" Text="{Binding CodePostal}"/>
+                            <Button Grid.Column="7" Content="X"   Name="ModifierClient" Click="ModifierClient_Click" CommandParameter="{Binding Id}" />
+                            <Button Grid.Column="6" Content="V" Margin="0,0,10,0" />
+
                             <!--<TextBlock Grid.Column="4" Text="{Binding Code_client}"/>-->
 
                         </Grid>

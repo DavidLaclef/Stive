@@ -81,6 +81,18 @@ namespace WPF.Services
             throw new Exception(response.ReasonPhrase);
         }
 
+        public static async Task DeleteClient(int id)
+        {
+            string route = $"Clients/{id}";
+            var response = await Client.DeleteAsync(route);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception(response.ReasonPhrase);
+            }
+        }
+
+
         public static async Task<List<CommandeDto>> GetCommandeLights()
         {
             string uri = "Commandes";
