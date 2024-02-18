@@ -38,5 +38,9 @@ public class UtilisateursViewModel : BaseViewModel
     {
         Task.Run(async () => await HttpClientService.PostUtilisateur(newUtilisateur));
     }
+    public void SupprimerUtilisateur(int Id)
+    {
+        Task.Run(async () => await HttpClientService.DeleteUtilisateur(Id));
+    }
 
 }

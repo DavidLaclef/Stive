@@ -81,6 +81,8 @@ namespace WPF.Services
             throw new Exception(response.ReasonPhrase);
         }
 
+     
+
         public static async Task DeleteClient(int id)
         {
             string route = $"Clients/{id}";
@@ -192,6 +194,17 @@ namespace WPF.Services
                 return true;
             }
             throw new Exception(response.ReasonPhrase);
+        }
+
+        public static async Task DeleteUtilisateur(int id)
+        {
+            string route = $"Utilisateurs/{id}";
+            var response = await Client.DeleteAsync(route);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception(response.ReasonPhrase);
+            }
         }
 
 

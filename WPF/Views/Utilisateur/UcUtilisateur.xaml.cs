@@ -35,5 +35,18 @@ namespace WPF.Views.Utilisateur
                 SecondCC.Content = uc;
            
         }
+
+        private void ModifierUtilisateur_Click(object sender, RoutedEventArgs e)
+        {
+            int utilisateurId = (int)((Button)sender).CommandParameter;
+
+            var vm = (UtilisateursViewModel)this.DataContext;
+            vm.SupprimerUtilisateur(utilisateurId);
+
+            var uc = new UcUtilisateur();
+            uc.DataContext = new UtilisateursViewModel();
+            this.Content = uc;
+
+        }
     }
 }
