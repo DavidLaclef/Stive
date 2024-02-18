@@ -9,7 +9,7 @@ public class Client : Personne
     public string CodeClient { get; set; } = string.Empty;
 
     [StringLength(80, ErrorMessage = "Le nom de l'entreprise ne peut dépasser 80 caractères.")]
-    [MinLength(2, ErrorMessage = "Le nom de l'entreprise doit comporter au moins 2 caractères.")]
+    //[MinLength(2, ErrorMessage = "Le nom de l'entreprise doit comporter au moins 2 caractères.")]
     public string Entreprise { get; set; } = string.Empty;
 
     [Required(ErrorMessage = "Le numéro de téléphone est requis.")]
@@ -17,11 +17,11 @@ public class Client : Personne
     public string NumeroTelephone { get; set; } = string.Empty;
 
     [StringLength(80, ErrorMessage = "Le nom de livraison ne peut dépasser 80 caractères.")]
-    [MinLength(3, ErrorMessage = "Le nom de livraison doit comporter au moins 3 caractères.")]
+    //[MinLength(3, ErrorMessage = "Le nom de livraison doit comporter au moins 3 caractères.")]
     public string NomLivraison { get; set; } = string.Empty;
 
     [StringLength(80, ErrorMessage = "Le prénom de livraison ne peut dépasser 80 caractères.")]
-    [MinLength(3, ErrorMessage = "Le prénom de livraison doit comporter au moins 3 caractères.")]
+    //[MinLength(3, ErrorMessage = "Le prénom de livraison doit comporter au moins 3 caractères.")]
     public string PrenomLivraison { get; set; } = string.Empty;
 
     [Required(ErrorMessage = "La date de naissance est requise.")]
