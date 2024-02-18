@@ -30,12 +30,20 @@ namespace WPF.Views.Client
         {
             var vm = (ClientsViewModel)this.DataContext;
             vm.AjouterClient(new Models.Dao.Client { 
-                Nom = nom.Text,
-                AdresseMail = email.Text,
-                NumeroTelephone = telephone.Text,
-                AdressePostale = adresse.Text,
+                Nom = "test",//nom.Text,
+                AdresseMail = "test",//email.Text,
+                NumeroTelephone = "test" ,// telephone.Text,System.NullReferenceException : 'Object reference not set to an instance of an object.'
+
+                AdressePostale = "test", //adresse.Text,
+                Ville = "test",//ville.Text,    
                 //CodePostal = codePostal.Text,
+                CodeClient = "test",//codeClient.Text,
+                EstMembreSite = true,
+                MotDePasse = "test",
                 DateNaissance = dateNaissance.SelectedDate ?? DateTime.Now,
+                CodePostal = "test",
+                Prenom = "test",
+
             });
         }
     }

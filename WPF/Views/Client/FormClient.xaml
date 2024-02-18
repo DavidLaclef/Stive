@@ -36,7 +36,7 @@
         <Label Grid.Row="6">Date de naissance:</Label>
         <DatePicker x:Name="dateNaissance" Grid.Row="6" Grid.Column="1" />
 
-        <Button Name="cancel" Grid.Row="7" Grid.Column="2" Content="Cancel" Width="100" HorizontalAlignment="Left" />
-        <Button Name="ajouter"  Click="ajouter_Click" Grid.Row="7" Grid.Column="1" Content="Save" Width="100" HorizontalAlignment="Right" />
+        <Button Name="cancel" Grid.Row="7" Grid.Column="2" Content="retour" Width="100" HorizontalAlignment="Left" />
+        <Button Name="ajouter"  Click="ajouter_Click" Grid.Row="7" Grid.Column="1" Content="Enregistrer" Width="100" HorizontalAlignment="Right" />
     </Grid>
 </UserControl>
