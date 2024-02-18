@@ -27,4 +27,6 @@ public class ProduitLightDto
 
     public ICollection<FamilleLightDto>? Familles { get; set; }
 
+    public string FamillesConcatenees { get; set; } = string.Empty;
+
 }
