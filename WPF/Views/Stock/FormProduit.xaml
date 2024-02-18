@@ -47,7 +47,6 @@
         <ComboBox Grid.Row="9" Grid.Column="1" x:Name="ChateauId" MaxDropDownHeight="Auto" ItemsSource="{Binding ListChateauLights}"
           DisplayMemberPath="Nom"
           SelectedValuePath="Id"
-                  SelectedValue="{Binding SelectedChateauId}"
                   
                  
           />
