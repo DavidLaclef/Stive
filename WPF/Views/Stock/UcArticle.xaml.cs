@@ -26,24 +26,6 @@ namespace WPF.Views.Stock
             InitializeComponent();
         }
 
-        private void ListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            //// Récupérer l'article sélectionné dans la ListBox
-            //Produit selectedProduit = (sender as ListBox).SelectedItem as Produit;
-
-            //if (selectedProduit != null)
-            //{
-            //    // Récupérer l'ID de l'article sélectionné
-            //    int produitId = selectedProduit.Id;
-
-            //    // Passer l'ID à votre popup pour le bindage
-            //    myPopup.DataContext = produitId;
-
-            //    // Afficher la popup
-            //    myPopup.IsOpen = true;
-            //}
-            myPopup.IsOpen = true;
-        }
     }
 }
 
