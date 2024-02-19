@@ -13,9 +13,9 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" HorizontalAlignment="Left" Orientation="Horizontal">
-            <Button Margin="5" Content="Nouvel Article" FontSize="11" MaxWidth="180" MinWidth="80"/>
+            <Button Margin="5" Content="Nouvel Article" x:Name="AddArticle" Click="AddArticle_Click" FontSize="11" MaxWidth="180" MinWidth="80"/>
             <Button Margin="5" Content="Correction de stocks" FontSize="11" MaxWidth="180" MinWidth="80"/>
-            <Button Margin="5" Content="Nouvelle famille" FontSize="11" MaxWidth="180" MinWidth="80"/>
+            <Button Margin="5" Content="Nouvelle famille" Name="AddFamille" Click="AddFamille_Click" FontSize="11" MaxWidth="180" MinWidth="80"/>
             <Button Margin="5" Content="Nouveau Château" Name="AddChateau" Click="AddChateau_Click" FontSize="11" MaxWidth="180" MinWidth="80"/>
         </StackPanel>
 

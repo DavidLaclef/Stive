@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF.ViewModels;
 
 namespace WPF.Views.Stock
 {
@@ -23,6 +24,19 @@ namespace WPF.Views.Stock
         public UcChateau()
         {
             InitializeComponent();
+        }
+
+        private void SupprimerChateau_Click(object sender, RoutedEventArgs e)
+        {
+            int chateauId = (int)((Button)sender).CommandParameter;
+
+            var vm = (ChateauxViewModel)this.DataContext;
+            vm.SupprimerChateau(chateauId);
+
+            var uc = new UcChateau();
+            uc.DataContext = new ChateauxViewModel();
+            this.Content = uc;
+
         }
     }
 }

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPF.ViewModels;
+using WPF.Services;
 
 namespace WPF.Views.Fournisseur
 {
@@ -34,7 +35,7 @@ namespace WPF.Views.Fournisseur
                 Nom = nom.Text,
                 AdresseMail = email.Text,
                 NumeroTelephone = telephone.Text,
-                CodeFournisseur = "test"
+                CodeFournisseur = CodePersonne.CreationCode("FOU")
 
 
 

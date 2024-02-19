@@ -35,5 +35,18 @@ namespace WPF.Views.Fournisseur
             uc.DataContext = new FournisseursViewModel();
             SecondCC.Content = uc;
         }
+
+        private void ModifierFournisseur_Click(object sender, RoutedEventArgs e)
+        {
+            int fournisseurId = (int)((Button)sender).CommandParameter;
+
+            var vm = (FournisseursViewModel)this.DataContext;
+            vm.SupprimerFournisseur(fournisseurId);
+
+            var uc = new UcFournisseur();
+            uc.DataContext = new FournisseursViewModel();
+            this.Content = uc;
+
+        }
     }
 }

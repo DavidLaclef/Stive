@@ -39,6 +39,11 @@ public class ChateauxViewModel : BaseViewModel
         Task.Run(async () => await HttpClientService.PostChateau(newChateau));
     }
 
+    public void SupprimerChateau(int Id)
+    {
+        Task.Run(async () => await HttpClientService.DeleteChateau(Id));
+    }
+
 
     /*    internal void AjouterChateau(Client client)
         {

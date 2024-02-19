@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" HorizontalAlignment="Left">
-            <Button Margin="5" Content="Nouveau client" FontSize="11" MaxWidth="180" MinWidth="80"/>
+            <Button Margin="5" Content="Nouveau client" Name="AddClient" Click="AddClient_Click" FontSize="11" MaxWidth="180" MinWidth="80"/>
         </StackPanel>
 
         <Border Grid.Row="1" CornerRadius="10,10,10,10" Background="white" Margin="5,20,10,20" >
@@ -40,6 +40,9 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Column="0" Text="Code Client"/>
@@ -48,12 +51,14 @@
                 <TextBlock Grid.Column="3" Text="Entreprise"/>
                 <TextBlock Grid.Column="4" Text="Mail"/>
                 <TextBlock Grid.Column="5" Text="Code Postal"/>
+                <TextBlock Grid.Column="6" Text="Modifier" Margin="0,0,10,0"/>
+                <TextBlock Grid.Column="7" Text="Supprimer"/>
             </Grid>
 
             <TextBlock Text="Clients" FontSize="18" FontWeight="Normal" Margin="20,35,10,20"/>
             <Rectangle Grid.Row="1"  Fill="DarkGray" />
 
-            <ListBox ItemsSource="{Binding ListClientLights}" Margin="5,20,20,20" Grid.Row="3" >
+            <ListBox ItemsSource="{Binding ListClient}" Margin="5,20,20,20" Grid.Row="3" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -64,14 +69,25 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
+                            <TextBlock Text="{Binding DateNaissance}"/>
+                            <TextBlock Text="{Binding NumeroTelephone}"/>
+                            <TextBlock Text="{Binding NomLivraison}"/>
+                            <TextBlock Text="{Binding AdressePostale}"/>
+                            <TextBlock Grid.Column="8" Text="{Binding InstructionLivraison}"/>
                             <TextBlock Grid.Column="0" Text="{Binding CodeClient}"/>
                             <TextBlock Grid.Column="1" Text="{Binding Nom}"/>
                             <TextBlock Grid.Column="2" Text="{Binding Prenom}"/>
                             <TextBlock Grid.Column="3" Text="{Binding Entreprise}"/>
                             <TextBlock Grid.Column="4" Text="{Binding AdresseMail}"/>
                             <TextBlock Grid.Column="5" Text="{Binding CodePostal}"/>
+                            <Button Grid.Column="7" Content="X"   Name="SupprimerClient" Click="SupprimerClient_Click" CommandParameter="{Binding Id}" />
+                            <Button Grid.Column="6" Content="V" Name="ModifierClient" Click="ModifierClient_Click" CommandParameter="{Binding}" Margin="0,0,10,0" />
+
                             <!--<TextBlock Grid.Column="4" Text="{Binding Code_client}"/>-->
 
                         </Grid>
@@ -87,5 +103,6 @@
             </ListBox>
         </Grid>
 
+        <ContentControl Grid.Row="0" Grid.RowSpan="4" Margin="-10,-20" x:Name="SecondCC"  Grid.Column="0" />
     </Grid>
 </UserControl>

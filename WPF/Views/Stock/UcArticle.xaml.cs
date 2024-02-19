@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF.ViewModels;
 
 namespace WPF.Views.Stock
 {
@@ -26,6 +27,19 @@ namespace WPF.Views.Stock
             InitializeComponent();
         }
 
+        private void SupprimerProduit_Click(object sender, RoutedEventArgs e)
+        {
+            int produitId = (int)((Button)sender).CommandParameter;
+
+            var vm = (ProduitsViewModel)this.DataContext;
+            vm.SupprimerProduit(produitId);
+
+            this.Content = null;
+            var uc = new UcArticle();
+            uc.DataContext = new UcArticle();
+            this.Content = uc;
+
+        }
     }
 }
 

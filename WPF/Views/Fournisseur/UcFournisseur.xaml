@@ -39,12 +39,16 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Column="0" Text="Code Fournisseur"/>
                 <TextBlock Grid.Column="1" Text="Nom"/>
                 <TextBlock Grid.Column="2" Text="Telephone"/>
                 <TextBlock Grid.Column="3" Text="Mail"/>
+                <TextBlock Grid.Column="4" Text="Modifier" Margin="0,0,10,0"/>
+                <TextBlock Grid.Column="5" Text="Supprimer"/>
             </Grid>
 
 
@@ -60,12 +64,17 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Grid.Column="0" Text="{Binding CodeFournisseur}"/>
                             <TextBlock Grid.Column="1" Text="{Binding Nom}"/>
                             <TextBlock Grid.Column="2" Text="{Binding NumeroTelephone}"/>
                             <TextBlock Grid.Column="3" Text="{Binding AdresseMail}"/>
+                            <Button Grid.Column="4" Content="V" Margin="0,0,10,0" />
+                            <Button Grid.Column="5" Content="X"   Name="ModifierFournisseur"  Click="ModifierFournisseur_Click" CommandParameter="{Binding Id}" />
+
 
                         </Grid>
                     </DataTemplate>

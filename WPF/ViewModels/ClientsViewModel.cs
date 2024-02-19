@@ -8,9 +8,9 @@ namespace WPF.ViewModels;
 
 public class ClientsViewModel : BaseViewModel
 {
-    public ObservableCollection<ClientLightDto> ListClientLights { get; set; } = new();
+    public ObservableCollection<Client> ListClient { get; set; } = new();
 
-    public int NombreClients { get => ListClientLights.Count(); }
+    public int NombreClients { get => ListClient.Count(); }
 
     public ClientsViewModel()
     {
@@ -19,7 +19,7 @@ public class ClientsViewModel : BaseViewModel
 
     public void LoadClients()
     {
-        ListClientLights.Clear();
+        ListClient.Clear();
         OnPropertyChanged(nameof(NombreClients));
 
         Task.Run(async () =>
@@ -27,9 +27,9 @@ public class ClientsViewModel : BaseViewModel
             return await HttpClientService.GetClientLights() ;
         }).ContinueWith(t =>
         {
-            foreach (var ClientLight in t.Result)
+            foreach (var Client in t.Result)
             {
-                ListClientLights.Add(ClientLight);
+                ListClient.Add(Client);
             }   
             OnPropertyChanged(nameof(NombreClients));
         }, TaskScheduler.FromCurrentSynchronizationContext() ); 
@@ -39,6 +39,23 @@ public class ClientsViewModel : BaseViewModel
     {
         Task.Run(async () => await HttpClientService.PostClient(newClient));
     }
+
+    public void SupprimerClient(int Id)
+    {
+        Task.Run(async () => await HttpClientService.DeleteClient(Id));
+    }
+
+    public void ModifierClient(int Id)
+    {
+        Task.Run(async () => await HttpClientService.PutClient(Id));
+    }
+
+/*    public async Task<Client> ChargerUnClient(int Id)
+    {
+        var response = await HttpClientService.GetClient(Id);
+        return response.FirstOrDefault(); 
+    }*/
+
 }
 
 

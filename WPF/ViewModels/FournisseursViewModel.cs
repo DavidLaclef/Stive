@@ -39,4 +39,9 @@ public class FournisseursViewModel : BaseViewModel
     {
         Task.Run(async () => await HttpClientService.PostFournisseur(newFournisseur));
     }
+
+    public void SupprimerFournisseur(int Id)
+    {
+        Task.Run(async () => await HttpClientService.DeleteFournisseur(Id));
+    }
 }
