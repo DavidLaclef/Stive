@@ -2,7 +2,6 @@
 using System.Collections.ObjectModel;
 using WPF.Services;
 
-
 namespace WPF.ViewModels;
 
 public class MouvementStocksViewModel : BaseViewModel
@@ -23,14 +22,14 @@ public class MouvementStocksViewModel : BaseViewModel
 
         Task.Run(async () =>
         {
-            return await HttpClientService.GetMouvementStockLights() ;
+            return await HttpClientService.GetMouvementStockLights();
         }).ContinueWith(t =>
         {
             foreach (var MouvementStockLight in t.Result)
             {
                 ListMouvementStockLights.Add(MouvementStockLight);
-            }   
+            }
             OnPropertyChanged(nameof(NombreMouvementStocks));
-        }, TaskScheduler.FromCurrentSynchronizationContext() ) ; 
+        }, TaskScheduler.FromCurrentSynchronizationContext());
     }
 }

@@ -71,14 +71,8 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
-                            <TextBlock Text="{Binding DateNaissance}"/>
-                            <TextBlock Text="{Binding NumeroTelephone}"/>
-                            <TextBlock Text="{Binding NomLivraison}"/>
-                            <TextBlock Text="{Binding AdressePostale}"/>
-                            <TextBlock Grid.Column="8" Text="{Binding InstructionLivraison}"/>
                             <TextBlock Grid.Column="0" Text="{Binding CodeClient}"/>
                             <TextBlock Grid.Column="1" Text="{Binding Nom}"/>
                             <TextBlock Grid.Column="2" Text="{Binding Prenom}"/>

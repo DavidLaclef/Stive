@@ -3,7 +3,6 @@ using Models.Dto;
 using System.Collections.ObjectModel;
 using WPF.Services;
 
-
 namespace WPF.ViewModels;
 
 public class ProduitsViewModel : BaseViewModel
@@ -24,15 +23,15 @@ public class ProduitsViewModel : BaseViewModel
 
         Task.Run(async () =>
         {
-            return await HttpClientService.GetProduitLights() ;
+            return await HttpClientService.GetProduitLights();
         }).ContinueWith(t =>
         {
             foreach (var ProduitLight in t.Result)
             {
                 ListProduitLights.Add(ProduitLight);
-            }   
+            }
             OnPropertyChanged(nameof(NombreProduits));
-        }, TaskScheduler.FromCurrentSynchronizationContext() ) ; 
+        }, TaskScheduler.FromCurrentSynchronizationContext());
     }
 
     public void AjouterProduit(Produit newProduit)

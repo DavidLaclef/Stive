@@ -1,6 +1,4 @@
-﻿using Models.Dto;
-using Models.Dao;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using WPF.ViewModels;
 
@@ -34,10 +32,6 @@ public partial class UcClient : UserControl
         var uc = new UcClient();
         uc.DataContext = new ClientsViewModel();
         this.Content = uc;
-
-
-        // Utilisez l'ID du client comme nécessaire
-
     }
 
     private void ModifierClient_Click(object sender, RoutedEventArgs e)

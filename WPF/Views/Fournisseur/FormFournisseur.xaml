@@ -17,11 +17,11 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Label Grid.Row="0">Nom:</Label>
+        <Label Grid.Row="0">Nom :</Label>
         <TextBox x:Name="nom" Grid.Row="0" Grid.Column="1" Margin="0,0,0,10" />
-        <Label Grid.Row="1">Addresse mail:</Label>
+        <Label Grid.Row="1">Addresse mail :</Label>
         <TextBox x:Name="email" Grid.Row="1" Grid.Column="1" AcceptsReturn="True" />
-        <Label Grid.Row="2">Numéro de téléphone:</Label>
+        <Label Grid.Row="2">Numéro de téléphone :</Label>
         <TextBox x:Name="telephone" Grid.Row="2" Grid.Column="1" AcceptsReturn="True" />
 
         <StackPanel Orientation="Horizontal" Grid.Row="4">

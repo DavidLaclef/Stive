@@ -14,7 +14,7 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="0" Text="Nom du chateau"/>
+            <TextBlock Grid.Column="0" Text="Nom du château"/>
             <TextBlock Grid.Column="1" Text="Modifier" Margin="0,0,10,0"/>
             <TextBlock Grid.Column="2" Text="Supprimer"/>
         </Grid>

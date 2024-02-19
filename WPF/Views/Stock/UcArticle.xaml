@@ -23,7 +23,7 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Grid.Column="0" Text="Familles"/>
-            <TextBlock Grid.Column="1" Text="Chateau"/>
+            <TextBlock Grid.Column="1" Text="Château"/>
             <TextBlock Grid.Column="2" Text="Nom"/>
             <TextBlock Grid.Column="3" Text="Millesime"/>
             <TextBlock Grid.Column="4" Text="Quantité"/>

@@ -1,7 +1,7 @@
-﻿using Models.Dto;
+﻿using Models.Dao;
+using Models.Dto;
 using System.Collections.ObjectModel;
 using WPF.Services;
-using Models.Dao;
 
 namespace WPF.ViewModels;
 
@@ -9,7 +9,7 @@ public class ChateauxViewModel : BaseViewModel
 {
     public ObservableCollection<ChateauLightDto> ListChateauLights { get; set; } = new();
 
-    public int  NombreChateaux { get => ListChateauLights.Count(); }
+    public int NombreChateaux { get => ListChateauLights.Count(); }
 
     public ChateauxViewModel()
     {
@@ -23,15 +23,15 @@ public class ChateauxViewModel : BaseViewModel
 
         Task.Run(async () =>
         {
-            return await HttpClientService.GetChateauLights() ;
+            return await HttpClientService.GetChateauLights();
         }).ContinueWith(t =>
         {
             foreach (var ChateauLight in t.Result)
             {
                 ListChateauLights.Add(ChateauLight);
-            }   
+            }
             OnPropertyChanged(nameof(NombreChateaux));
-        }, TaskScheduler.FromCurrentSynchronizationContext() ) ; 
+        }, TaskScheduler.FromCurrentSynchronizationContext());
     }
 
     public void AjouterChateau(Chateau newChateau)

@@ -17,8 +17,6 @@ namespace WPF
         {
             InitializeComponent();
             //initier les variables run ce code lors du démarrage de la page
-
-
         }
 
         private void BtnAccueil_Click(object sender, RoutedEventArgs e)

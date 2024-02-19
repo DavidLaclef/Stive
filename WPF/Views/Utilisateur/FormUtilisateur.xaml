@@ -21,17 +21,16 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Label Grid.Row="1">Nom:</Label>
+        <Label Grid.Row="1">Nom :</Label>
         <TextBox x:Name="nom" Grid.Row="1" Grid.Column="1" Margin="0,0,0,10" />
-        <Label Grid.Row="2">Prénom:</Label>
+        <Label Grid.Row="2">Prénom :</Label>
         <TextBox x:Name="prenom" Grid.Row="2" Grid.Column="1" AcceptsReturn="True" />
-        <Label Grid.Row="3">Address mail:</Label>
+        <Label Grid.Row="3">Adresse mail :</Label>
         <TextBox x:Name="email" Grid.Row="3" Grid.Column="1" AcceptsReturn="True" />
-        <Label Grid.Row="4">Est gérant:</Label>
+        <Label Grid.Row="4">Gérant :</Label>
         <CheckBox x:Name="estAdmin" Grid.Row="4" Grid.Column="1" />
 
         <StackPanel Grid.Row="6" Orientation="Horizontal">
-            <Button Margin="10" Name="cancel" Content="retour" Width="100" HorizontalAlignment="Left" />
             <Button Margin="10" Name="ajouter"  Click="ajouter_Click" Content="Enregistrer" Width="100" HorizontalAlignment="Right" />
         </StackPanel>
     </Grid>

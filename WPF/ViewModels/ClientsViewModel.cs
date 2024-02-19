@@ -1,8 +1,6 @@
 ﻿using Models.Dao;
-using Models.Dto;
 using System.Collections.ObjectModel;
 using WPF.Services;
-
 
 namespace WPF.ViewModels;
 
@@ -24,15 +22,15 @@ public class ClientsViewModel : BaseViewModel
 
         Task.Run(async () =>
         {
-            return await HttpClientService.GetClientLights() ;
+            return await HttpClientService.GetClientLights();
         }).ContinueWith(t =>
         {
             foreach (var Client in t.Result)
             {
                 ListClient.Add(Client);
-            }   
+            }
             OnPropertyChanged(nameof(NombreClients));
-        }, TaskScheduler.FromCurrentSynchronizationContext() ); 
+        }, TaskScheduler.FromCurrentSynchronizationContext());
     }
 
     public void AjouterClient(Client newClient)
@@ -50,11 +48,11 @@ public class ClientsViewModel : BaseViewModel
         Task.Run(async () => await HttpClientService.PutClient(Id));
     }
 
-/*    public async Task<Client> ChargerUnClient(int Id)
-    {
-        var response = await HttpClientService.GetClient(Id);
-        return response.FirstOrDefault(); 
-    }*/
+    /*    public async Task<Client> ChargerUnClient(int Id)
+        {
+            var response = await HttpClientService.GetClient(Id);
+            return response.FirstOrDefault(); 
+        }*/
 
 }
 

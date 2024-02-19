@@ -25,25 +25,25 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Label Grid.Row="0">Nom:</Label>
+        <Label Grid.Row="0">Nom :</Label>
         <TextBox x:Name="Nom" Grid.Row="0" Grid.Column="1" Margin="0,0,10,10" />
-        <Label Grid.Row="1" >Photo Produit:</Label>
+        <Label Grid.Row="1" >Photo Produit :</Label>
         <TextBox Grid.Row="1" x:Name="PhotoProduit" Grid.Column="1" Margin="0,0,10,10" />
-        <Label Grid.Row="2">Millesime:</Label>
+        <Label Grid.Row="2">Millesime :</Label>
         <DatePicker Grid.Row="2" x:Name="millesime" Grid.Column="1" Margin="0,0,10,10" />
-        <Label Grid.Row="3">Description:</Label>
+        <Label Grid.Row="3">Description :</Label>
         <TextBox Grid.Row="3" x:Name="Description" Grid.Column="1" Margin="0,0,10,10" />
-        <Label Grid.Row="4">Quantité:</Label>
+        <Label Grid.Row="4">Quantité :</Label>
         <TextBox  x:Name="Quantite" Grid.Row="4" Grid.Column="1" Margin="0,0,10,10" Text="" />
-        <Label Grid.Row="5">Seuil de réapprovisionnement:</Label>
+        <Label Grid.Row="5">Seuil de réapprovisionnement :</Label>
         <TextBox  x:Name="reapprovisionnement" Grid.Row="5" Grid.Column="1" AcceptsReturn="True" Margin="0,0,10,10" />
-        <Label Grid.Row="6">Prix unitaire:</Label>
+        <Label Grid.Row="6">Prix unitaire :</Label>
         <TextBox  x:Name="prixUnitaire" Grid.Row="6" Grid.Column="1" AcceptsReturn="True" Margin="0,0,10,10" />
-        <Label Grid.Row="7">Prix CartonVente:</Label>
+        <Label Grid.Row="7">Prix CartonVente :</Label>
         <TextBox x:Name="PrixCartonVente" Grid.Row="7" Grid.Column="1" Margin="0,0,10,10" />
-        <Label Grid.Row="8">Prix Carton Commande:</Label>
+        <Label Grid.Row="8">Prix Carton Commande :</Label>
         <TextBox  x:Name="prixcartoncommande"  Grid.Row="8" Grid.Column="1" Margin="0,0,10,10" />
-        <Label Grid.Row="9">Chateau:</Label>
+        <Label Grid.Row="9">Chateau :</Label>
         <ComboBox Grid.Row="9" Grid.Column="1" x:Name="ChateauId" MaxDropDownHeight="Auto" ItemsSource="{Binding ListChateauLights}"
           DisplayMemberPath="Nom"
           SelectedValuePath="Id"

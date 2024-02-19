@@ -3,7 +3,6 @@ using Models.Dto;
 using System.Collections.ObjectModel;
 using WPF.Services;
 
-
 namespace WPF.ViewModels;
 
 public class UtilisateursViewModel : BaseViewModel
@@ -24,15 +23,15 @@ public class UtilisateursViewModel : BaseViewModel
 
         Task.Run(async () =>
         {
-            return await HttpClientService.GetUtilisateurLights() ;
+            return await HttpClientService.GetUtilisateurLights();
         }).ContinueWith(t =>
         {
             foreach (var UtilisateurLight in t.Result)
             {
                 ListUtilisateurLights.Add(UtilisateurLight);
-            }   
+            }
             OnPropertyChanged(nameof(NombreUtilisateurs));
-        }, TaskScheduler.FromCurrentSynchronizationContext() ) ; 
+        }, TaskScheduler.FromCurrentSynchronizationContext());
     }
     public void AjouterUtilisateur(Utilisateur newUtilisateur)
     {

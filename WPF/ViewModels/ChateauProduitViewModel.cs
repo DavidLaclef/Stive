@@ -5,7 +5,7 @@ using WPF.Services;
 
 namespace WPF.ViewModels;
 
-internal class ChateauProduitViewModel : BaseViewModel
+public class ChateauProduitViewModel : BaseViewModel
 {
     public ObservableCollection<ChateauLightDto> ListChateauLights { get; set; } = new();
 

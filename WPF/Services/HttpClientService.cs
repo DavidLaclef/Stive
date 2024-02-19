@@ -1,314 +1,301 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using Models.Dao;
+using Models.Dto;
+using Newtonsoft.Json;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-using System.Threading.Tasks;
-using Models.Dao;
-using Models.Dto;
-using Newtonsoft.Json;
 
 
-namespace WPF.Services
+namespace WPF.Services;
+
+public static class HttpClientService
 {
-    public static class HttpClientService
+    private const string baseAddress = "https://localhost:7080/api/";
+    private static HttpClient? client = null;
+    private static HttpClient Client
     {
-        private const string baseAddress = "https://localhost:7080/api/";
-        private static HttpClient? client = null;
-        private static HttpClient Client
+        get
         {
-            get
+            if (client == null)
             {
-                if (client == null)
+                client = new() { BaseAddress = new Uri(baseAddress) };
+            }
+            return client;
+        }
+    }
+    public static async Task<List<ChateauLightDto>> GetChateauLights()
+    {
+        string uri = "Chateaux";
+        var response = await Client.GetAsync(uri);
+        if (response.IsSuccessStatusCode)
+        {
+            string result = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<List<ChateauLightDto>>(result) ?? throw new FormatException($"Erreur Http : {uri}");
+        }
+        throw new Exception(response.ReasonPhrase);
+    }
+
+    public static async Task<bool> PostChateau(Chateau chateau)
+    {
+        string uri = "Chateaux";
+        var json = JsonConvert.SerializeObject(chateau);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        var response = await Client.PostAsync(uri, content);
+        if (response.IsSuccessStatusCode)
+        {
+            return true;
+        }
+        throw new Exception(response.ReasonPhrase);
+    }
+
+    public static async Task DeleteChateau(int id)
+    {
+        string route = $"Chateaux/{id}";
+        var response = await Client.DeleteAsync(route);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            throw new Exception(response.ReasonPhrase);
+        }
+    }
+
+    public static async Task<List<Client>> GetClientLights()
+    {
+        string uri = "Clients";
+        var response = await Client.GetAsync(uri);
+        if (response.IsSuccessStatusCode)
+        {
+            string result = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<List<Client>>(result) ?? throw new FormatException($"Erreur Http : {uri}");
+        }
+        throw new Exception(response.ReasonPhrase);
+    }
+
+    /*        public static async Task<List<Client>> GetClient(int Id)
+            {
+                string uri = $"Clients/{Id}";
+                var response = await Client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
                 {
-                    client = new() { BaseAddress = new Uri(baseAddress) };
+                    string result = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<List<Client>>(result) ?? throw new FormatException($"Erreur Http : {uri}");
                 }
-                return client;
-            }
-        }
-        //demande metier genre les liste en fonctions des date etc ou en fonction  du statut
-        public static async Task<List<ChateauLightDto>> GetChateauLights()
-        {
-            string uri = "Chateaux";
-            var response = await Client.GetAsync(uri);
-            if (response.IsSuccessStatusCode)
-            {
-                string result = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<List<ChateauLightDto>>(result) ?? throw new FormatException($"Erreur Http : {uri}");
-            }
-            throw new Exception(response.ReasonPhrase);
-        }
-
-        public static async Task<bool> PostChateau(Chateau chateau)
-        {
-            string uri = "Chateaux";
-            var json = JsonConvert.SerializeObject(chateau);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            var response = await Client.PostAsync(uri, content);
-            if (response.IsSuccessStatusCode)
-            {
-                return true;
-            }
-            throw new Exception(response.ReasonPhrase);
-        }
-
-        public static async Task DeleteChateau(int id)
-        {
-            string route = $"Chateaux/{id}";
-            var response = await Client.DeleteAsync(route);
-
-            if (!response.IsSuccessStatusCode)
-            {
                 throw new Exception(response.ReasonPhrase);
-            }
-        }
+            }*/
 
-        public static async Task<List<Client>> GetClientLights()
+    public static async Task<bool> PostClient(Client client)
+    {
+        string uri = "Clients";
+        var json = JsonConvert.SerializeObject(client);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        var response = await Client.PostAsync(uri, content);
+        if (response.IsSuccessStatusCode)
         {
-            string uri = "Clients";
-            var response = await Client.GetAsync(uri);
-            if (response.IsSuccessStatusCode)
-            {
-                string result = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<List<Client>>(result) ?? throw new FormatException($"Erreur Http : {uri}");
-            }
+            return true;
+        }
+        throw new Exception(response.ReasonPhrase);
+    }
+
+    public static async Task DeleteClient(int id)
+    {
+        string route = $"Clients/{id}";
+        var response = await Client.DeleteAsync(route);
+
+        if (!response.IsSuccessStatusCode)
+        {
             throw new Exception(response.ReasonPhrase);
         }
+    }
 
-/*        public static async Task<List<Client>> GetClient(int Id)
+    public static async Task PutClient(int Id)
+    {
+        string route = $"Clients/{Id}";
+
+        string json = JsonConvert.SerializeObject(client);
+        var buffer = Encoding.UTF8.GetBytes(json);
+
+        var byteContent = new ByteArrayContent(buffer);
+        byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+        HttpResponseMessage response = await Client.PutAsync(route, byteContent);
+
+        if (!response.IsSuccessStatusCode)
         {
-            string uri = $"Clients/{Id}";
-            var response = await Client.GetAsync(uri);
-            if (response.IsSuccessStatusCode)
-            {
-                string result = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<List<Client>>(result) ?? throw new FormatException($"Erreur Http : {uri}");
-            }
-            throw new Exception(response.ReasonPhrase);
-        }*/
-
-        // methode pour les post
-        public static async Task<bool> PostClient(Client client)
-        {
-            string uri = "Clients";
-            var json = JsonConvert.SerializeObject(client);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            var response = await Client.PostAsync(uri, content);
-            if (response.IsSuccessStatusCode)
-            {
-                return true;
-            }
-            throw new Exception(response.ReasonPhrase);
+            throw new Exception($"{response.ReasonPhrase}");
         }
+    }
 
-     
-
-        public static async Task DeleteClient(int id)
+    public static async Task<List<CommandeDto>> GetCommandeLights()
+    {
+        string uri = "Commandes";
+        var response = await Client.GetAsync(uri);
+        if (response.IsSuccessStatusCode)
         {
-            string route = $"Clients/{id}";
-            var response = await Client.DeleteAsync(route);
-
-            if (!response.IsSuccessStatusCode)
-            {
-                throw new Exception(response.ReasonPhrase);
-            }
+            string result = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<List<CommandeDto>>(result) ?? throw new FormatException($"Erreur Http : {uri}");
         }
+        throw new Exception(response.ReasonPhrase);
+    }
 
-        public static async Task PutClient(int Id)
+    public static async Task<List<FamilleLightDto>> GetFamilleLights()
+    {
+        string uri = "Familles";
+        var response = await Client.GetAsync(uri);
+        if (response.IsSuccessStatusCode)
         {
-            string route = $"Clients/{Id}";
-
-            string json = JsonConvert.SerializeObject(client);
-            var buffer = Encoding.UTF8.GetBytes(json);
-
-            var byteContent = new ByteArrayContent(buffer);
-            byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-
-            HttpResponseMessage response = await Client.PutAsync(route, byteContent);
-
-            if (!response.IsSuccessStatusCode)
-            {
-                throw new Exception($"{response.ReasonPhrase}");
-            }
+            string result = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<List<FamilleLightDto>>(result) ?? throw new FormatException($"Erreur Http : {uri}");
         }
+        throw new Exception(response.ReasonPhrase);
+    }
 
+    public static async Task<bool> PostFamille(Famille famille)
+    {
+        string uri = "Familles";
+        var json = JsonConvert.SerializeObject(famille);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-        public static async Task<List<CommandeDto>> GetCommandeLights()
+        var response = await Client.PostAsync(uri, content);
+        if (response.IsSuccessStatusCode)
         {
-            string uri = "Commandes";
-            var response = await Client.GetAsync(uri);
-            if (response.IsSuccessStatusCode)
-            {
-                string result = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<List<CommandeDto>>(result) ?? throw new FormatException($"Erreur Http : {uri}");
-            }
+            return true;
+        }
+        throw new Exception(response.ReasonPhrase);
+    }
+
+    public static async Task DeleteFamille(int id)
+    {
+        string route = $"Familles/{id}";
+        var response = await Client.DeleteAsync(route);
+
+        if (!response.IsSuccessStatusCode)
+        {
             throw new Exception(response.ReasonPhrase);
         }
+    }
 
-        public static async Task<List<FamilleLightDto>> GetFamilleLights()
+    public static async Task<List<FournisseurLightDto>> GetFournisseurLights()
+    {
+        string uri = "Fournisseurs";
+        var response = await Client.GetAsync(uri);
+        if (response.IsSuccessStatusCode)
         {
-            string uri = "Familles";
-            var response = await Client.GetAsync(uri);
-            if (response.IsSuccessStatusCode)
-            {
-                string result = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<List<FamilleLightDto>>(result) ?? throw new FormatException($"Erreur Http : {uri}");
-            }
+            string result = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<List<FournisseurLightDto>>(result) ?? throw new FormatException($"Erreur Http : {uri}");
+        }
+        throw new Exception(response.ReasonPhrase);
+    }
+
+    public static async Task<bool> PostFournisseur(Fournisseur fournisseur)
+    {
+        string uri = "Fournisseurs";
+        var json = JsonConvert.SerializeObject(fournisseur);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        var response = await Client.PostAsync(uri, content);
+        if (response.IsSuccessStatusCode)
+        {
+            return true;
+        }
+        throw new Exception(response.ReasonPhrase);
+    }
+
+    public static async Task DeleteFournisseur(int id)
+    {
+        string route = $"Fournisseurs/{id}";
+        var response = await Client.DeleteAsync(route);
+
+        if (!response.IsSuccessStatusCode)
+        {
             throw new Exception(response.ReasonPhrase);
         }
+    }
 
-        public static async Task<bool> PostFamille(Famille famille)
+    public static async Task<List<UtilisateurLightDto>> GetUtilisateurLights()
+    {
+        string uri = "Utilisateurs";
+        var response = await Client.GetAsync(uri);
+        if (response.IsSuccessStatusCode)
         {
-            string uri = "Familles";
-            var json = JsonConvert.SerializeObject(famille);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            string result = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<List<UtilisateurLightDto>>(result) ?? throw new FormatException($"Erreur Http : {uri}");
+        }
+        throw new Exception(response.ReasonPhrase);
+    }
 
-            var response = await Client.PostAsync(uri, content);
-            if (response.IsSuccessStatusCode)
-            {
-                return true;
-            }
+    public static async Task<bool> PostUtilisateur(Utilisateur utilisateur)
+    {
+        string uri = "Utilisateurs";
+        var json = JsonConvert.SerializeObject(utilisateur);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        var response = await Client.PostAsync(uri, content);
+        if (response.IsSuccessStatusCode)
+        {
+            return true;
+        }
+        throw new Exception(response.ReasonPhrase);
+    }
+
+    public static async Task DeleteUtilisateur(int id)
+    {
+        string route = $"Utilisateurs/{id}";
+        var response = await Client.DeleteAsync(route);
+
+        if (!response.IsSuccessStatusCode)
+        {
             throw new Exception(response.ReasonPhrase);
         }
+    }
 
-        public static async Task DeleteFamille(int id)
+    public static async Task<List<MouvementStockLightDto>> GetMouvementStockLights()
+    {
+        string uri = "MouvementsStock";
+        var response = await Client.GetAsync(uri);
+        if (response.IsSuccessStatusCode)
         {
-            string route = $"Familles/{id}";
-            var response = await Client.DeleteAsync(route);
-
-            if (!response.IsSuccessStatusCode)
-            {
-                throw new Exception(response.ReasonPhrase);
-            }
+            string result = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<List<MouvementStockLightDto>>(result) ?? throw new FormatException($"Erreur Http : {uri}");
         }
+        throw new Exception(response.ReasonPhrase);
+    }
 
-        public static async Task<List<FournisseurLightDto>> GetFournisseurLights()
+    public static async Task<List<ProduitLightDto>> GetProduitLights()
+    {
+        string uri = "Produits";
+        var response = await Client.GetAsync(uri);
+        if (response.IsSuccessStatusCode)
         {
-            string uri = "Fournisseurs";
-            var response = await Client.GetAsync(uri);
-            if (response.IsSuccessStatusCode)
-            {
-                string result = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<List<FournisseurLightDto>>(result) ?? throw new FormatException($"Erreur Http : {uri}");
-            }
+            string result = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<List<ProduitLightDto>>(result) ?? throw new FormatException($"Erreur Http : {uri}");
+        }
+        throw new Exception(response.ReasonPhrase);
+    }
+
+    public static async Task<bool> PostProduit(Produit produit)
+    {
+        string uri = "Produits";
+        var json = JsonConvert.SerializeObject(produit);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        var response = await Client.PostAsync(uri, content);
+        if (response.IsSuccessStatusCode)
+        {
+            return true;
+        }
+        throw new Exception(response.ReasonPhrase);
+    }
+
+    public static async Task DeleteProduit(int id)
+    {
+        string route = $"Produits/{id}";
+        var response = await Client.DeleteAsync(route);
+
+        if (!response.IsSuccessStatusCode)
+        {
             throw new Exception(response.ReasonPhrase);
         }
-
-        public static async Task<bool> PostFournisseur(Fournisseur fournisseur)
-        {
-            string uri = "Fournisseurs";
-            var json = JsonConvert.SerializeObject(fournisseur);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            var response = await Client.PostAsync(uri, content);
-            if (response.IsSuccessStatusCode)
-            {
-                return true;
-            }
-            throw new Exception(response.ReasonPhrase);
-        }
-
-        public static async Task DeleteFournisseur(int id)
-        {
-            string route = $"Fournisseurs/{id}";
-            var response = await Client.DeleteAsync(route);
-
-            if (!response.IsSuccessStatusCode)
-            {
-                throw new Exception(response.ReasonPhrase);
-            }
-        }
-
-        public static async Task<List<UtilisateurLightDto>> GetUtilisateurLights()
-        {
-            string uri = "Utilisateurs";
-            var response = await Client.GetAsync(uri);
-            if (response.IsSuccessStatusCode)
-            {
-                string result = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<List<UtilisateurLightDto>>(result) ?? throw new FormatException($"Erreur Http : {uri}");
-            }
-            throw new Exception(response.ReasonPhrase);
-        }
-
-        public static async Task<bool> PostUtilisateur(Utilisateur utilisateur)
-        {
-            string uri = "Utilisateurs";
-            var json = JsonConvert.SerializeObject(utilisateur);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            var response = await Client.PostAsync(uri, content);
-            if (response.IsSuccessStatusCode)
-            {
-                return true;
-            }
-            throw new Exception(response.ReasonPhrase);
-        }
-
-        public static async Task DeleteUtilisateur(int id)
-        {
-            string route = $"Utilisateurs/{id}";
-            var response = await Client.DeleteAsync(route);
-
-            if (!response.IsSuccessStatusCode)
-            {
-                throw new Exception(response.ReasonPhrase);
-            }
-        }
-
-
-        public static async Task<List<MouvementStockLightDto>> GetMouvementStockLights()
-        {
-            string uri = "MouvementsStock";
-            var response = await Client.GetAsync(uri);
-            if (response.IsSuccessStatusCode)
-            {
-                string result = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<List<MouvementStockLightDto>>(result) ?? throw new FormatException($"Erreur Http : {uri}");
-            }
-            throw new Exception(response.ReasonPhrase);
-        }
-
-        public static async Task<List<ProduitLightDto>> GetProduitLights()
-        {
-            string uri = "Produits";
-            var response = await Client.GetAsync(uri);
-            if (response.IsSuccessStatusCode)
-            {
-                string result = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<List<ProduitLightDto>>(result) ?? throw new FormatException($"Erreur Http : {uri}");
-            }
-            throw new Exception(response.ReasonPhrase);
-        }
-
-        public static async Task<bool> PostProduit(Produit produit)
-        {
-            string uri = "Produits";
-            var json = JsonConvert.SerializeObject(produit);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            var response = await Client.PostAsync(uri, content);
-            if (response.IsSuccessStatusCode)
-            {
-                return true;
-            }
-            throw new Exception(response.ReasonPhrase);
-        }
-
-        public static async Task DeleteProduit(int id)
-        {
-            string route = $"Produits/{id}";
-            var response = await Client.DeleteAsync(route);
-
-            if (!response.IsSuccessStatusCode)
-            {
-                throw new Exception(response.ReasonPhrase);
-            }
-        }
-
     }
 }

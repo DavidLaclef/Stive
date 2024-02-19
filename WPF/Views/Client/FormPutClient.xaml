@@ -30,27 +30,27 @@
         </Grid.RowDefinitions>
         <Label >Nom:</Label>
         <TextBox x:Name="nom" Grid.Column="1"  Text="{Binding Nom}"  Margin="0,0,10,10" />
-        <Label Grid.Row="1">Prénom:</Label>
+        <Label Grid.Row="1">Prénom :</Label>
         <TextBox x:Name="prenom" Grid.Row="1" Grid.Column="1" Text="{Binding Prenom}" Margin="0,0,10,10" />
-        <Label Grid.Row="2">Adresse Mail:</Label>
+        <Label Grid.Row="2">Adresse mail :</Label>
         <TextBox x:Name="email" Grid.Row="2" Grid.Column="1" Text="{Binding AdresseMail}" AcceptsReturn="True" Margin="0,0,10,10" />
-        <Label  Grid.Row="3">Entreprise</Label>
+        <Label  Grid.Row="3">Entreprise :</Label>
         <TextBox  Grid.Row="3" Text="{Binding Entreprise}" x:Name="entreprise" Grid.Column="1" Margin="0,0,10,10" />
-        <Label Grid.Row="4">Numéro de téléphone:</Label>
+        <Label Grid.Row="4">Numéro de téléphone :</Label>
         <TextBox Text="{Binding NumeroTelephone}" x:Name="telephone" Grid.Row="4" Grid.Column="1" AcceptsReturn="True" Margin="0,0,10,10" />
-        <Label Grid.Row="5">Nom de livraison:</Label>
+        <Label Grid.Row="5">Nom de livraison :</Label>
         <TextBox Text="{Binding NomLivraison}" x:Name="nomLivraison" Grid.Row="5" Grid.Column="1" AcceptsReturn="True" Margin="0,0,10,10" />
         <Label Grid.Row="6">Prenom de livraison :</Label>
         <TextBox Text="{Binding PrenomLivraison}" x:Name="prenomLivraison" Grid.Row="6" Grid.Column="1" AcceptsReturn="True" Margin="0,0,10,10" />
-        <Label Grid.Row="7">Date de naissance:</Label>
+        <Label Grid.Row="7">Date de naissance :</Label>
         <DatePicker SelectedDate="{Binding DateNaissance}" x:Name="dateNaissance" Grid.Row="7" Grid.Column="1" Margin="0,0,10,10" />
-        <Label Grid.Row="8">Addresse postal:</Label>
+        <Label Grid.Row="8">Addresse postal :</Label>
         <TextBox Text="{Binding AdressePostale}" x:Name="adresse" Grid.Row="8" Grid.Column="1" Margin="0,0,10,10" />
-        <Label Grid.Row="9">Code postal:</Label>
+        <Label Grid.Row="9">Code postal :</Label>
         <TextBox Text="{Binding CodePostal}" x:Name="codePostal" Grid.Row="9" Grid.Column="1" Margin="0,0,10,10" />
-        <Label Grid.Row="10">Ville:</Label>
+        <Label Grid.Row="10">Ville :</Label>
         <TextBox Text="{Binding Ville}" x:Name="ville" Grid.Row="10" Grid.Column="1" Margin="0,0,10,10" />
-        <Label Grid.Row="11">Instruction de livraison</Label>
+        <Label Grid.Row="11">Instruction de livraison :</Label>
         <TextBox Text="{Binding InstructionLivraison}" x:Name="instructionLivraison" Grid.Row="11" Grid.Column="1" AcceptsReturn="True" Margin="0,0,10,10" />
 
 

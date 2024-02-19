@@ -3,7 +3,6 @@ using Models.Dto;
 using System.Collections.ObjectModel;
 using WPF.Services;
 
-
 namespace WPF.ViewModels;
 
 public class FournisseursViewModel : BaseViewModel
@@ -24,15 +23,15 @@ public class FournisseursViewModel : BaseViewModel
 
         Task.Run(async () =>
         {
-            return await HttpClientService.GetFournisseurLights() ;
+            return await HttpClientService.GetFournisseurLights();
         }).ContinueWith(t =>
         {
             foreach (var FournisseurLight in t.Result)
             {
                 ListFournisseurLights.Add(FournisseurLight);
-            }   
+            }
             OnPropertyChanged(nameof(NombreFournisseurs));
-        }, TaskScheduler.FromCurrentSynchronizationContext() ) ; 
+        }, TaskScheduler.FromCurrentSynchronizationContext());
     }
 
     public void AjouterFournisseur(Fournisseur newFournisseur)
