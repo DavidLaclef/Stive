@@ -44,11 +44,11 @@
         <TextBox x:Name="prenomLivraison" Grid.Row="6" Grid.Column="1" AcceptsReturn="True" Margin="0,0,10,10" />
         <Label Grid.Row="7">Date de naissance :</Label>
         <DatePicker x:Name="dateNaissance" Grid.Row="7" Grid.Column="1" Margin="0,0,10,10" />
-        <Label Grid.Row="8">Addresse postal :</Label>
+        <Label Grid.Row="8">Adresse postale :</Label>
         <TextBox x:Name="adresse" Grid.Row="8" Grid.Column="1" Margin="0,0,10,10" />
         <Label Grid.Row="9">Code postal :</Label>
         <TextBox x:Name="codePostal" Grid.Row="9" Grid.Column="1" Margin="0,0,10,10" />
-        <Label Grid.Row="10">Ville:</Label>
+        <Label Grid.Row="10">Ville :</Label>
         <TextBox x:Name="ville" Grid.Row="10" Grid.Column="1" Margin="0,0,10,10" />
         <Label Grid.Row="11">Instruction de livraison :</Label>
         <TextBox x:Name="instructionLivraison" Grid.Row="11" Grid.Column="1" AcceptsReturn="True" Margin="0,0,10,10" />
