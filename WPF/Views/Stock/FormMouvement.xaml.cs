@@ -36,10 +36,10 @@ namespace WPF.Views.Stock
             {
                 Date = DateMouvement.SelectedDate.Value,
                 Quantite = int.Parse(Quantite.Text),
-                Remise = int.Parse(Remise.Text),
+                Remise = 0,
                 ProduitId = (int)Produit.SelectedValue,
                 Statut = StatutMouvement.EnAttente,
-                NumeroMouvement  = CodePersonne.CreationCode("MOU")
+                NumeroMouvement  = CodePersonne.CreationCode("COR")
             });
 
             vm.MettreAjourProduit((int)Produit.SelectedValue);

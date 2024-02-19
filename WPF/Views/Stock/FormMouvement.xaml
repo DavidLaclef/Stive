@@ -28,11 +28,9 @@
         </Grid.RowDefinitions>
         <Label Grid.Row="0">Date :</Label>
         <DatePicker Grid.Row="0" x:Name="DateMouvement" Grid.Column="1" Margin="0,0,10,10" />
-        <Label Grid.Row="1" >Quandtité :</Label>
+        <Label Grid.Row="1" >Quantité :</Label>
         <TextBox Grid.Row="1" x:Name="Quantite" Grid.Column="1"  Margin="0,0,10,10" />
-        <Label Grid.Row="2">Remise:</Label>
-        <TextBox Grid.Row="2" x:Name="Remise" Grid.Column="1" Margin="0,0,10,10" />
-        <Label Grid.Row="9">Produit:</Label>
+        <Label Grid.Row="9">Produit :</Label>
         <ComboBox Grid.Row="9" Grid.Column="1" x:Name="Produit" MaxDropDownHeight="Auto" ItemsSource="{Binding ListProduitLights}"
             DisplayMemberPath="Nom"
             SelectedValuePath="Id"   
