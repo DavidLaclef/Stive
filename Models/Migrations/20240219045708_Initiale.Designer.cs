@@ -11,7 +11,7 @@ using Models.Context;
 namespace Models.Migrations
 {
     [DbContext(typeof(StiveContext))]
-    [Migration("20240211182907_Initiale")]
+    [Migration("20240219045708_Initiale")]
     partial class Initiale
     {
         /// <inheritdoc />
@@ -189,8 +189,8 @@ namespace Models.Migrations
 
                     b.Property<string>("Nom")
                         .IsRequired()
-                        .HasMaxLength(80)
-                        .HasColumnType("varchar(80)");
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar(30)");
 
                     b.HasKey("Id");
 

@@ -52,7 +52,6 @@
           />
 
         <StackPanel Grid.Row="10" Orientation="Horizontal">
-            <Button Margin="10" Name="cancel" Content="retour" Width="100" HorizontalAlignment="Left" />
             <Button Margin="10" Name="ajouter" Click="ajouter_Click"  Content="Enregistrer" Width="100" HorizontalAlignment="Right" />
         </StackPanel>
     </Grid>

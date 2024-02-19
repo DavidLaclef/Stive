@@ -81,9 +81,6 @@
                             <TextBlock Grid.Column="5" Text="{Binding CodePostal}"/>
                             <Button Grid.Column="7" Content="X"   Name="SupprimerClient" Click="SupprimerClient_Click" CommandParameter="{Binding Id}" />
                             <Button Grid.Column="6" Content="V" Name="ModifierClient" Click="ModifierClient_Click" CommandParameter="{Binding}" Margin="0,0,10,0" />
-
-                            <!--<TextBlock Grid.Column="4" Text="{Binding Code_client}"/>-->
-
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

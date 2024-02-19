@@ -25,7 +25,6 @@
         <TextBox x:Name="telephone" Grid.Row="2" Grid.Column="1" AcceptsReturn="True" />
 
         <StackPanel Orientation="Horizontal" Grid.Row="4">
-            <Button  Margin="10" Content="Retour" Width="100" />
             <Button  Margin="10" Name="AddFournisseur" Click="AddFournisseur_Click" Content="Enregistrer" Width="100"  />
             
         </StackPanel>

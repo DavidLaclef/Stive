@@ -6,6 +6,7 @@ using WPF.Views.Fournisseur;
 using WPF.Views.Stock;
 using WPF.Views.Utilisateur;
 using WPF.ViewModels;
+using WPF.Services;
 namespace WPF
 {
     /// <summary>
@@ -17,6 +18,9 @@ namespace WPF
         {
             InitializeComponent();
             //initier les variables run ce code lors du démarrage de la page
+
+            //Task.Run(async () => await HttpClientService.Login("jeff.harbeng@stive.com", "Jeff1."));
+
         }
 
         private void BtnAccueil_Click(object sender, RoutedEventArgs e)

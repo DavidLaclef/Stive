@@ -1,9 +1,12 @@
 ﻿using Models.Dao;
 using Models.Dto;
 using Newtonsoft.Json;
+using System.Diagnostics;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+//using WPF.ModelsWPF;
 
 namespace WPF.Services;
 
@@ -11,6 +14,7 @@ public static class HttpClientService
 {
     private const string baseAddress = "https://localhost:7080/api/";
     private static HttpClient? client = null;
+    private static CookieContainer cookieContainer = new();
     private static HttpClient Client
     {
         get
@@ -22,6 +26,27 @@ public static class HttpClientService
             return client;
         }
     }
+
+    // Authentification des utilisateurs
+    //public static async Task<bool> Login(string email, string mdp)
+    //{
+    //    string route = "login?useCookies=true&useSessionCookies=true";
+    //    var jsonString = JsonConvert.SerializeObject(new LoginUser
+    //    {
+    //        Email = email,
+    //        MotDePasse = mdp
+    //    });
+
+    //    var httpContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
+    //    var response = await Client.PostAsync(route, httpContent);
+
+    //    var cookies = cookieContainer.GetCookies(new Uri(baseAddress));
+    //    Debug.WriteLine(cookies);
+
+    //    return response.IsSuccessStatusCode ? true :
+    //        throw new Exception(response.ReasonPhrase);
+    //}
+
     public static async Task<List<ChateauLightDto>> GetChateauLights()
     {
         string uri = "Chateaux";
