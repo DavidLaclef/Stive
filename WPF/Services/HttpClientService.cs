@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Models.Dao;
@@ -54,17 +55,40 @@ namespace WPF.Services
             throw new Exception(response.ReasonPhrase);
         }
 
-        public static async Task<List<ClientLightDto>> GetClientLights()
+        public static async Task DeleteChateau(int id)
+        {
+            string route = $"Chateaux/{id}";
+            var response = await Client.DeleteAsync(route);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception(response.ReasonPhrase);
+            }
+        }
+
+        public static async Task<List<Client>> GetClientLights()
         {
             string uri = "Clients";
             var response = await Client.GetAsync(uri);
             if (response.IsSuccessStatusCode)
             {
                 string result = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<List<ClientLightDto>>(result) ?? throw new FormatException($"Erreur Http : {uri}");
+                return JsonConvert.DeserializeObject<List<Client>>(result) ?? throw new FormatException($"Erreur Http : {uri}");
             }
             throw new Exception(response.ReasonPhrase);
         }
+
+/*        public static async Task<List<Client>> GetClient(int Id)
+        {
+            string uri = $"Clients/{Id}";
+            var response = await Client.GetAsync(uri);
+            if (response.IsSuccessStatusCode)
+            {
+                string result = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<Client>>(result) ?? throw new FormatException($"Erreur Http : {uri}");
+            }
+            throw new Exception(response.ReasonPhrase);
+        }*/
 
         // methode pour les post
         public static async Task<bool> PostClient(Client client)
@@ -91,6 +115,24 @@ namespace WPF.Services
             if (!response.IsSuccessStatusCode)
             {
                 throw new Exception(response.ReasonPhrase);
+            }
+        }
+
+        public static async Task PutClient(int Id)
+        {
+            string route = $"Clients/{Id}";
+
+            string json = JsonConvert.SerializeObject(client);
+            var buffer = Encoding.UTF8.GetBytes(json);
+
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            HttpResponseMessage response = await Client.PutAsync(route, byteContent);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception($"{response.ReasonPhrase}");
             }
         }
 
@@ -131,6 +173,17 @@ namespace WPF.Services
                 return true;
             }
             throw new Exception(response.ReasonPhrase);
+        }
+
+        public static async Task DeleteFamille(int id)
+        {
+            string route = $"Familles/{id}";
+            var response = await Client.DeleteAsync(route);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception(response.ReasonPhrase);
+            }
         }
 
         public static async Task<List<FournisseurLightDto>> GetFournisseurLights()
@@ -244,6 +297,17 @@ namespace WPF.Services
                 return true;
             }
             throw new Exception(response.ReasonPhrase);
+        }
+
+        public static async Task DeleteProduit(int id)
+        {
+            string route = $"Produits/{id}";
+            var response = await Client.DeleteAsync(route);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception(response.ReasonPhrase);
+            }
         }
 
     }

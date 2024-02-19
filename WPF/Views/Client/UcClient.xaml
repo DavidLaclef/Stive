@@ -58,7 +58,7 @@
             <TextBlock Text="Clients" FontSize="18" FontWeight="Normal" Margin="20,35,10,20"/>
             <Rectangle Grid.Row="1"  Fill="DarkGray" />
 
-            <ListBox ItemsSource="{Binding ListClientLights}" Margin="5,20,20,20" Grid.Row="3" >
+            <ListBox ItemsSource="{Binding ListClient}" Margin="5,20,20,20" Grid.Row="3" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -71,16 +71,22 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
+                            <TextBlock Text="{Binding DateNaissance}"/>
+                            <TextBlock Text="{Binding NumeroTelephone}"/>
+                            <TextBlock Text="{Binding NomLivraison}"/>
+                            <TextBlock Text="{Binding AdressePostale}"/>
+                            <TextBlock Grid.Column="8" Text="{Binding InstructionLivraison}"/>
                             <TextBlock Grid.Column="0" Text="{Binding CodeClient}"/>
                             <TextBlock Grid.Column="1" Text="{Binding Nom}"/>
                             <TextBlock Grid.Column="2" Text="{Binding Prenom}"/>
                             <TextBlock Grid.Column="3" Text="{Binding Entreprise}"/>
                             <TextBlock Grid.Column="4" Text="{Binding AdresseMail}"/>
                             <TextBlock Grid.Column="5" Text="{Binding CodePostal}"/>
-                            <Button Grid.Column="7" Content="X"   Name="ModifierClient" Click="ModifierClient_Click" CommandParameter="{Binding Id}" />
-                            <Button Grid.Column="6" Content="V" Margin="0,0,10,0" />
+                            <Button Grid.Column="7" Content="X"   Name="SupprimerClient" Click="SupprimerClient_Click" CommandParameter="{Binding Id}" />
+                            <Button Grid.Column="6" Content="V" Name="ModifierClient" Click="ModifierClient_Click" CommandParameter="{Binding}" Margin="0,0,10,0" />
 
                             <!--<TextBlock Grid.Column="4" Text="{Binding Code_client}"/>-->
 

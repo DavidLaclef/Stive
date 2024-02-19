@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPF.ViewModels;
+using WPF.Services;
 
 namespace WPF.Views.Client
 {
@@ -35,20 +36,22 @@ namespace WPF.Views.Client
                 Nom = nom.Text,
                 AdresseMail = email.Text,
                 NumeroTelephone = telephone.Text, 
-
                 AdressePostale =adresse.Text,
-                Ville = ville.Text,    
+                Ville = ville.Text,
                 //CodePostal = codePostal.Text,
-                CodeClient = codeClient.Text,
+                CodeClient = CodePersonne.CreationCode("CLI"),
+
                 EstMembreSite = true,
                 MotDePasse = "test",
-
-                DateNaissance = dateNaissance.SelectedDate ?? DateTime.Now,   
-                
+                DateNaissance = dateNaissance.SelectedDate ?? DateTime.Now,                  
                 CodePostal = codePostal.Text,
-                Prenom = prenom.Text
+                Prenom = prenom.Text,
+                Entreprise = entreprise.Text,
+                NomLivraison = nomLivraison.Text,
+                PrenomLivraison = prenomLivraison.Text, 
+                InstructionLivraison = instructionLivraison.Text,
+
                
-                
             });
         }
     }

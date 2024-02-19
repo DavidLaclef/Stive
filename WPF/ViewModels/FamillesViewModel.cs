@@ -40,4 +40,9 @@ public class FamillesViewModel : BaseViewModel
         Task.Run(async () => await HttpClientService.PostFamille(newFamille));
     }
 
+    public void SupprimerFamille(int Id)
+    {
+        Task.Run(async () => await HttpClientService.DeleteFamille(Id));
+    }
+
 }

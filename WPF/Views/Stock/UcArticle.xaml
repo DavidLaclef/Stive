@@ -18,6 +18,8 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
             <TextBlock Grid.Column="0" Text="Familles"/>
@@ -29,6 +31,8 @@
             <TextBlock Grid.Column="6" Text="Statut"/>
             <TextBlock Grid.Column="7" Text="Prix unitaire"/>
             <TextBlock Grid.Column="8" Text="Prix carton"/>
+            <TextBlock Grid.Column="9" Text="Modifier" Margin="0,0,10,0"/>
+            <TextBlock Grid.Column="10" Text="Supprimer"/>
         </Grid>
 
         <ListBox ItemsSource="{Binding ListProduitLights}" Margin="5,20,20,20" Grid.Row="3" >
@@ -45,6 +49,8 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
 
                         <TextBlock Grid.Column="0" Text="{Binding Familles[0].Nom}"/>
@@ -62,6 +68,8 @@
                             <TextBlock Grid.Column="8" Text="{Binding PrixCartonVente}"/>
                             <materialDesign:PackIcon Kind="Euro"/>
                         </StackPanel>
+                        <Button Grid.Column="9" Content="V" Margin="0,0,10,0" />
+                        <Button Grid.Column="10" Content="X"   Name="SupprimerProduit"  Click="SupprimerProduit_Click" CommandParameter="{Binding Id}" />
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

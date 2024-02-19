@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPF.ViewModels;
+using WPF.Services;
 
 namespace WPF.Views.Utilisateur
 {
@@ -36,8 +37,8 @@ namespace WPF.Views.Utilisateur
                 AdresseMail = email.Text,
                 MotDePasse = "test",
                 EstGerant = estAdmin.IsChecked ?? false,
-                CodeUtilisateur = codeUtilisateur.Text,
-                
+                CodeUtilisateur = CodePersonne.CreationCode("UTI")
+
             });
 
         }

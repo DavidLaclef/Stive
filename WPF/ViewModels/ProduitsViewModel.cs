@@ -39,4 +39,9 @@ public class ProduitsViewModel : BaseViewModel
     {
         Task.Run(async () => await HttpClientService.PostProduit(newProduit));
     }
+
+    public void SupprimerProduit(int Id)
+    {
+        Task.Run(async () => await HttpClientService.DeleteProduit(Id));
+    }
 }
