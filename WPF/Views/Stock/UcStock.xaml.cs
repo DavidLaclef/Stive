@@ -71,4 +71,12 @@ public partial class UcStock : UserControl
         SecondCC.Content = uc;
 
     }
+
+    private void AddMouvement_Click(object sender, RoutedEventArgs e)
+    {
+        SecondCC.Content = null;
+        var uc = new FormMouvement();
+        uc.DataContext = new MouvementStocksViewModel();
+        SecondCC.Content = uc;
+    }
 }

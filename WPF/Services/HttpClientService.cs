@@ -286,6 +286,20 @@ public static class HttpClientService
         throw new Exception(response.ReasonPhrase);
     }
 
+    public static async Task<bool> PostMouvementStock(MouvementStock mouvementStock)
+    {
+        string uri = "MouvementsStock";
+        var json = JsonConvert.SerializeObject(mouvementStock);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        var response = await Client.PostAsync(uri, content);
+        if (response.IsSuccessStatusCode)
+        {
+            return true;
+        }
+        throw new Exception(response.ReasonPhrase);
+    }
+
     public static async Task<List<ProduitLightDto>> GetProduitLights()
     {
         string uri = "Produits";
@@ -297,6 +311,8 @@ public static class HttpClientService
         }
         throw new Exception(response.ReasonPhrase);
     }
+
+
 
     public static async Task<bool> PostProduit(Produit produit)
     {
@@ -312,6 +328,20 @@ public static class HttpClientService
         throw new Exception(response.ReasonPhrase);
     }
 
+    public static async Task<Produit> GetProduit(int produitId)
+    {
+        string route = $"Produits/{produitId}";
+        var response = await Client.GetAsync(route);
+        if (response.IsSuccessStatusCode)
+        {
+            string resultat = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<Produit>(resultat)
+                ?? throw new FormatException($"Erreur http : {route} ");
+        }
+        throw new Exception(response.ReasonPhrase);
+    }
+
+
     public static async Task DeleteProduit(int id)
     {
         string route = $"Produits/{id}";
@@ -322,4 +352,24 @@ public static class HttpClientService
             throw new Exception(response.ReasonPhrase);
         }
     }
+
+    public static async Task PutProduit(Produit produit)
+    {
+        string route = $"Produits/{produit.Id}";
+
+        string json = JsonConvert.SerializeObject(client);
+        var buffer = Encoding.UTF8.GetBytes(json);
+
+        var byteContent = new ByteArrayContent(buffer);
+        byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+        HttpResponseMessage response = await Client.PutAsync(route, byteContent);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            throw new Exception($"{response.ReasonPhrase}");
+        }
+    }
+
+
 }
