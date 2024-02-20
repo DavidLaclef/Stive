@@ -7,6 +7,10 @@ using WPF.Views.Fournisseur;
 using WPF.Views.Stock;
 using WPF.Views.Utilisateur;
 
+using WPF.Views.Inventaire;
+using WPF.ViewModels;
+using WPF.Services;
+
 namespace WPF;
 
 public partial class MainWindow : Window
@@ -21,7 +25,14 @@ public partial class MainWindow : Window
 
         //this.DataContext = MainViewModel.Instance; // Sur cette branche, MainViewModel est créé (je l'ai créé)
 
-        //Task.Run(async () => await HttpClientService.Login("jeff.harbeng@stive.com", "Jeff1."));
+        private void BtnInventaire_Click(object sender, RoutedEventArgs e)
+        {
+            mainCC.Content = null;
+            var uc = new UcInventaire();
+            uc.DataContext = uc;
+            mainCC.Content = uc;
+        }
+
     }
 
     private void BtnAccueil_Click(object sender, RoutedEventArgs e)
