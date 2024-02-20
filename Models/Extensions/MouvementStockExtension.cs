@@ -29,4 +29,15 @@ public static class MouvementStockExtension
             Statut = mouvementStock.Statut,
         };
     }
+
+    public static InventaireDto ToMediumDto(this MouvementStock mouvementStock)
+    {
+        return new InventaireDto
+        {
+            Id = mouvementStock.Id,
+            NumeroMouvement = mouvementStock.NumeroMouvement,
+            Date = mouvementStock.Date.ToString("dd MMM yyyy"),
+            Produit = mouvementStock.Produit?.ToMediumDto(),
+        };
+    }
 }
