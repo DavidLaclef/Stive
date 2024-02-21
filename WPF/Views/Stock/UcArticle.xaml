@@ -53,7 +53,7 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Column="0" Text="{Binding Familles[0].Nom}"/>
+                        <TextBlock Grid.Column="0" Text="{Binding FamillesConcatenees}"/>
                         <TextBlock Grid.Column="1" Text="{Binding Chateau.Nom}"/>
                         <TextBlock Grid.Column="2" Text="{Binding Nom}"/>
                         <TextBlock Grid.Column="3" Text="{Binding Millesime}"/>
