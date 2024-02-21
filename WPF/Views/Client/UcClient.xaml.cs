@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using WPF.ViewModels;
+using WPF.Views.Stock;
 
 namespace WPF.Views.Client;
 
@@ -36,11 +37,12 @@ public partial class UcClient : UserControl
 
     private void ModifierClient_Click(object sender, RoutedEventArgs e)
     {
-        var client = (Models.Dao.Client)((Button)sender).CommandParameter;
+        int ClientId = (int)((Button)sender).CommandParameter;
+        var vm = (ClientsViewModel)this.DataContext;
+        this.Content = null;
         var uc = new FormPutClient();
-        var viewModel = new ClientsViewModel();
-        uc.DataContext = client;
-        SecondCC.Content = uc;
+        vm.ChargerClient(ClientId);
+        Content = uc;
     }
 
 }

@@ -11,6 +11,16 @@ public class FamillesViewModel : BaseViewModel
 
     public int NombreFamilles { get => ListFamilleLights.Count(); }
 
+    private Famille _familleSelected;
+    public Famille FamilleSelected { 
+        get => _familleSelected;
+        set
+        {
+            _familleSelected = value;
+            OnPropertyChanged(nameof(FamilleSelected));
+        }
+    }
+
     public FamillesViewModel()
     {
         LoadFamilles();
@@ -38,10 +48,23 @@ public class FamillesViewModel : BaseViewModel
     {
         Task.Run(async () => await HttpClientService.PostFamille(newFamille));
     }
+    
+    public void ChargerFamille(int Id)
+    {
+        Task.Run(async () => await HttpClientService.GetFamilleById(Id)).ContinueWith(p =>
+        {
+            FamilleSelected = new Famille
+            {
+                Id = p.Result.Id,
+                Nom = p.Result.Nom
+            };
+        }, TaskScheduler.FromCurrentSynchronizationContext());
+    }
 
     public void SupprimerFamille(int Id)
     {
         Task.Run(async () => await HttpClientService.DeleteFamille(Id));
     }
+
 
 }
