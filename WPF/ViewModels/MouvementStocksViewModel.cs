@@ -40,10 +40,27 @@ public class MouvementStocksViewModel : BaseViewModel
         Task.Run(async () => await HttpClientService.PostMouvementStock(newMouvementStock));
     }
 
+
+
     public void MettreAjourProduit(int Id)
     {
-        Task.Run(async () => await HttpClientService.PutProduit(Task.Run(async () => await HttpClientService.GetProduit(Id)).Result));
+/*
+        var Produit = Task.Run(async () => { return await HttpClientService.GetProduit(Id); }).ContinueWith(t =>
+        {
+
+            var Produit = t.Result;
+
+
+        }
+              );
+
+        var roduit = Task.Run(async () => await HttpClientService.PutProduit());*/
     }
+
+    
+
+
+
 
     public ObservableCollection<ProduitLightDto> ListProduitLights { get; set; } = new();
 

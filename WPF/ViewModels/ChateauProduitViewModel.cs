@@ -59,4 +59,6 @@ public class ChateauProduitViewModel : BaseViewModel
     {
         Task.Run(async () => await HttpClientService.PostProduit(newProduit));
     }
+
+
 }
