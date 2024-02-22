@@ -1,12 +1,12 @@
-﻿
-using System.Windows;
+﻿using System.Windows;
+using WPF.Services;
+using WPF.ViewModels;
 using WPF.Views.Accueil;
 using WPF.Views.Client;
 using WPF.Views.Fournisseur;
 using WPF.Views.Stock;
 using WPF.Views.Utilisateur;
-using WPF.ViewModels;
-using WPF.Services;
+
 namespace WPF
 {
     /// <summary>
@@ -18,7 +18,9 @@ namespace WPF
         {
             InitializeComponent();
 
-            Task.Run(async () => await HttpClientService.Login("jeff.harbeng@stive.com", "Jeff1."));
+            this.DataContext = MainViewModel.Instance; // Sur cette branche, MainViewModel est créé (je l'ai créé)
+
+            //Task.Run(async () => await HttpClientService.Login("jeff.harbeng@stive.com", "Jeff1."));
 
         }
 
