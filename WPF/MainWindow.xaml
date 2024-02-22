@@ -31,6 +31,8 @@
                 <Button Name="BtnClient" Click="BtnClient_Click"  BorderThickness="0"  Foreground="Black" Background="Transparent" Content="Client"/>
                 <Button Name="BtnFournisseur" Click="BtnFournisseur_Click" BorderThickness="0"  Foreground="Black" Background="Transparent" Content="Fournisseur"/>
                 <Button Name="BtnUtilisateur" Click="BtnUtilisateur_Click" BorderThickness="0"  Foreground="Black" Background="Transparent"  Content="Utilisateur"/>
+                <Button Name="BtnConnexion" Click="BtnConnexion_Click" BorderThickness="0"  Foreground="Black" Background="Transparent"  Content="Connexion"/>
+                <Button Name="BtnEnregistrement" Click="BtnEnregistrement_Click" BorderThickness="0"  Foreground="Black" Background="Transparent"  Content="S'enregistrer"/>
             </StackPanel>
         </Grid>
     

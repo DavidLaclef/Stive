@@ -1,4 +1,6 @@
-﻿namespace WPF.ViewModels;
+﻿using WPF.Views.Connexion;
+
+namespace WPF.ViewModels;
 
 public class MainViewModel : BaseViewModel
 {

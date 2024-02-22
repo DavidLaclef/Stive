@@ -45,6 +45,23 @@ public static class HttpClientService
 
         return response.IsSuccessStatusCode ? true :
             throw new Exception(response.ReasonPhrase);
+    } 
+    
+    // Enregistrement des utilisateurs
+    public static async Task<bool> Register(string email, string mdp)
+    {
+        string route = "register";
+        var jsonString = JsonConvert.SerializeObject(new LoginUser
+        {
+            Email = email,
+            MotDePasse = mdp
+        });
+
+        var httpContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
+        var response = await Client.PostAsync(route, httpContent);
+
+        return response.IsSuccessStatusCode ? true :
+            throw new Exception(response.ReasonPhrase);
     }
 
     public static async Task<List<ChateauLightDto>> GetChateauLights()
