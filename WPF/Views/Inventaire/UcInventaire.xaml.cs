@@ -1,7 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using WPF.ViewModels;
-using WPF.Views.Fournisseur;
 
 namespace WPF.Views.Inventaire
 {

@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="WPF.Views.Inventaire.Inventaire"
+﻿<UserControl x:Class="WPF.Views.Inventaire.UcInventaire"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" HorizontalAlignment="Left">
-            <Button Margin="5" Content="Réaliser un inventaire" Name="AddInventaire" Click="AddInventaire_Click" FontSize="11" MaxWidth="180" MinWidth="80"/>
+            <Button Margin="5" Content="Réaliser un inventaire" Name="AddInventaire"  FontSize="11" MaxWidth="180" MinWidth="80"/>
         </StackPanel>
 
         <Border Grid.Row="1" CornerRadius="10,10,10,10" Background="white" Margin="5,20,10,20" >
@@ -47,15 +47,15 @@
                 <TextBlock Grid.Column="1" Text="Famille"/>
                 <TextBlock Grid.Column="2" Text="Chateau"/>
                 <TextBlock Grid.Column="3" Text="Produit"/>
-                <TextBlock Grid.Column="4" Text="Quantité en stock"/>
+                <TextBlock Grid.Column="4" Text="Quantité système"/>
                 <TextBlock Grid.Column="5" Text="Quantité en inventaire"/>
                 <TextBlock Grid.Column="6" Text="Différence"/>
             </Grid>
 
-            <TextBlock Text="Inventaire>" FontSize="18" FontWeight="Normal" Margin="20,35,10,20"/>
+            <TextBlock Text="Inventaire" FontSize="18" FontWeight="Normal" Margin="20,35,10,20"/>
             <Rectangle Grid.Row="1"  Fill="DarkGray" />
 
-            <ListBox ItemsSource="{Binding ListInventaire}" Margin="5,20,20,20" Grid.Row="3" >
+            <ListBox ItemsSource="{Binding ListMouvementStockMedium}" Margin="5,20,20,20" Grid.Row="3" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -69,13 +69,13 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <TextBlock Grid.Column="0" Text="Date"/>
-                            <TextBlock Grid.Column="1" Text="Famille}"/>
-                            <TextBlock Grid.Column="2" Text="Chateau"/>
-                            <TextBlock Grid.Column="3" Text="Produit"/>
-                            <TextBlock Grid.Column="4" Text="Quantité en stock"/>
+                            <TextBlock Grid.Column="0" Text="{Binding Date}"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Produit.FamillesConcatenees}"/>
+                            <TextBlock Grid.Column="2" Text="{Binding Produit.Chateau.Nom}"/>
+                            <TextBlock Grid.Column="3" Text="{Binding Produit.Nom}"/>
+                            <TextBlock Grid.Column="4" Text="{Binding Produit.Quantite}"/>
                             <TextBlock Grid.Column="5" Text="Quantité en inventaire"/>
-                            <TextBlock Grid.Column="5" Text="Différence"/>
+                            <TextBlock Grid.Column="6" Text="Différence"/>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

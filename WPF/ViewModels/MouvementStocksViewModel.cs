@@ -9,12 +9,18 @@ public class MouvementStocksViewModel : BaseViewModel
 {
     public ObservableCollection<MouvementStockLightDto> ListMouvementStockLights { get; set; } = new();
 
+    public ObservableCollection<MouvementStockMediumDto> ListMouvementStockMedium{ get; set; } = new();
+
+    public ObservableCollection<ProduitMediumDto> ListProduitMedium { get; set; } = new();
+
     public int NombreMouvementStocks { get => ListMouvementStockLights.Count(); }
 
     public MouvementStocksViewModel()
     {
         LoadMouvementStocks();
+        LoadMouvementStockMedium();
         LoadProduits();
+        LoadProduitMedium();
     }
 
     public void LoadMouvementStocks()
@@ -32,6 +38,22 @@ public class MouvementStocksViewModel : BaseViewModel
                 ListMouvementStockLights.Add(MouvementStockLight);
             }
             OnPropertyChanged(nameof(NombreMouvementStocks));
+        }, TaskScheduler.FromCurrentSynchronizationContext());
+    }
+
+    public void LoadMouvementStockMedium()
+    {
+        ListMouvementStockMedium.Clear();
+
+        Task.Run(async () =>
+        {
+            return await HttpClientService.GetMouvementStockMedium();
+        }).ContinueWith(t =>
+        {
+            foreach (var MouvementStockMedium in t.Result)
+            {
+                ListMouvementStockMedium.Add(MouvementStockMedium);
+            }
         }, TaskScheduler.FromCurrentSynchronizationContext());
     }
 
@@ -82,6 +104,22 @@ public class MouvementStocksViewModel : BaseViewModel
                 ListProduitLights.Add(ProduitLight);
             }
             OnPropertyChanged(nameof(NombreProduits));
+        }, TaskScheduler.FromCurrentSynchronizationContext());
+    }
+
+    public void LoadProduitMedium()
+    {
+        ListProduitMedium.Clear();
+
+        Task.Run(async () =>
+        {
+            return await HttpClientService.GetProduitMedium();
+        }).ContinueWith(t =>
+        {
+            foreach (var ProduitMedium in t.Result)
+            {
+                ListProduitMedium.Add(ProduitMedium);
+            }
         }, TaskScheduler.FromCurrentSynchronizationContext());
     }
 

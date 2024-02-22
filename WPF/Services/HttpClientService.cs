@@ -339,14 +339,14 @@ public static class HttpClientService
         }
     }
 
-    public static async Task<Utilisateur> GetUtilisateurById(int Id)
+    public static async Task<List<MouvementStockMediumDto>> GetMouvementStockMedium()
     {
-        string uri = $"Utilisateurs/{Id}";
+        string uri = "MouvementsStock/Medium";
         var response = await Client.GetAsync(uri);
         if (response.IsSuccessStatusCode)
         {
             string result = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<Utilisateur>(result) ?? throw new FormatException($"Erreur Http : {uri}");
+            return JsonConvert.DeserializeObject<List<MouvementStockMediumDto>>(result) ?? throw new FormatException($"Erreur Http : {uri}");
         }
         throw new Exception(response.ReasonPhrase);
     }
@@ -389,7 +389,17 @@ public static class HttpClientService
         throw new Exception(response.ReasonPhrase);
     }
 
-
+    public static async Task<List<ProduitMediumDto>> GetProduitMedium()
+    {
+        string uri = "ProduitMedium";
+        var response = await Client.GetAsync(uri);
+        if (response.IsSuccessStatusCode)
+        {
+            string result = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<List<ProduitMediumDto>>(result) ?? throw new FormatException($"Erreur Http : {uri}");
+        }
+        throw new Exception(response.ReasonPhrase);
+    }
 
     public static async Task<bool> PostProduit(Produit produit)
     {
@@ -435,7 +445,7 @@ public static class HttpClientService
     {
         string route = $"api/Produits/{produit.Id}";
 
-        string json = JsonConvert.SerializeObject(client);
+        string json = JsonConvert.SerializeObject(produit);
         var buffer = Encoding.UTF8.GetBytes(json);
 
         var byteContent = new ByteArrayContent(buffer);

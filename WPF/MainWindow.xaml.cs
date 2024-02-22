@@ -29,7 +29,7 @@ public partial class MainWindow : Window
         {
             mainCC.Content = null;
             var uc = new UcInventaire();
-            uc.DataContext = uc;
+            uc.DataContext = new MouvementStocksViewModel();
             mainCC.Content = uc;
         }
 
