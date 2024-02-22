@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Models.Dao;
+using System.Windows;
 using System.Windows.Controls;
 using WPF.ViewModels;
 
@@ -21,5 +22,15 @@ public partial class FormChateau : UserControl
         {
             Nom = nom.Text,
         });
+    }
+
+    private void modifier_Click(object sender, RoutedEventArgs e)
+    {
+/*        var vm = (ChateauxViewModel)this.DataContext;
+        this.Content = null;
+        var uc = new Form();
+        uc.DataContext = new UcArticle();
+        this.Content = uc;*/
+
     }
 }

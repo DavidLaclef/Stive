@@ -30,7 +30,7 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock Grid.Column="0" Text="{Binding Nom}"/>
-                        <Button Grid.Column="1" Content="v"  Margin="0,0,10,0"/>
+                        <Button Grid.Column="1" Content="v"  x:Name="ModifierChateau" Click="ModifierChateau_Click" CommandParameter="{Binding Id}"  Margin="0,0,10,0"/>
                         <Button Grid.Column="2" Content="X" x:Name="SupprimerChateau" Click="SupprimerChateau_Click" CommandParameter="{Binding Id}" />
 
                     </Grid>

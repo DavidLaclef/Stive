@@ -21,9 +21,20 @@ public partial class UcChateau : UserControl
         var vm = (ChateauxViewModel)this.DataContext;
         vm.SupprimerChateau(chateauId);
 
-        var uc = new UcChateau();
+        var uc = new FormPutChateau();
         uc.DataContext = new ChateauxViewModel();
         this.Content = uc;
+
+    }
+
+    private void ModifierChateau_Click(object sender, RoutedEventArgs e)
+    {
+        int chateauId = (int)((Button)sender).CommandParameter;
+        var vm = (ChateauxViewModel)this.DataContext;
+        this.Content = null;
+        var uc = new FormPutChateau();
+        vm.ChargerChateau(chateauId);
+        Content = uc;
 
     }
 }

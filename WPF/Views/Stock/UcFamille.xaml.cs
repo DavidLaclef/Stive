@@ -26,4 +26,15 @@ public partial class UcFamille : UserControl
         this.Content = uc;
 
     }
+
+    private void ModifierFamille_Click(object sender, RoutedEventArgs e)
+    {
+        int FamilleId = (int)((Button)sender).CommandParameter;
+        var vm = (FamillesViewModel)this.DataContext;
+        this.Content = null;
+        var uc = new FormPutFamille();
+        vm.ChargerFamille(FamilleId);
+        Content = uc;
+
+    }
 }

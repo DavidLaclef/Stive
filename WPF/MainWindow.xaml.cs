@@ -17,9 +17,8 @@ namespace WPF
         public MainWindow()
         {
             InitializeComponent();
-            //initier les variables run ce code lors du démarrage de la page
 
-            //Task.Run(async () => await HttpClientService.Login("jeff.harbeng@stive.com", "Jeff1."));
+            Task.Run(async () => await HttpClientService.Login("jeff.harbeng@stive.com", "Jeff1."));
 
         }
 
