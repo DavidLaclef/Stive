@@ -15,11 +15,12 @@ public partial class ucConnexionUtilisateur : UserControl
         InitializeComponent();
     }
 
+    // Récupération de la valeur du champ motdepasse
     private async void connecter_Click(object sender, RoutedEventArgs e)
     {
         var vm = (UtilisateursAuthViewModel)this.DataContext;
-        EstConnecte = await vm.AuthentifierUtilisateur(email.Text, motdepasse.Text);
-
-        if (EstConnecte) { ConnexionChange?.Invoke(this, EventArgs.Empty); }
+        //EstConnecte = await vm.AuthentifierUtilisateur(email.Text, motdepasse.Text);
+        EstConnecte = await vm.AuthentifierUtilisateur(email.Text, motdepasse.Password);
+        if (EstConnecte) ConnexionChange?.Invoke(this, EventArgs.Empty);
     }
 }

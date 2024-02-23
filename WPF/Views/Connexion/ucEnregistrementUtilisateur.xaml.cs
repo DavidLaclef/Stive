@@ -15,7 +15,8 @@ public partial class ucEnregistrementUtilisateur : UserControl
     private void enregistrer_Click(object sender, RoutedEventArgs e)
     {
         var vm = (UtilisateursAuthViewModel)this.DataContext;
-        vm.EnregistrerUtilisateur(email.Text, motdepasse.Text);
+        //vm.EnregistrerUtilisateur(email.Text, motdepasse.Text);
+        vm.EnregistrerUtilisateur(email.Text, motdepasse.Password);
 
     }
 }
