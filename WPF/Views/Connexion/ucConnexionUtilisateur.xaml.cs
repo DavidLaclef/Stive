@@ -6,14 +6,20 @@ namespace WPF.Views.Connexion;
 
 public partial class ucConnexionUtilisateur : UserControl
 {
+    public bool EstConnecte { get; set; }
+
+    public event EventHandler<EventArgs>? ConnexionChange;
+
     public ucConnexionUtilisateur()
     {
         InitializeComponent();
     }
 
-    private void connecter_Click(object sender, RoutedEventArgs e)
+    private async void connecter_Click(object sender, RoutedEventArgs e)
     {
         var vm = (UtilisateursAuthViewModel)this.DataContext;
-        vm.AuthentifierUtilisateur(email.Text, motdepasse.Text);
+        EstConnecte = await vm.AuthentifierUtilisateur(email.Text, motdepasse.Text);
+
+        if (EstConnecte) { ConnexionChange?.Invoke(this, EventArgs.Empty); }
     }
 }

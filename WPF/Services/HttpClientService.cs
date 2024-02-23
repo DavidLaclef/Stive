@@ -34,7 +34,7 @@ public static class HttpClientService
         var jsonString = JsonConvert.SerializeObject(new LoginUser
         {
             Email = email,
-            MotDePasse = mdp
+            Password = mdp
         });
 
         var httpContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
@@ -54,7 +54,7 @@ public static class HttpClientService
         var jsonString = JsonConvert.SerializeObject(new LoginUser
         {
             Email = email,
-            MotDePasse = mdp
+            Password = mdp
         });
 
         var httpContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
