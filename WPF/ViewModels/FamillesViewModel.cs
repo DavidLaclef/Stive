@@ -11,7 +11,7 @@ public class FamillesViewModel : BaseViewModel
 
     public int NombreFamilles { get => ListFamilleLights.Count(); }
 
-    private Famille _familleSelected;
+    private Famille _familleSelected = new();
     public Famille FamilleSelected { 
         get => _familleSelected;
         set

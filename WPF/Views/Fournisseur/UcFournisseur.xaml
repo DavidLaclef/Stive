@@ -72,8 +72,8 @@
                             <TextBlock Grid.Column="1" Text="{Binding Nom}"/>
                             <TextBlock Grid.Column="2" Text="{Binding NumeroTelephone}"/>
                             <TextBlock Grid.Column="3" Text="{Binding AdresseMail}"/>
-                            <Button Grid.Column="4" Content="V" Margin="0,0,10,0" />
-                            <Button Grid.Column="5" Content="X"   Name="ModifierFournisseur"  Click="ModifierFournisseur_Click" CommandParameter="{Binding Id}" />
+                            <Button Grid.Column="4" Content="V" Name="ModifierFournisseur" Click="ModifierFournisseur_Click"  CommandParameter="{Binding Id}" Margin="0,0,10,0" />
+                            <Button Grid.Column="5" Content="X"   Name="SupprimerFournisseur"  Click="SupprimerFournisseur_Click" CommandParameter="{Binding Id}" />
 
 
                         </Grid>
@@ -81,7 +81,7 @@
                 </ListBox.ItemTemplate>
 
                 <ListBox.ItemContainerStyle>
-                    <Style TargetType="ListBoxItem">
+                    <Style TargetType="ListBoxItem"> 
                         <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
                     </Style>
                 </ListBox.ItemContainerStyle>

@@ -9,7 +9,21 @@ public class FournisseursViewModel : BaseViewModel
 {
     public ObservableCollection<FournisseurLightDto> ListFournisseurLights { get; set; } = new();
 
+    private Fournisseur _fournisseurSelected = new();
+
+    public Fournisseur FournisseurSelected
+    {
+        get => _fournisseurSelected;
+        set
+        {
+            _fournisseurSelected = value;
+            OnPropertyChanged(nameof(FournisseurSelected));
+        }
+    }  
+
     public int NombreFournisseurs { get => ListFournisseurLights.Count(); }
+
+
 
     public FournisseursViewModel()
     {
@@ -42,5 +56,20 @@ public class FournisseursViewModel : BaseViewModel
     public void SupprimerFournisseur(int Id)
     {
         Task.Run(async () => await HttpClientService.DeleteFournisseur(Id));
+    }
+
+    public void ChargerFournisseur(int Id)
+    {
+        Task.Run(async () => await HttpClientService.GetFournisseurById(Id)).ContinueWith(t =>
+        {
+            FournisseurSelected = new Fournisseur {
+                Id = t.Result.Id,
+                Nom = t.Result.Nom,
+                AdresseMail = t.Result.AdresseMail,
+                NumeroTelephone = t.Result.NumeroTelephone,
+                CodeFournisseur = t.Result.NumeroTelephone
+
+            } ;
+        }, TaskScheduler.FromCurrentSynchronizationContext());
     }
 }

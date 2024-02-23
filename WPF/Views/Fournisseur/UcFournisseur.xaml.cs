@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using WPF.ViewModels;
+using WPF.Views.Client;
 
 namespace WPF.Views.Fournisseur;
 
@@ -22,7 +23,7 @@ public partial class UcFournisseur : UserControl
         SecondCC.Content = uc;
     }
 
-    private void ModifierFournisseur_Click(object sender, RoutedEventArgs e)
+    private void SupprimerFournisseur_Click(object sender, RoutedEventArgs e)
     {
         int fournisseurId = (int)((Button)sender).CommandParameter;
 
@@ -32,6 +33,17 @@ public partial class UcFournisseur : UserControl
         var uc = new UcFournisseur();
         uc.DataContext = new FournisseursViewModel();
         this.Content = uc;
+
+    }
+
+    private void ModifierFournisseur_Click(object sender, RoutedEventArgs e)
+    {
+        int fournisseurId = (int)((Button)sender).CommandParameter;
+        var vm = (FournisseursViewModel)this.DataContext;
+        this.Content = null;
+        var uc = new FormPutFournisseur();
+        vm.ChargerFournisseur(fournisseurId);
+        Content = uc;
 
     }
 }

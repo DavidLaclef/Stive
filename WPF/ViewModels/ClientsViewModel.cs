@@ -11,7 +11,7 @@ public class ClientsViewModel : BaseViewModel
 
     public int NombreClients { get => ListClient.Count(); }
 
-    private Client _clientSelected;
+    private Client _clientSelected = new();
 
     public Client ClientSelected
     {

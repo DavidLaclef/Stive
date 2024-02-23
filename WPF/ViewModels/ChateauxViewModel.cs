@@ -11,7 +11,7 @@ public class ChateauxViewModel : BaseViewModel
 
     public int NombreChateaux { get => ListChateauLights.Count(); }
 
-    private Chateau _chateauSelected;
+    private Chateau _chateauSelected = new();
 
     public Chateau ChateauSelected
     {

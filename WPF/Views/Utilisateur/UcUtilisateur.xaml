@@ -68,13 +68,13 @@
                             <TextBlock Grid.Column="0" Text="{Binding CodeUtilisateur}"/>
                             <TextBlock Grid.Column="1" Text="{Binding Nom}"/>
                             <TextBlock Grid.Column="2" Text="{Binding Prenom}"/>
-                            <Button Grid.Column="3" Content="V" Margin="0,0,10,0" />
-                            <Button Grid.Column="4" Content="X"   Name="ModifierUtilisateur"  Click="ModifierUtilisateur_Click" CommandParameter="{Binding Id}" />
+                            <Button Grid.Column="3" Content="V" Name="ModifierUtilisateur" Click="ModifierUtilisateur_Click" CommandParameter="{Binding Id}"  Margin="0,0,10,0" />
+                            <Button Grid.Column="4" Content="X"   Name="SupprimerUtilisateur"  Click="SupprimerUtilisateur_Click" CommandParameter="{Binding Id}" />
 
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
-
+ 
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>

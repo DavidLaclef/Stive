@@ -22,7 +22,7 @@ public partial class UcUtilisateur : UserControl
         SecondCC.Content = uc;
     }
 
-    private void ModifierUtilisateur_Click(object sender, RoutedEventArgs e)
+    private void SupprimerUtilisateur_Click(object sender, RoutedEventArgs e)
     {
         int utilisateurId = (int)((Button)sender).CommandParameter;
 
@@ -34,4 +34,16 @@ public partial class UcUtilisateur : UserControl
         this.Content = uc;
 
     }
+
+    private void ModifierUtilisateur_Click(object sender, RoutedEventArgs e)
+    {
+        int UtilisateurId = (int)((Button)sender).CommandParameter;
+        var vm = (UtilisateursViewModel)this.DataContext;
+        this.Content = null;
+        var uc = new FormPutUtilisateur();
+        vm.ChargerUtilisateur(UtilisateurId);
+        Content = uc;
+
+    }
+
 }

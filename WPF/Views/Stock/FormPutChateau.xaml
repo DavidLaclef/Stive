@@ -17,9 +17,9 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Label>Nom:</Label>
-            <TextBox Text="{Binding ChateauSelected.Nom}" Grid.Column="1" Margin="0,0,0,10" />
+            <TextBox Text="{Binding ChateauSelected.Nom}" Name="nom" Grid.Column="1" Margin="0,0,0,10" />
             <StackPanel Grid.Row="2" Orientation="Horizontal">
-                <Button  Margin="10"  Grid.Row="2" Grid.Column="1" Content="Modifier" Width="100" HorizontalAlignment="Right" />
+                <Button  Margin="10"  Grid.Row="2" Grid.Column="1" Content="Modifier" Name="ModifierChateau" Click="ModifierChateau_Click" CommandParameter="{Binding ChateauSelected.Id}" Width="100" HorizontalAlignment="Right" />
                 <Button  Margin="10"  Grid.Row="2" Grid.Column="1" Content="Annuler" Width="100" HorizontalAlignment="Right" />
 
 
