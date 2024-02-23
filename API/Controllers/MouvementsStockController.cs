@@ -28,7 +28,7 @@ public class MouvementsStockController : ControllerBase
             .ToListAsync();
     }
 
-    // GET: /api/MouvementsStock/mouvementmedium
+    // GET: /api/MouvementsStock/Medium
     [HttpGet]
     [Route("Medium")]
     public async Task<ActionResult<IEnumerable<MouvementStockMediumDto>>> GetMouvementStockMedium()

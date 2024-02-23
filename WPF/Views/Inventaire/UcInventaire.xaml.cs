@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using WPF.ViewModels;
 
 namespace WPF.Views.Inventaire
 {
@@ -15,7 +16,10 @@ namespace WPF.Views.Inventaire
 
         private void AddInventaire_Click(object sender, RoutedEventArgs e)
         {
-
+            SecondCC.Content = null;
+            var uc = new FormInventaire();
+            uc.DataContext = new MouvementStocksViewModel();
+            SecondCC.Content = uc;
         }
     }
 }

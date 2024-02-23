@@ -12,6 +12,10 @@ public class MouvementStocksViewModel : BaseViewModel
     public ObservableCollection<MouvementStockMediumDto> ListMouvementStockMedium{ get; set; } = new();
 
     public ObservableCollection<ProduitMediumDto> ListProduitMedium { get; set; } = new();
+    
+    public ObservableCollection<ChateauLightDto> ListChateauLights { get; set; } = new();
+
+    public ObservableCollection<FamilleLightDto> ListFamilleLights { get; set; } = new();
 
     public int NombreMouvementStocks { get => ListMouvementStockLights.Count(); }
 
@@ -21,6 +25,8 @@ public class MouvementStocksViewModel : BaseViewModel
         LoadMouvementStockMedium();
         LoadProduits();
         LoadProduitMedium();
+        LoadChateaux();
+        LoadFamilles();
     }
 
     public void LoadMouvementStocks()
@@ -121,6 +127,45 @@ public class MouvementStocksViewModel : BaseViewModel
                 ListProduitMedium.Add(ProduitMedium);
             }
         }, TaskScheduler.FromCurrentSynchronizationContext());
+    }
+
+    public void LoadChateaux()
+    {
+        ListChateauLights.Clear();
+
+        Task.Run(async () =>
+        {
+            return await HttpClientService.GetChateauLights();
+        }).ContinueWith(t =>
+        {
+            foreach (var ChateauLight in t.Result)
+            {
+                ListChateauLights.Add(ChateauLight);
+            }
+        }, TaskScheduler.FromCurrentSynchronizationContext());
+    }
+
+    public void LoadFamilles()
+    {
+        ListFamilleLights.Clear();
+
+        Task.Run(async () =>
+        {
+            return await HttpClientService.GetFamilleLights();
+        }).ContinueWith(t =>
+        {
+            foreach (var FamilleLight in t.Result)
+            {
+                ListFamilleLights.Add(FamilleLight);
+            }
+        }, TaskScheduler.FromCurrentSynchronizationContext());
+    }
+
+
+
+    public void AjouterMouvement(MouvementStock newMouvement)
+    {
+        Task.Run(async () => await HttpClientService.PostMouvementStock(newMouvement));
     }
 
 

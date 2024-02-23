@@ -391,7 +391,7 @@ public static class HttpClientService
 
     public static async Task<List<ProduitMediumDto>> GetProduitMedium()
     {
-        string uri = "ProduitMedium";
+        string uri = "Produits/Medium";
         var response = await Client.GetAsync(uri);
         if (response.IsSuccessStatusCode)
         {

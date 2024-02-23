@@ -1,28 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Models.Dao;
+using Models.Enums;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using WPF.Services;
+using WPF.ViewModels;
 
-namespace WPF.Views.Inventaire
+namespace WPF.Views.Inventaire;
+
+/// <summary>
+/// Logique d'interaction pour FormInventaire.xaml
+/// </summary>
+public partial class FormInventaire : UserControl
 {
-    /// <summary>
-    /// Logique d'interaction pour FormInventaire.xaml
-    /// </summary>
-    public partial class FormInventaire : UserControl
+    public FormInventaire()
     {
-        public FormInventaire()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
+
+    private void AddInventaire_Click(object sender, RoutedEventArgs e)
+    {
+        var vm = (MouvementStocksViewModel)this.DataContext;
+        vm.AjouterMouvement(new Models.Dao.MouvementStock
+        {
+            Date = DateTime.Now,
+            ProduitId = (int)NomProduit.SelectedValue,
+            //Quantite = int.Parse(quantite.Text),
+            NumeroMouvement = CodePersonne.CreationCode("INV"),
+            Statut = Models.Enums.StatutMouvement.Traite,
+        });
+
+    }
+
 }
+
