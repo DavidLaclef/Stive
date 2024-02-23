@@ -29,7 +29,7 @@ public class ProduitsController : ControllerBase
             .ToListAsync();
     }
 
-    // GET: api/Produits
+        // GET: api/Produits
     [HttpGet]
     [Route("SousSeuilReapprovisionnement")]
     public async Task<ActionResult<IEnumerable<ProduitLightDto>>> GetProduitSousSeuilReapprovisionnement()
@@ -41,6 +41,20 @@ public class ProduitsController : ControllerBase
             .Select(p => p.ToLightDto())
             .ToListAsync();
     }
+
+    // GET: /api/Produits/Medium
+    [HttpGet]
+    [Route("Medium")]
+    public async Task<ActionResult<IEnumerable<ProduitMediumDto>>> GetProduitMedium()
+    {
+        return await _context.Produit
+            .Include(p => p.Chateau)
+            .Include(p => p.Familles)
+            .Select(c => c.ToMediumDto())
+            .ToListAsync();
+    }
+
+
 
     // GET: api/Produits/5
     [HttpGet("{id}")]

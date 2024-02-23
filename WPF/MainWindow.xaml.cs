@@ -7,6 +7,10 @@ using WPF.Views.Fournisseur;
 using WPF.Views.Stock;
 using WPF.Views.Utilisateur;
 
+using WPF.Views.Inventaire;
+using WPF.ViewModels;
+using WPF.Services;
+
 namespace WPF;
 
 public partial class MainWindow : Window
@@ -20,8 +24,14 @@ public partial class MainWindow : Window
         BtnConnexion_Click(BtnConnexion, null);
 
         //this.DataContext = MainViewModel.Instance; // Sur cette branche, MainViewModel est créé (je l'ai créé)
+    }
 
-        //Task.Run(async () => await HttpClientService.Login("jeff.harbeng@stive.com", "Jeff1."));
+    private void BtnInventaire_Click(object sender, RoutedEventArgs e)
+    {
+        mainCC.Content = null;
+        var uc = new UcInventaire();
+        uc.DataContext = new MouvementStocksViewModel();
+        mainCC.Content = uc;
     }
 
     private void BtnAccueil_Click(object sender, RoutedEventArgs e)
@@ -80,6 +90,7 @@ public partial class MainWindow : Window
         BtnClient.Visibility = Visibility.Visible;
         BtnFournisseur.Visibility = Visibility.Visible;
         BtnUtilisateur.Visibility = Visibility.Visible;
+        BtnInventaire.Visibility = Visibility.Visible;
 
         // Boutons relatifs au compte utilisateurs
         BtnConnexion.Visibility = Visibility.Collapsed;
