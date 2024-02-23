@@ -36,11 +36,7 @@
             </StackPanel>
         </Grid>
 
-
-
         <!-- Window-->
-
         <ContentControl x:Name="mainCC"  Margin="20" Grid.Column="1" />
-
     </Grid>
 </Window>
