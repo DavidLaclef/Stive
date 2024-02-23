@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF.Services;
+using WPF.ViewModels;
 
 namespace WPF.Views.Utilisateur
 {
@@ -23,6 +25,24 @@ namespace WPF.Views.Utilisateur
         public FormPutUtilisateur()
         {
             InitializeComponent();
+        }
+
+        private void ModifierUtilisateur_Click(object sender, RoutedEventArgs e)
+        {
+            int UtilisateurId = (int)((Button)sender).CommandParameter;
+            var vm = (UtilisateursViewModel)this.DataContext;
+            vm.ModifierUtilisateur(new Models.Dao.Utilisateur
+            {
+                Id = UtilisateurId,
+                Nom = nom.Text,
+                Prenom = prenom.Text,
+                AdresseMail = email.Text,
+                MotDePasse = "test",
+                EstGerant = estAdmin.IsChecked ?? false,
+                CodeUtilisateur = CodePersonne.CreationCode("UTI")
+
+            });
+
         }
     }
 }

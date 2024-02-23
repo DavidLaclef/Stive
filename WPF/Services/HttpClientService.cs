@@ -86,7 +86,6 @@ public static class HttpClientService
     }
 
 
-
     public static async Task<bool> PostChateau(Chateau chateau)
     {
         string uri = "Chateaux";
@@ -169,6 +168,20 @@ public static class HttpClientService
         {
             string result = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<Client>(result) ?? throw new FormatException($"Erreur Http : {uri}");
+        }
+        throw new Exception(response.ReasonPhrase);
+    }
+
+    public static async Task<bool> PutClient(Client client)
+    {
+        string uri = $"Clients/{client.Id}";
+        var json = JsonConvert.SerializeObject(client);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        var response = await Client.PutAsync(uri, content);
+        if (response.IsSuccessStatusCode)
+        {
+            return true;
         }
         throw new Exception(response.ReasonPhrase);
     }
@@ -285,6 +298,20 @@ public static class HttpClientService
         throw new Exception(response.ReasonPhrase);
     }
 
+    public static async Task<bool> PutFournisseur(Fournisseur fournisseur)
+    {
+        string uri = $"Fournisseurs/{fournisseur.Id}";
+        var json = JsonConvert.SerializeObject(fournisseur);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        var response = await Client.PutAsync(uri, content);
+        if (response.IsSuccessStatusCode)
+        {
+            return true;
+        }
+        throw new Exception(response.ReasonPhrase);
+    }
+
     public static async Task<List<UtilisateurLightDto>> GetUtilisateurLights()
     {
         string uri = "Utilisateurs";
@@ -330,6 +357,21 @@ public static class HttpClientService
         {
             string result = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<Utilisateur>(result) ?? throw new FormatException($"Erreur Http : {uri}");
+        }
+        throw new Exception(response.ReasonPhrase);
+    }
+
+
+    public static async Task<bool> PutUtilisateur(Utilisateur utilisateur)
+    {
+        string uri = $"Utilisateurs/{utilisateur.Id}";
+        var json = JsonConvert.SerializeObject(utilisateur);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        var response = await Client.PutAsync(uri, content);
+        if (response.IsSuccessStatusCode)
+        {
+            return true;
         }
         throw new Exception(response.ReasonPhrase);
     }

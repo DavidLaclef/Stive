@@ -31,7 +31,7 @@
         <CheckBox x:Name="estAdmin" Grid.Row="4" IsChecked="{Binding UtilisateurSelected.EstGerant}"  Grid.Column="1" />
 
         <StackPanel Grid.Row="6" Name="Modifier" Orientation="Horizontal">
-            <Button Margin="10" Name="ajouter"  Content="Enregistrer" Width="100" HorizontalAlignment="Right" />
+            <Button Margin="10" Name="ModifierUtilisateur"  Click="ModifierUtilisateur_Click" CommandParameter="{Binding UtilisateurSelected.Id}" Content="Enregistrer" Width="100" HorizontalAlignment="Right" />
         </StackPanel>
     </Grid>
 </UserControl>

@@ -72,4 +72,10 @@ public class FournisseursViewModel : BaseViewModel
             } ;
         }, TaskScheduler.FromCurrentSynchronizationContext());
     }
+
+    public void ModifierFournisseur(Fournisseur fournisseur)
+    {
+        Task.Run(async () => await HttpClientService.PutFournisseur(fournisseur));
+    }
+
 }
