@@ -83,6 +83,11 @@ public class ClientsViewModel : BaseViewModel
         }, TaskScheduler.FromCurrentSynchronizationContext());
     }
 
+    public void ModifierClient(Client client)
+    {
+        Task.Run(async () => await HttpClientService.PutClient(client));
+    }
+
     /*    public async Task<Client> ChargerUnClient(int Id)
         {
             var response = await HttpClientService.GetClient(Id);

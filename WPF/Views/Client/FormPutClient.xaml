@@ -55,7 +55,7 @@
 
 
         <StackPanel Grid.Row="13" Orientation="Horizontal">
-            <Button Margin="10" Name="ajouter"  Content="Enregistrer" Width="100" HorizontalAlignment="Right" />
+            <Button Margin="10" Name="ajouter"  Click="ajouter_Click" CommandParameter="{Binding ClientSelected.Id}" Content="Enregistrer" Width="100" HorizontalAlignment="Right" />
         </StackPanel>
     </Grid>
 </UserControl>

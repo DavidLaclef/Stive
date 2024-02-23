@@ -45,8 +45,8 @@ public static class HttpClientService
 
         return response.IsSuccessStatusCode ? true :
             throw new Exception(response.ReasonPhrase);
-    } 
-    
+    }
+
     // Enregistrement des utilisateurs
     public static async Task<bool> Register(string email, string mdp)
     {
@@ -102,8 +102,6 @@ public static class HttpClientService
         throw new Exception(response.ReasonPhrase);
     }
 
-
-
     public static async Task<bool> PostChateau(Chateau chateau)
     {
         string uri = "api/Chateaux";
@@ -141,18 +139,6 @@ public static class HttpClientService
         throw new Exception(response.ReasonPhrase);
     }
 
-    /*        public static async Task<List<Client>> GetClient(int Id)
-            {
-                string uri = $"Clients/{Id}";
-                var response = await Client.GetAsync(uri);
-                if (response.IsSuccessStatusCode)
-                {
-                    string result = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<List<Client>>(result) ?? throw new FormatException($"Erreur Http : {uri}");
-                }
-                throw new Exception(response.ReasonPhrase);
-            }*/
-
     public static async Task<bool> PostClient(Client client)
     {
         string uri = "api/Clients";
@@ -186,6 +172,20 @@ public static class HttpClientService
         {
             string result = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<Client>(result) ?? throw new FormatException($"Erreur Http : {uri}");
+        }
+        throw new Exception(response.ReasonPhrase);
+    }
+
+    public static async Task<bool> PutClient(Client client)
+    {
+        string uri = $"api/Clients/{client.Id}";
+        var json = JsonConvert.SerializeObject(client);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        var response = await Client.PutAsync(uri, content);
+        if (response.IsSuccessStatusCode)
+        {
+            return true;
         }
         throw new Exception(response.ReasonPhrase);
     }
@@ -250,7 +250,7 @@ public static class HttpClientService
             return JsonConvert.DeserializeObject<Chateau>(result) ?? throw new FormatException($"Erreur Http : {uri}");
         }
         throw new Exception(response.ReasonPhrase);
-    }   
+    }
 
 
     public static async Task<List<FournisseurLightDto>> GetFournisseurLights()
@@ -292,7 +292,7 @@ public static class HttpClientService
 
     public static async Task<Fournisseur> GetFournisseurById(int Id)
     {
-        string uri = $"Fournisseurs/{Id}";
+        string uri = $"api/Fournisseurs/{Id}";
         var response = await Client.GetAsync(uri);
         if (response.IsSuccessStatusCode)
         {
@@ -302,9 +302,23 @@ public static class HttpClientService
         throw new Exception(response.ReasonPhrase);
     }
 
-    public static async Task<Utilisateur> GetUtilisateurById(int Id)
+	public static async Task<bool> PutFournisseur(Fournisseur fournisseur)
     {
-        string uri = $"api/Chateaux/{Id}";
+        string uri = $"api/Fournisseurs/{fournisseur.Id}";
+        var json = JsonConvert.SerializeObject(fournisseur);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        var response = await Client.PutAsync(uri, content);
+        if (response.IsSuccessStatusCode)
+        {
+            return true;
+        }
+        throw new Exception(response.ReasonPhrase);
+    }
+
+	public static async Task<Utilisateur> GetUtilisateurById(int Id)
+    {
+        string uri = $"api/Utilisateurs/{Id}";
         var response = await Client.GetAsync(uri);
         if (response.IsSuccessStatusCode)
         {
@@ -359,6 +373,20 @@ public static class HttpClientService
         {
             string result = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<List<MouvementStockMediumDto>>(result) ?? throw new FormatException($"Erreur Http : {uri}");
+        }
+        throw new Exception(response.ReasonPhrase);
+    }
+
+    public static async Task<bool> PutUtilisateur(Utilisateur utilisateur)
+    {
+        string uri = $"api/Utilisateurs/{utilisateur.Id}";
+        var json = JsonConvert.SerializeObject(utilisateur);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        var response = await Client.PutAsync(uri, content);
+        if (response.IsSuccessStatusCode)
+        {
+            return true;
         }
         throw new Exception(response.ReasonPhrase);
     }
@@ -427,7 +455,6 @@ public static class HttpClientService
         throw new Exception(response.ReasonPhrase);
     }
 
-
     public static async Task<ProduitDto> GetProduitById(int produitId)
     {
         string route = $"api/Produits/{produitId}";
@@ -440,7 +467,6 @@ public static class HttpClientService
         }
         throw new Exception(response.ReasonPhrase);
     }
-
 
     public static async Task DeleteProduit(int id)
     {
@@ -470,6 +496,4 @@ public static class HttpClientService
             throw new Exception($"{response.ReasonPhrase}");
         }
     }
-
-
 }

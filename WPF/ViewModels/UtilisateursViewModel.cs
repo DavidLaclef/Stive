@@ -68,6 +68,11 @@ public class UtilisateursViewModel : BaseViewModel
             MotDePasse = t.Result.MotDePasse
             };
         }, TaskScheduler.FromCurrentSynchronizationContext());
-    } 
+    }
+    
+    public void ModifierUtilisateur(Utilisateur utilisateur)
+    {
+        Task.Run(async () => await HttpClientService.PutUtilisateur(utilisateur));
+    }
 
 }

@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF.Services;
+using WPF.ViewModels;
 
 namespace WPF.Views.Fournisseur
 {
@@ -23,6 +25,21 @@ namespace WPF.Views.Fournisseur
         public FormPutFournisseur()
         {
             InitializeComponent();
+        }
+
+        private void ModifierFournisseur_Click(object sender, RoutedEventArgs e)
+        {
+            int fournisseurId = (int)((Button)sender).CommandParameter;
+            var vm = (FournisseursViewModel)this.DataContext;
+            vm.ModifierFournisseur(new Models.Dao.Fournisseur
+            {
+                Id = fournisseurId,
+                Nom = nom.Text,
+                AdresseMail = email.Text,
+                NumeroTelephone = telephone.Text,
+                CodeFournisseur = CodePersonne.CreationCode("FOU")
+            });
+
         }
     }
 }
