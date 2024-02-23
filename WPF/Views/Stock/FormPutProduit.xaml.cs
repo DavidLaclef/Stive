@@ -12,29 +12,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WPF.ViewModels;
 
 namespace WPF.Views.Stock
 {
     /// <summary>
-    /// Logique d'interaction pour FormPutChateau.xaml
+    /// Logique d'interaction pour FormPutProduit.xaml
     /// </summary>
-    public partial class FormPutChateau : UserControl
+    public partial class FormPutProduit : UserControl
     {
-        public FormPutChateau()
+        public FormPutProduit()
         {
             InitializeComponent();
+
+           
+
         }
 
-        private void ModifierChateau_Click(object sender, RoutedEventArgs e)
+        private void ChateauId_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int chateauId = (int)((Button)sender).CommandParameter;
-            var vm = (ChateauxViewModel)this.DataContext;
-            vm.ModifierChateau(new Models.Dao.Chateau
-            {
-                Id = chateauId,
-                Nom = nom.Text,
-            });
 
         }
     }

@@ -273,6 +273,18 @@ public static class HttpClientService
         }
     }
 
+    public static async Task<Fournisseur> GetFournisseurById(int Id)
+    {
+        string uri = $"Fournisseurs/{Id}";
+        var response = await Client.GetAsync(uri);
+        if (response.IsSuccessStatusCode)
+        {
+            string result = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<Fournisseur>(result) ?? throw new FormatException($"Erreur Http : {uri}");
+        }
+        throw new Exception(response.ReasonPhrase);
+    }
+
     public static async Task<List<UtilisateurLightDto>> GetUtilisateurLights()
     {
         string uri = "Utilisateurs";
@@ -308,6 +320,18 @@ public static class HttpClientService
         {
             throw new Exception(response.ReasonPhrase);
         }
+    }
+
+    public static async Task<Utilisateur> GetUtilisateurById(int Id)
+    {
+        string uri = $"Utilisateurs/{Id}";
+        var response = await Client.GetAsync(uri);
+        if (response.IsSuccessStatusCode)
+        {
+            string result = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<Utilisateur>(result) ?? throw new FormatException($"Erreur Http : {uri}");
+        }
+        throw new Exception(response.ReasonPhrase);
     }
 
     public static async Task<List<MouvementStockLightDto>> GetMouvementStockLights()
@@ -364,14 +388,15 @@ public static class HttpClientService
         throw new Exception(response.ReasonPhrase);
     }
 
-    public static async Task<Produit> GetProduit(int produitId)
+
+    public static async Task<ProduitDto> GetProduitById(int produitId)
     {
         string route = $"Produits/{produitId}";
         var response = await Client.GetAsync(route);
         if (response.IsSuccessStatusCode)
         {
             string resultat = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<Produit>(resultat)
+            return JsonConvert.DeserializeObject<ProduitDto>(resultat)
                 ?? throw new FormatException($"Erreur http : {route} ");
         }
         throw new Exception(response.ReasonPhrase);

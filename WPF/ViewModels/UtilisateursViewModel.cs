@@ -9,7 +9,19 @@ public class UtilisateursViewModel : BaseViewModel
 {
     public ObservableCollection<UtilisateurLightDto> ListUtilisateurLights { get; set; } = new();
 
+    private Utilisateur _utilisateurSelected = new();
+
     public int NombreUtilisateurs { get => ListUtilisateurLights.Count(); }
+
+    public Utilisateur UtilisateurSelected
+    {
+        get => _utilisateurSelected;
+        set
+        {
+            _utilisateurSelected = value;
+            OnPropertyChanged(nameof(UtilisateurSelected));
+        }
+    }
 
     public UtilisateursViewModel()
     {
@@ -41,5 +53,21 @@ public class UtilisateursViewModel : BaseViewModel
     {
         Task.Run(async () => await HttpClientService.DeleteUtilisateur(Id));
     }
+
+    public void ChargerUtilisateur(int Id)
+    {
+        Task.Run(async () => await HttpClientService.GetUtilisateurById(Id)).ContinueWith(t =>
+        {
+            UtilisateurSelected = new Utilisateur {
+            Id = t.Result.Id,
+            Nom = t.Result.Nom,
+            Prenom = t.Result.Prenom,
+            AdresseMail = t.Result.AdresseMail,
+            EstGerant = t.Result.EstGerant,
+            CodeUtilisateur = t.Result.CodeUtilisateur,
+            MotDePasse = t.Result.MotDePasse
+            };
+        }, TaskScheduler.FromCurrentSynchronizationContext());
+    } 
 
 }

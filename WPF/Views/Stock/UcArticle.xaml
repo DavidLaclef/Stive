@@ -68,7 +68,7 @@
                             <TextBlock Grid.Column="8" Text="{Binding PrixCartonVente}"/>
                             <materialDesign:PackIcon Kind="Euro"/>
                         </StackPanel>
-                        <Button Grid.Column="9" Content="V" Margin="0,0,10,0" />
+                        <Button Grid.Column="9" Content="V" Name="ModifierProduit" Click="ModifierProduit_Click" CommandParameter="{Binding Id}" Margin="0,0,10,0" />
                         <Button Grid.Column="10" Content="X"   Name="SupprimerProduit"  Click="SupprimerProduit_Click" CommandParameter="{Binding Id}" />
                     </Grid>
                 </DataTemplate>

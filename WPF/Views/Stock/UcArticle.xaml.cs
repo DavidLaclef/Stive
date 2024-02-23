@@ -23,9 +23,19 @@ public partial class UcArticle : UserControl
 
         this.Content = null;
         var uc = new UcArticle();
-        uc.DataContext = new UcArticle();
+        uc.DataContext = new ProduitsViewModel();
         this.Content = uc;
 
+    }
+
+    private void ModifierProduit_Click(object sender, RoutedEventArgs e)
+    {
+        int ProduitId = (int)((Button)sender).CommandParameter;
+        var vm = (ProduitsViewModel)this.DataContext;
+        this.Content = null;
+        var uc = new FormPutProduit();
+        vm.ChargerProduit(ProduitId);
+        Content = uc;
     }
 }
 
