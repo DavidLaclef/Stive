@@ -19,6 +19,10 @@ namespace WPF
         {
             InitializeComponent();
 
+            // Gestion de l'évènement dans le code directement
+            BtnConnexion.Click += BtnConnexion_Click;
+            BtnConnexion_Click(BtnConnexion, null);
+
             //this.DataContext = MainViewModel.Instance; // Sur cette branche, MainViewModel est créé (je l'ai créé)
 
             //Task.Run(async () => await HttpClientService.Login("jeff.harbeng@stive.com", "Jeff1."));
@@ -72,8 +76,20 @@ namespace WPF
         {
             mainCC.Content = null;
             var uc = new ucConnexionUtilisateur();
+            uc.ConnexionChange += Uc_ConnexionChange;
             uc.DataContext = new UtilisateursAuthViewModel();
             mainCC.Content = uc;
+        }
+
+        private void Uc_ConnexionChange(object? sender, EventArgs e)
+        {
+            BtnAccueil.IsEnabled = true;
+            BtnStocks.IsEnabled = true;
+            BtnClient.IsEnabled = true;
+            BtnFournisseur.IsEnabled = true;
+            BtnUtilisateur.IsEnabled = true;
+            BtnAccueil_Click(BtnAccueil, null);
+
         }
 
         private void BtnEnregistrement_Click(object sender, RoutedEventArgs e)
