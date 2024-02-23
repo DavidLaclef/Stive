@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Models.Migrations
 {
     /// <inheritdoc />
-    public partial class Initiale : Migration
+    public partial class AjoutQuantiteReapprovisonnement : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -308,6 +308,7 @@ namespace Models.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Quantite = table.Column<int>(type: "int", nullable: false),
                     SeuilReapprovisionnement = table.Column<int>(type: "int", nullable: false),
+                    QuantiteReapprovisionnement = table.Column<int>(type: "int", nullable: false),
                     Statut = table.Column<int>(type: "int", nullable: false),
                     PrixUnitaireVente = table.Column<decimal>(type: "decimal(9,2)", nullable: false),
                     PrixCartonVente = table.Column<decimal>(type: "decimal(9,2)", nullable: false),

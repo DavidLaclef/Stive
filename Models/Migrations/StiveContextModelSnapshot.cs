@@ -382,6 +382,9 @@ namespace Models.Migrations
                     b.Property<int>("Quantite")
                         .HasColumnType("int");
 
+                    b.Property<int>("QuantiteReapprovisionnement")
+                        .HasColumnType("int");
+
                     b.Property<int>("SeuilReapprovisionnement")
                         .HasColumnType("int");
 

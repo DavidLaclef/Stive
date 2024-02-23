@@ -11,8 +11,8 @@ using Models.Context;
 namespace Models.Migrations
 {
     [DbContext(typeof(StiveContext))]
-    [Migration("20240219045708_Initiale")]
-    partial class Initiale
+    [Migration("20240223140049_AjoutQuantiteReapprovisonnement")]
+    partial class AjoutQuantiteReapprovisonnement
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -383,6 +383,9 @@ namespace Models.Migrations
                         .HasColumnType("decimal(9,2)");
 
                     b.Property<int>("Quantite")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QuantiteReapprovisionnement")
                         .HasColumnType("int");
 
                     b.Property<int>("SeuilReapprovisionnement")
