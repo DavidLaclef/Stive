@@ -31,7 +31,7 @@
                 <Button Visibility="Collapsed" Name="BtnClient" Click="BtnClient_Click"  BorderThickness="0"  Foreground="Black" Background="Transparent" Content="Client"/>
                 <Button Visibility="Collapsed" Name="BtnFournisseur" Click="BtnFournisseur_Click" BorderThickness="0"  Foreground="Black" Background="Transparent" Content="Fournisseur"/>
                 <Button Visibility="Collapsed" Name="BtnUtilisateur" Click="BtnUtilisateur_Click" BorderThickness="0"  Foreground="Black" Background="Transparent"  Content="Utilisateur"/>
-                <Button Name="BtnInventaire" Click="BtnInventaire_Click" BorderThickness="0"  Foreground="Black" Background="Transparent"  Content="Inventaire"/>
+                <Button Visibility="Collapsed" Name="BtnInventaire" Click="BtnInventaire_Click" BorderThickness="0"  Foreground="Black" Background="Transparent"  Content="Inventaire"/>
                 <Button Visibility="Visible" Name="BtnConnexion" BorderThickness="0"  Foreground="Black" Background="Transparent"  Content="Connexion"/>
                 <Button Visibility="Visible" Name="BtnNouvelleUtilisateur" Click="BtnNouvelleUtilisateur_Click" BorderThickness="0"  Foreground="Black" Background="Transparent"  Content="Nouvel utilisateur"/>
             </StackPanel>

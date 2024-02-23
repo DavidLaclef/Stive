@@ -302,6 +302,18 @@ public static class HttpClientService
         throw new Exception(response.ReasonPhrase);
     }
 
+    public static async Task<Utilisateur> GetUtilisateurById(int Id)
+    {
+        string uri = $"api/Chateaux/{Id}";
+        var response = await Client.GetAsync(uri);
+        if (response.IsSuccessStatusCode)
+        {
+            string result = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<Utilisateur>(result) ?? throw new FormatException($"Erreur Http : {uri}");
+        }
+        throw new Exception(response.ReasonPhrase);
+    }
+
     public static async Task<List<UtilisateurLightDto>> GetUtilisateurLights()
     {
         string uri = "api/Utilisateurs";
@@ -341,7 +353,7 @@ public static class HttpClientService
 
     public static async Task<List<MouvementStockMediumDto>> GetMouvementStockMedium()
     {
-        string uri = "MouvementsStock/Medium";
+        string uri = "api/MouvementsStock/Medium";
         var response = await Client.GetAsync(uri);
         if (response.IsSuccessStatusCode)
         {
@@ -391,7 +403,7 @@ public static class HttpClientService
 
     public static async Task<List<ProduitMediumDto>> GetProduitMedium()
     {
-        string uri = "Produits/Medium";
+        string uri = "api/Produits/Medium";
         var response = await Client.GetAsync(uri);
         if (response.IsSuccessStatusCode)
         {
