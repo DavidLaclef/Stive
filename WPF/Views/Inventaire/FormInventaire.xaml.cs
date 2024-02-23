@@ -1,6 +1,4 @@
 ﻿using Models.Dao;
-using Models.Enums;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using WPF.Services;
@@ -21,16 +19,31 @@ public partial class FormInventaire : UserControl
     private void AddInventaire_Click(object sender, RoutedEventArgs e)
     {
         var vm = (MouvementStocksViewModel)this.DataContext;
+
+        int ProduitId = (int)NomProduit.SelectedValue;
+        int nouvelleQuantite = int.Parse(quantite.Text);
+
+        // Quantité du produit avant modification
+        //int ancienneQuantite =
+
+        // Difference entre les deux quantités = quantité du Mouvement
+        //int differenceQuantite = nouvelleQuantite - ancienneQuantite;
+
+        // Mettre à jour la quantité dans la base de données
+
+
         vm.AjouterMouvement(new Models.Dao.MouvementStock
         {
             Date = DateTime.Now,
             ProduitId = (int)NomProduit.SelectedValue,
-            //Quantite = int.Parse(quantite.Text),
+            //Quantite = differenceQuantite,
             NumeroMouvement = CodePersonne.CreationCode("INV"),
             Statut = Models.Enums.StatutMouvement.Traite,
         });
 
     }
+
+
 
 }
 

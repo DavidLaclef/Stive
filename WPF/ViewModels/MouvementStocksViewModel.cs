@@ -1,4 +1,6 @@
-﻿using Models.Dao;
+﻿using Microsoft.EntityFrameworkCore;
+using Models.Context;
+using Models.Dao;
 using Models.Dto;
 using System.Collections.ObjectModel;
 using WPF.Services;
@@ -168,5 +170,6 @@ public class MouvementStocksViewModel : BaseViewModel
         Task.Run(async () => await HttpClientService.PostMouvementStock(newMouvement));
     }
 
+    
 
 }
