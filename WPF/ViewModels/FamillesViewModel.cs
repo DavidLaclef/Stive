@@ -66,5 +66,10 @@ public class FamillesViewModel : BaseViewModel
         Task.Run(async () => await HttpClientService.DeleteFamille(Id));
     }
 
+    public void ModifierFamille(Famille famille)
+    {
+        Task.Run(async () => await HttpClientService.PutFamille(famille));
+    }
+
 
 }

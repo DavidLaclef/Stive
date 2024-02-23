@@ -246,8 +246,21 @@ public static class HttpClientService
             return JsonConvert.DeserializeObject<Chateau>(result) ?? throw new FormatException($"Erreur Http : {uri}");
         }
         throw new Exception(response.ReasonPhrase);
-    }   
+    }
 
+    public static async Task<bool> PutFamille(Famille famille)
+    {
+        string uri = $"Familles/{famille.Id}";
+        var json = JsonConvert.SerializeObject(famille);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        var response = await Client.PutAsync(uri, content);
+        if (response.IsSuccessStatusCode)
+        {
+            return true;
+        }
+        throw new Exception(response.ReasonPhrase);
+    }
 
     public static async Task<List<FournisseurLightDto>> GetFournisseurLights()
     {
@@ -456,22 +469,18 @@ public static class HttpClientService
         }
     }
 
-    public static async Task PutProduit(Produit produit)
+    public static async Task<bool> PutProduit(Produit produit)
     {
-        string route = $"Produits/{produit.Id}";
+        string uri = $"Produits/{produit.Id}";
+        var json = JsonConvert.SerializeObject(produit);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-        string json = JsonConvert.SerializeObject(client);
-        var buffer = Encoding.UTF8.GetBytes(json);
-
-        var byteContent = new ByteArrayContent(buffer);
-        byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-
-        HttpResponseMessage response = await Client.PutAsync(route, byteContent);
-
-        if (!response.IsSuccessStatusCode)
+        var response = await Client.PutAsync(uri, content);
+        if (response.IsSuccessStatusCode)
         {
-            throw new Exception($"{response.ReasonPhrase}");
+            return true;
         }
+        throw new Exception(response.ReasonPhrase);
     }
 
 

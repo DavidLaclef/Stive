@@ -1,4 +1,5 @@
-﻿using Models.Enums;
+﻿using Models.Dao;
+using Models.Enums;
 using System.Windows;
 using System.Windows.Controls;
 using WPF.ViewModels;
@@ -31,6 +32,7 @@ public partial class FormProduit : UserControl
             PrixCartonVente = decimal.Parse(PrixCartonVente.Text),
             PrixCartonCommande = decimal.Parse(prixcartoncommande.Text),
             ChateauId = (int)ChateauId.SelectedValue,
+            //Famille = new Famille(int)FamilleId.SelectedValue
         });
 
     }
