@@ -10,6 +10,7 @@ namespace WPF.ViewModels;
 public class ProduitsViewModel : BaseViewModel
 {
     public ObservableCollection<ChateauLightDto> ListChateauLights { get; set; } = new();
+    public ObservableCollection<FamilleLightDto> ListFamilleLights { get; set; } = new();
 
     public int NombreChateaux { get => ListChateauLights.Count(); }
 
@@ -35,6 +36,7 @@ public class ProduitsViewModel : BaseViewModel
         LoadProduits();
         LoadChateaux();
         LoadProduitMedium();
+        LoadFamilles();
     }
 
     public void LoadProduits()
@@ -105,6 +107,10 @@ public class ProduitsViewModel : BaseViewModel
         }, TaskScheduler.FromCurrentSynchronizationContext());
     }
 
+    public void ModifierProduit(Produit produit)
+    {
+        Task.Run(async () => await HttpClientService.PutProduit(produit));
+    }
 
     public void LoadChateaux()
     {
@@ -121,6 +127,23 @@ public class ProduitsViewModel : BaseViewModel
                 ListChateauLights.Add(ChateauLight);
             }
             OnPropertyChanged(nameof(NombreChateaux));
+        }, TaskScheduler.FromCurrentSynchronizationContext());
+    }
+
+    public void LoadFamilles()
+    {
+        ListFamilleLights.Clear();
+        ;
+
+        Task.Run(async () =>
+        {
+            return await HttpClientService.GetFamilleLights();
+        }).ContinueWith(t =>
+        {
+            foreach (var FamilleLight in t.Result)
+            {
+                ListFamilleLights.Add(FamilleLight);
+            }
         }, TaskScheduler.FromCurrentSynchronizationContext());
     }
 

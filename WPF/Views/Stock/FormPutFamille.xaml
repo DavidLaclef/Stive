@@ -19,7 +19,7 @@
         <TextBox Text="{Binding FamilleSelected.Nom}" x:Name="nom" Grid.Column="1" Margin="0,0,0,10" />
 
         <StackPanel  Grid.Row="2" Orientation="Horizontal">
-            <Button Name="ajouter" Margin="10" Content="Enregistrer" Width="100" HorizontalAlignment="Right" />
+            <Button Name="ModifierFamille" Click="ModifierFamille_Click" CommandParameter="{Binding FamilleSelected.Id}" Margin="10" Content="Enregistrer" Width="100" HorizontalAlignment="Right" />
         </StackPanel>
     </Grid>
 </UserControl>

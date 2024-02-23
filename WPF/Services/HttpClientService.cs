@@ -252,6 +252,19 @@ public static class HttpClientService
         throw new Exception(response.ReasonPhrase);
     }
 
+    public static async Task<bool> PutFamille(Famille famille)
+    {
+        string uri = $"Familles/{famille.Id}";
+        var json = JsonConvert.SerializeObject(famille);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        var response = await Client.PutAsync(uri, content);
+        if (response.IsSuccessStatusCode)
+        {
+            return true;
+        }
+        throw new Exception(response.ReasonPhrase);
+    }
 
     public static async Task<List<FournisseurLightDto>> GetFournisseurLights()
     {
@@ -479,7 +492,7 @@ public static class HttpClientService
         }
     }
 
-    public static async Task PutProduit(Produit produit)
+    public static async Task<bool> PutProduit(Produit produit)
     {
         string route = $"api/Produits/{produit.Id}";
 
@@ -493,7 +506,8 @@ public static class HttpClientService
 
         if (!response.IsSuccessStatusCode)
         {
-            throw new Exception($"{response.ReasonPhrase}");
+            return true;
         }
+        throw new Exception(response.ReasonPhrase);
     }
 }

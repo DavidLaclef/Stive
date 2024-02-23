@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF.ViewModels;
 
 namespace WPF.Views.Stock
 {
@@ -28,8 +30,30 @@ namespace WPF.Views.Stock
 
         }
 
-        private void ChateauId_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ModifierProduit_Click(object sender, RoutedEventArgs e)
         {
+            int produitId = (int)((Button)sender).CommandParameter;
+            var vm = (ProduitsViewModel)this.DataContext;
+            vm.ModifierProduit(new Models.Dao.Produit
+            {
+                Id = produitId,
+                Nom = Nom.Text,
+                PhotoProduit = PhotoProduit.Text,
+                Millesime = DateTime.ParseExact( millesime.Text, "yyyy", System.Globalization.CultureInfo.InvariantCulture),
+                Description = Description.Text,
+                Quantite = int.Parse(Quantite.Text),
+                SeuilReapprovisionnement = int.Parse(reapprovisionnement.Text),
+                Statut = StatutProduit.Ok,
+/*                PrixUnitaireVente= 30,
+                PrixCartonVente= 30,
+                PrixCartonCommande= 30,
+                ChateauId = (int)ChateauId.SelectedValue*/
+                PrixUnitaireVente = decimal.Parse(prixUnitaire.Text.Replace(".",",")),
+                PrixCartonVente = decimal.Parse(PrixCartonVente.Text.Replace(".", ",")),
+                PrixCartonCommande = decimal.Parse(prixcartoncommande.Text.Replace(".", ",")),
+                ChateauId = (int)ChateauId.SelectedValue,
+                //Famille = new Famille(int)FamilleId.SelectedValue
+            });
 
         }
     }

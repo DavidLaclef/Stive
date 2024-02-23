@@ -36,23 +36,21 @@
         <Label Grid.Row="4">Quantité :</Label>
         <TextBox Text="{Binding ProduitSelected.Quantite}" x:Name="Quantite" Grid.Row="4" Grid.Column="1" Margin="0,0,10,10" />
         <Label Grid.Row="5">Seuil de réapprovisionnement :</Label>
-        <TextBox Text="{Binding ProduitSelected.SeuilReapprovisionnement}" x:Name="reapprovisionnement" Grid.Row="5" Grid.Column="1" AcceptsReturn="True" Margin="0,0,10,10" />
+        <TextBox Text="{Binding ProduitSelected.SeuilReapprovisionnement}" x:Name="reapprovisionnement" Grid.Row="5" Grid.Column="1" Margin="0,0,10,10" />
         <Label Grid.Row="6">Prix unitaire :</Label>
-        <TextBox Text="{Binding ProduitSelected.PrixUnitaireVente}" x:Name="prixUnitaire" Grid.Row="6" Grid.Column="1" AcceptsReturn="True" Margin="0,0,10,10" />
+        <TextBox Text="{Binding ProduitSelected.PrixUnitaireVente}" x:Name="prixUnitaire" Grid.Row="6" Grid.Column="1"  Margin="0,0,10,10" />
         <Label Grid.Row="7">Prix CartonVente :</Label>
         <TextBox Text="{Binding ProduitSelected.PrixCartonVente}" x:Name="PrixCartonVente" Grid.Row="7" Grid.Column="1" Margin="0,0,10,10" />
         <Label Grid.Row="8">Prix Carton Commande :</Label>
         <TextBox Text="{Binding ProduitSelected.PrixCartonCommande}" x:Name="prixcartoncommande"  Grid.Row="8" Grid.Column="1" Margin="0,0,10,10" />
         <Label Grid.Row="9">Chateau :</Label>
-        <ComboBox Grid.Row="9" Grid.Column="1" x:Name="ChateauId" MaxDropDownHeight="Auto" Text="{Binding ProduitSelected.Chateau.Nom }" ItemsSource="{Binding ListChateauLights}"
+        <ComboBox Grid.Row="9" Grid.Column="1" x:Name="ChateauId"  Margin="0,0,10,10" MaxDropDownHeight="Auto" Text="{Binding ProduitSelected.Chateau.Nom }" ItemsSource="{Binding ListChateauLights}"
           DisplayMemberPath="Nom"
           SelectedValuePath="Id"
-                  
-                 
+                      
           />
-
-        <StackPanel Grid.Row="10" Orientation="Horizontal">
-            <Button Margin="10" Name="ajouter"  Content="Enregistrer" Width="100" HorizontalAlignment="Right" />
+        <StackPanel Grid.Row="11" Orientation="Horizontal">
+            <Button Margin="10" Name="ModifierProduit" Click="ModifierProduit_Click" CommandParameter="{Binding ProduitSelected.Id}" Content="Enregistrer" Width="100" HorizontalAlignment="Right" />
         </StackPanel>
     </Grid>
 </UserControl>
