@@ -83,16 +83,20 @@ namespace WPF
 
         private void Uc_ConnexionChange(object? sender, EventArgs e)
         {
-            BtnAccueil.IsEnabled = true;
-            BtnStocks.IsEnabled = true;
-            BtnClient.IsEnabled = true;
-            BtnFournisseur.IsEnabled = true;
-            BtnUtilisateur.IsEnabled = true;
-            BtnAccueil_Click(BtnAccueil, null);
+            BtnAccueil.Visibility = Visibility.Visible;
+            BtnStocks.Visibility = Visibility.Visible;
+            BtnClient.Visibility = Visibility.Visible;
+            BtnFournisseur.Visibility = Visibility.Visible;
+            BtnUtilisateur.Visibility = Visibility.Visible;
 
+            // Boutons relatifs au compte utilisateurs
+            BtnConnexion.Visibility = Visibility.Collapsed;
+            BtnNouvelleUtilisateur.Visibility = Visibility.Visible;
+            // Redirection vers L'acceuil
+            BtnAccueil_Click(BtnAccueil, null);
         }
 
-        private void BtnEnregistrement_Click(object sender, RoutedEventArgs e)
+        private void BtnNouvelleUtilisateur_Click(object sender, RoutedEventArgs e)
         {
             mainCC.Content = null;
             var uc = new ucEnregistrementUtilisateur();
@@ -100,6 +104,4 @@ namespace WPF
             mainCC.Content = uc;
         }
     }
-
-
 }
