@@ -40,16 +40,14 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Column="0" Text="Date"/>
                 <TextBlock Grid.Column="1" Text="Famille"/>
                 <TextBlock Grid.Column="2" Text="Chateau"/>
                 <TextBlock Grid.Column="3" Text="Produit"/>
-                <TextBlock Grid.Column="4" Text="Quantité système"/>
-                <TextBlock Grid.Column="5" Text="Quantité en inventaire"/>
-                <TextBlock Grid.Column="6" Text="Différence"/>
+                <TextBlock Grid.Column="4" Text="Quantité en inventaire"/>
+                <TextBlock Grid.Column="5" Text="Différence"/>
             </Grid>
 
             <TextBlock Text="Inventaire" FontSize="18" FontWeight="Normal" Margin="20,35,10,20"/>
@@ -66,7 +64,6 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Grid.Column="0" Text="{Binding Date}"/>
@@ -74,8 +71,7 @@
                             <TextBlock Grid.Column="2" Text="{Binding Produit.Chateau.Nom}"/>
                             <TextBlock Grid.Column="3" Text="{Binding Produit.Nom}"/>
                             <TextBlock Grid.Column="4" Text="{Binding Produit.Quantite}"/>
-                            <TextBlock Grid.Column="5" Text="Quantité en inventaire"/>
-                            <TextBlock Grid.Column="6" Text="Différence"/>
+                            <TextBlock Grid.Column="5" Text="Différence"/>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
