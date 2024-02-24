@@ -28,14 +28,14 @@ public class Produit
     [Required(ErrorMessage = "La quantité est requise.")]
     public int Quantite { get; set; }
 
-    [Required(ErrorMessage = "Le seuil de réapprovisionnement est requis.")]
-    public int SeuilReapprovisionnement { get; set; } = 5;
-
     // Commande automatique :
     // Une fois que Quantite atteint SeuilReapprovisionnement, QuantiteReapprovisionnement est la quantité
     // de produit à commander
     [Required(ErrorMessage = "La quantité de réapprovisionnement est requise.")]
     public int QuantiteReapprovisionnement { get; set; } = 150;
+
+    [Required(ErrorMessage = "Le seuil de réapprovisionnement est requis.")]
+    public int SeuilReapprovisionnement { get; set; } = 5;
 
     [Required]
     public StatutProduit Statut { get; set; } = StatutProduit.Ok;

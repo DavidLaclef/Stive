@@ -18,6 +18,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
@@ -27,12 +28,13 @@
             <TextBlock Grid.Column="2" Text="Nom"/>
             <TextBlock Grid.Column="3" Text="Millesime"/>
             <TextBlock Grid.Column="4" Text="Quantité"/>
-            <TextBlock Grid.Column="5" Text="Seuil"/>
-            <TextBlock Grid.Column="6" Text="Statut"/>
-            <TextBlock Grid.Column="7" Text="Prix unitaire"/>
-            <TextBlock Grid.Column="8" Text="Prix carton"/>
-            <TextBlock Grid.Column="9" Text="Modifier" Margin="0,0,10,0"/>
-            <TextBlock Grid.Column="10" Text="Supprimer"/>
+            <TextBlock Grid.Column="5" Text="Quantité Réappro."/>
+            <TextBlock Grid.Column="6" Text="Seuil"/>
+            <TextBlock Grid.Column="7" Text="Statut"/>
+            <TextBlock Grid.Column="8" Text="Prix unitaire"/>
+            <TextBlock Grid.Column="9" Text="Prix carton"/>
+            <TextBlock Grid.Column="10" Text="Modifier" Margin="0,0,10,0"/>
+            <TextBlock Grid.Column="11" Text="Supprimer"/>
         </Grid>
 
         <ListBox ItemsSource="{Binding ListProduitLights}" Margin="5,20,20,20" Grid.Row="3">
@@ -40,6 +42,7 @@
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
@@ -58,18 +61,19 @@
                         <TextBlock Grid.Column="2" Text="{Binding Nom}"/>
                         <TextBlock Grid.Column="3" Text="{Binding Millesime}"/>
                         <TextBlock Grid.Column="4" Text="{Binding Quantite}"/>
-                        <TextBlock Grid.Column="5" Text="{Binding SeuilReapprovisionnement}"/>
-                        <TextBlock Grid.Column="6" Text="{Binding Statut}"/>
-                        <StackPanel Grid.Column="7" Orientation="Horizontal" HorizontalAlignment="Center">
-                            <TextBlock Grid.Column="7" Text="{Binding PrixUnitaireVente}"/>
-                            <materialDesign:PackIcon Kind="Euro"/>
-                        </StackPanel>
+                        <TextBlock Grid.Column="5" Text="{Binding QuantiteReapprovisionnement}"/>
+                        <TextBlock Grid.Column="6" Text="{Binding SeuilReapprovisionnement}"/>
+                        <TextBlock Grid.Column="7" Text="{Binding Statut}"/>
                         <StackPanel Grid.Column="8" Orientation="Horizontal" HorizontalAlignment="Center">
-                            <TextBlock Grid.Column="8" Text="{Binding PrixCartonVente}"/>
+                            <TextBlock Grid.Column="8" Text="{Binding PrixUnitaireVente}"/>
                             <materialDesign:PackIcon Kind="Euro"/>
                         </StackPanel>
-                        <Button Grid.Column="9" Content="V" Name="ModifierProduit" Click="ModifierProduit_Click" CommandParameter="{Binding Id}" Margin="0,0,10,0" />
-                        <Button Grid.Column="10" Content="X"   Name="SupprimerProduit"  Click="SupprimerProduit_Click" CommandParameter="{Binding Id}" />
+                        <StackPanel Grid.Column="9" Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock Grid.Column="9" Text="{Binding PrixCartonVente}"/>
+                            <materialDesign:PackIcon Kind="Euro"/>
+                        </StackPanel>
+                        <Button Grid.Column="10" Content="V" Name="ModifierProduit" Click="ModifierProduit_Click" CommandParameter="{Binding Id}" Margin="0,0,10,0" />
+                        <Button Grid.Column="11" Content="X"   Name="SupprimerProduit"  Click="SupprimerProduit_Click" CommandParameter="{Binding Id}" />
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

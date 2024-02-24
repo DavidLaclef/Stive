@@ -13,6 +13,8 @@ public class ProduitLightDto
 
     public int Quantite { get; set; }
 
+    public int QuantiteReapprovisionnement { get; set; }
+
     public int SeuilReapprovisionnement { get; set; }
 
     public StatutProduit Statut { get; set; }
