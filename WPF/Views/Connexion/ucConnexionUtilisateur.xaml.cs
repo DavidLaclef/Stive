@@ -19,7 +19,6 @@ public partial class ucConnexionUtilisateur : UserControl
     private async void connecter_Click(object sender, RoutedEventArgs e)
     {
         var vm = (UtilisateursAuthViewModel)this.DataContext;
-        //EstConnecte = await vm.AuthentifierUtilisateur(email.Text, motdepasse.Text);
         EstConnecte = await vm.AuthentifierUtilisateur(email.Text, motdepasse.Password);
         if (EstConnecte) ConnexionChange?.Invoke(this, EventArgs.Empty);
     }

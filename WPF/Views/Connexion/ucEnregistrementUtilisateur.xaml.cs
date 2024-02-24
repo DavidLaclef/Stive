@@ -17,6 +17,7 @@ public partial class ucEnregistrementUtilisateur : UserControl
         var vm = (UtilisateursAuthViewModel)this.DataContext;
         //vm.EnregistrerUtilisateur(email.Text, motdepasse.Text);
         vm.EnregistrerUtilisateur(email.Text, motdepasse.Password);
-
+        email.Clear();
+        motdepasse.Clear();
     }
 }
