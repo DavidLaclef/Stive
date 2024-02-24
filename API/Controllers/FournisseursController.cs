@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Models.Context;
 using Models.Dao;
@@ -9,7 +8,6 @@ using Models.Extensions;
 namespace API.Controllers;
 
 [Route("api/[controller]")]
-[Authorize]
 [ApiController]
 public class FournisseursController : ControllerBase
 {
