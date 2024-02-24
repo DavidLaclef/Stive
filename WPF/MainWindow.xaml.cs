@@ -4,12 +4,9 @@ using WPF.Views.Accueil;
 using WPF.Views.Client;
 using WPF.Views.Connexion;
 using WPF.Views.Fournisseur;
+using WPF.Views.Inventaire;
 using WPF.Views.Stock;
 using WPF.Views.Utilisateur;
-
-using WPF.Views.Inventaire;
-using WPF.ViewModels;
-using WPF.Services;
 
 namespace WPF;
 
@@ -19,11 +16,15 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
 
-        // Gestion de l'évènement dans le code directement
-        BtnConnexion.Click += BtnConnexion_Click;
-        BtnConnexion_Click(BtnConnexion, null);
+        // /!\ A DECOMMENTER POUR LA DEMONSTRATION ET LES TESTS EN SITUATION REELLE /!\ 
 
-        //this.DataContext = MainViewModel.Instance; // Sur cette branche, MainViewModel est créé (je l'ai créé)
+        // Connexion à l'application
+        //BtnConnexion.Click += BtnConnexion_Click;
+        //BtnConnexion_Click(BtnConnexion, null!);
+
+        // /!\ A DECOMMENTER POUR LA DEMONSTRATION ET LES TESTS EN SITUATION REELLE /!\ 
+
+        //this.DataContext = MainViewModel.Instance; // Sur cette branche, MainViewModel est créé (David l'a créé)
     }
 
     private void BtnInventaire_Click(object sender, RoutedEventArgs e)
@@ -92,7 +93,7 @@ public partial class MainWindow : Window
         BtnUtilisateur.Visibility = Visibility.Visible;
         BtnInventaire.Visibility = Visibility.Visible;
 
-        // Boutons relatifs au compte utilisateurs
+        // Boutons relatifs au compte utilisateur
         BtnConnexion.Visibility = Visibility.Collapsed;
         BtnNouvelleUtilisateur.Visibility = Visibility.Visible;
         // Redirection vers L'acceuil
