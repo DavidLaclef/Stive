@@ -54,7 +54,9 @@ public class Produit
 
     [ForeignKey(nameof(Chateau))]
     public int ChateauId { get; set; }
-    public virtual Chateau? Chateau { get; set; }
+    public virtual Chateau? Chateau { get; set; }    
+    
+    public virtual ICollection<Panier>? Paniers { get; set; }
 
     public virtual ICollection<HistoriquePrix>? HistoriquesPrix { get; set; }
 
