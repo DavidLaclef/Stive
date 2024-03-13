@@ -27,5 +27,3 @@ public partial class FormFournisseur : UserControl
         });
     }
 }
-
-

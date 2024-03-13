@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Models.Migrations
 {
     /// <inheritdoc />
-    public partial class AjoutPanier : Migration
+    public partial class Initiale : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -117,6 +117,52 @@ namespace Models.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Fournisseur", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Personne",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nom = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Prenom = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    AdresseMail = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    MotDePasse = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Discriminator = table.Column<string>(type: "varchar(13)", maxLength: 13, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CodeClient = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Entreprise = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    NumeroTelephone = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    NomLivraison = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    PrenomLivraison = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    DateNaissance = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    AdressePostale = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CodePostal = table.Column<string>(type: "varchar(5)", maxLength: 5, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Ville = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    InstructionLivraison = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    EstMembreSite = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    CodeUtilisateur = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    EstGerant = table.Column<bool>(type: "tinyint(1)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Personne", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -261,7 +307,6 @@ namespace Models.Migrations
                     Description = table.Column<string>(type: "varchar(200)", maxLength: 200, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Quantite = table.Column<int>(type: "int", nullable: false),
-                    QuantiteReapprovisionnement = table.Column<int>(type: "int", nullable: false),
                     SeuilReapprovisionnement = table.Column<int>(type: "int", nullable: false),
                     Statut = table.Column<int>(type: "int", nullable: false),
                     PrixUnitaireVente = table.Column<decimal>(type: "decimal(9,2)", nullable: false),
@@ -372,101 +417,15 @@ namespace Models.Migrations
                         principalTable: "MouvementStock",
                         principalColumn: "Id");
                     table.ForeignKey(
+                        name: "FK_MouvementStock_Personne_ClientId",
+                        column: x => x.ClientId,
+                        principalTable: "Personne",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_MouvementStock_Produit_ProduitId",
                         column: x => x.ProduitId,
                         principalTable: "Produit",
-                        principalColumn: "Id");
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "Panier",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    DerniereModification = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    ClientId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Panier", x => x.Id);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "PanierProduit",
-                columns: table => new
-                {
-                    PaniersId = table.Column<int>(type: "int", nullable: false),
-                    ProduitsId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PanierProduit", x => new { x.PaniersId, x.ProduitsId });
-                    table.ForeignKey(
-                        name: "FK_PanierProduit_Panier_PaniersId",
-                        column: x => x.PaniersId,
-                        principalTable: "Panier",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_PanierProduit_Produit_ProduitsId",
-                        column: x => x.ProduitsId,
-                        principalTable: "Produit",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "Personne",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Nom = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Prenom = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    AdresseMail = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    MotDePasse = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Discriminator = table.Column<string>(type: "varchar(13)", maxLength: 13, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    CodeClient = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Entreprise = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    NumeroTelephone = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    NomLivraison = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    PrenomLivraison = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    DateNaissance = table.Column<DateTime>(type: "datetime(6)", nullable: true),
-                    AdressePostale = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    CodePostal = table.Column<string>(type: "varchar(5)", maxLength: 5, nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Ville = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    InstructionLivraison = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    EstMembreSite = table.Column<bool>(type: "tinyint(1)", nullable: true),
-                    PanierId = table.Column<int>(type: "int", nullable: true),
-                    CodeUtilisateur = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    EstGerant = table.Column<bool>(type: "tinyint(1)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Personne", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Personne_Panier_PanierId",
-                        column: x => x.PanierId,
-                        principalTable: "Panier",
                         principalColumn: "Id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
@@ -539,49 +498,14 @@ namespace Models.Migrations
                 column: "ProduitId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Panier_ClientId",
-                table: "Panier",
-                column: "ClientId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_PanierProduit_ProduitsId",
-                table: "PanierProduit",
-                column: "ProduitsId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Personne_PanierId",
-                table: "Personne",
-                column: "PanierId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Produit_ChateauId",
                 table: "Produit",
                 column: "ChateauId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_MouvementStock_Personne_ClientId",
-                table: "MouvementStock",
-                column: "ClientId",
-                principalTable: "Personne",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Panier_Personne_ClientId",
-                table: "Panier",
-                column: "ClientId",
-                principalTable: "Personne",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Panier_Personne_ClientId",
-                table: "Panier");
-
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -607,9 +531,6 @@ namespace Models.Migrations
                 name: "MouvementStock");
 
             migrationBuilder.DropTable(
-                name: "PanierProduit");
-
-            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
@@ -622,16 +543,13 @@ namespace Models.Migrations
                 name: "Fournisseur");
 
             migrationBuilder.DropTable(
+                name: "Personne");
+
+            migrationBuilder.DropTable(
                 name: "Produit");
 
             migrationBuilder.DropTable(
                 name: "Chateau");
-
-            migrationBuilder.DropTable(
-                name: "Personne");
-
-            migrationBuilder.DropTable(
-                name: "Panier");
         }
     }
 }

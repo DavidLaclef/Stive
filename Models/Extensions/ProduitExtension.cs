@@ -16,7 +16,6 @@ namespace Models.Extensions
                 Millesime = produit.Millesime.ToString("yyyy"),
                 Description = produit.Description,
                 Quantite = produit.Quantite,
-                QuantiteReapprovisionnement = produit.QuantiteReapprovisionnement,
                 SeuilReapprovisionnement = produit.SeuilReapprovisionnement,
                 Statut = produit.Statut,
                 PrixUnitaireVente = produit.PrixUnitaireVente,
@@ -61,40 +60,6 @@ namespace Models.Extensions
             return produitDto;
         }
 
-        public static ProduitMediumDto ToMediumDto(this Produit produit)
-        {
-            var produitMediumDto = new ProduitMediumDto
-            {
-                Id = produit.Id,
-                Nom = produit.Nom,
-                Quantite = produit.Quantite,
-                Chateau = produit.Chateau?.ToLightDto(),
-                Familles = [],
-                FamillesConcatenees = string.Empty
-            };
-
-            // Créer une chaîne pour stocker les noms des familles concaténés
-            StringBuilder famillesConcat = new();
-
-            if (produit.Familles != null)
-            {
-                foreach (var famille in produit.Familles)
-                {
-                    FamilleLightDto familleLightDto = famille.ToLightDto();
-                    produitMediumDto.Familles?.Add(familleLightDto);
-
-                    // Ajouter le nom de la famille à la chaîne concaténée
-                    famillesConcat.Append(famille.Nom);
-                    famillesConcat.Append(' '); // Ajouter un espace entre les noms des familles
-                }
-            }
-
-            // Assigner la chaîne de familles concaténées à l'attribut correspondant dans le DTO
-            produitMediumDto.FamillesConcatenees = famillesConcat.ToString().Trim(); // Retirer les espaces inutiles en fin de chaîne
-
-            return produitMediumDto;
-        }
-
         public static ProduitLightDto ToLightDto(this Produit produit)
         {
             var produitLightDto = new ProduitLightDto
@@ -103,7 +68,6 @@ namespace Models.Extensions
                 Nom = produit.Nom,
                 Millesime = produit.Millesime.ToString("yyyy"),
                 Quantite = produit.Quantite,
-                QuantiteReapprovisionnement = produit.QuantiteReapprovisionnement,
                 SeuilReapprovisionnement = produit.SeuilReapprovisionnement,
                 Statut = produit.Statut,
                 PrixUnitaireVente = produit.PrixUnitaireVente,

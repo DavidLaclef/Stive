@@ -1,4 +1,4 @@
-namespace Web.Models;
+namespace AirFranceDI22webSecure.Models;
 
 public class ErrorViewModel
 {

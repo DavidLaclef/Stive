@@ -27,9 +27,6 @@ public class FournisseursViewModel : BaseViewModel
 
     public FournisseursViewModel()
     {
-        // Authentification
-        //Task.Run(async () => await HttpClientService.Login("jeff.harbeng@stive.com", "Jeff1."));
-
         LoadFournisseurs();
     }
 

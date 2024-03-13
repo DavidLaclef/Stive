@@ -303,25 +303,6 @@ namespace Models.Migrations
                     b.UseTphMappingStrategy();
                 });
 
-            modelBuilder.Entity("Models.Dao.Panier", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("ClientId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("DerniereModification")
-                        .HasColumnType("datetime(6)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ClientId");
-
-                    b.ToTable("Panier");
-                });
-
             modelBuilder.Entity("Models.Dao.Personne", b =>
                 {
                     b.Property<int>("Id")
@@ -401,9 +382,6 @@ namespace Models.Migrations
                     b.Property<int>("Quantite")
                         .HasColumnType("int");
 
-                    b.Property<int>("QuantiteReapprovisionnement")
-                        .HasColumnType("int");
-
                     b.Property<int>("SeuilReapprovisionnement")
                         .HasColumnType("int");
 
@@ -479,21 +457,6 @@ namespace Models.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
-                });
-
-            modelBuilder.Entity("PanierProduit", b =>
-                {
-                    b.Property<int>("PaniersId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProduitsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("PaniersId", "ProduitsId");
-
-                    b.HasIndex("ProduitsId");
-
-                    b.ToTable("PanierProduit");
                 });
 
             modelBuilder.Entity("Models.Dao.Commande", b =>
@@ -590,9 +553,6 @@ namespace Models.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("varchar(10)");
 
-                    b.Property<int?>("PanierId")
-                        .HasColumnType("int");
-
                     b.Property<string>("PrenomLivraison")
                         .IsRequired()
                         .HasMaxLength(80)
@@ -602,8 +562,6 @@ namespace Models.Migrations
                         .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("varchar(80)");
-
-                    b.HasIndex("PanierId");
 
                     b.HasDiscriminator().HasValue("Client");
                 });
@@ -713,17 +671,6 @@ namespace Models.Migrations
                     b.Navigation("Produit");
                 });
 
-            modelBuilder.Entity("Models.Dao.Panier", b =>
-                {
-                    b.HasOne("Models.Dao.Client", "Client")
-                        .WithMany()
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Client");
-                });
-
             modelBuilder.Entity("Models.Dao.Produit", b =>
                 {
                     b.HasOne("Models.Dao.Chateau", "Chateau")
@@ -733,21 +680,6 @@ namespace Models.Migrations
                         .IsRequired();
 
                     b.Navigation("Chateau");
-                });
-
-            modelBuilder.Entity("PanierProduit", b =>
-                {
-                    b.HasOne("Models.Dao.Panier", null)
-                        .WithMany()
-                        .HasForeignKey("PaniersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Models.Dao.Produit", null)
-                        .WithMany()
-                        .HasForeignKey("ProduitsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Models.Dao.Commande", b =>
@@ -770,15 +702,6 @@ namespace Models.Migrations
                         .IsRequired();
 
                     b.Navigation("Client");
-                });
-
-            modelBuilder.Entity("Models.Dao.Client", b =>
-                {
-                    b.HasOne("Models.Dao.Panier", "Panier")
-                        .WithMany()
-                        .HasForeignKey("PanierId");
-
-                    b.Navigation("Panier");
                 });
 
             modelBuilder.Entity("Models.Dao.Chateau", b =>

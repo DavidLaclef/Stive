@@ -1,9 +1,9 @@
-﻿using Web.Models;
+﻿using AirFranceDI22webSecure.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace Web.Controllers;
+namespace AirFranceDI22webSecure.Controllers;
 
 public class HomeController : Controller
 {

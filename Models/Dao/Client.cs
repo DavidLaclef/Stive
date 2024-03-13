@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models.Dao;
 
@@ -49,8 +48,4 @@ public class Client : Personne
     public bool EstMembreSite { get; set; } = false;
 
     public virtual ICollection<Vente>? Ventes { get; set; }
-
-    [ForeignKey(nameof(Panier))]
-    public int? PanierId { get; set; }
-    public virtual Panier? Panier { get; set; }
 }

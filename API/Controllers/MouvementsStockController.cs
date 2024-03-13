@@ -28,18 +28,6 @@ public class MouvementsStockController : ControllerBase
             .ToListAsync();
     }
 
-    // GET: /api/MouvementsStock/Medium
-    [HttpGet]
-    [Route("Medium")]
-    public async Task<ActionResult<IEnumerable<MouvementStockMediumDto>>> GetMouvementStockMedium()
-    {
-        return await _context.MouvementStock
-            .Include(ms => ms.Produit).ThenInclude(p => p.Chateau)
-            .Include(ms => ms.Produit).ThenInclude(p => p.Familles)
-            .Select(c => c.ToMediumDto())
-            .ToListAsync();
-    }
-
     // GET: api/MouvementsStock/5
     [HttpGet("{id}")]
     public async Task<ActionResult<MouvementStockDto>> GetMouvementStock(int id)

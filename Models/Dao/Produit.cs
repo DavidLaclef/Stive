@@ -28,12 +28,6 @@ public class Produit
     [Required(ErrorMessage = "La quantité est requise.")]
     public int Quantite { get; set; }
 
-    // Commande automatique :
-    // Une fois que Quantite atteint SeuilReapprovisionnement, QuantiteReapprovisionnement est la quantité
-    // de produit à commander
-    [Required(ErrorMessage = "La quantité de réapprovisionnement est requise.")]
-    public int QuantiteReapprovisionnement { get; set; } = 150;
-
     [Required(ErrorMessage = "Le seuil de réapprovisionnement est requis.")]
     public int SeuilReapprovisionnement { get; set; } = 5;
 
@@ -54,9 +48,7 @@ public class Produit
 
     [ForeignKey(nameof(Chateau))]
     public int ChateauId { get; set; }
-    public virtual Chateau? Chateau { get; set; }    
-    
-    public virtual ICollection<Panier>? Paniers { get; set; }
+    public virtual Chateau? Chateau { get; set; }
 
     public virtual ICollection<HistoriquePrix>? HistoriquesPrix { get; set; }
 
