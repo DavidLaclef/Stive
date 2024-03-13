@@ -27,12 +27,15 @@ public class ProduitsViewModel : BaseViewModel
     }
     public ObservableCollection<ProduitLightDto> ListProduitLights { get; set; } = new();
 
+    public ObservableCollection<ProduitMediumDto> ListProduitMedium { get; set; } = new();
+
     public int NombreProduits { get => ListProduitLights.Count(); }
 
     public ProduitsViewModel()
     {
         LoadProduits();
         LoadChateaux();
+        LoadProduitMedium();
         LoadFamilles();
     }
 
@@ -51,6 +54,22 @@ public class ProduitsViewModel : BaseViewModel
                 ListProduitLights.Add(ProduitLight);
             }
             OnPropertyChanged(nameof(NombreProduits));
+        }, TaskScheduler.FromCurrentSynchronizationContext());
+    }
+
+    public void LoadProduitMedium()
+    {
+        ListProduitMedium.Clear();
+
+        Task.Run(async () =>
+        {
+            return await HttpClientService.GetProduitMedium();
+        }).ContinueWith(t =>
+        {
+            foreach (var ProduitMedium in t.Result)
+            {
+                ListProduitMedium.Add(ProduitMedium);
+            }
         }, TaskScheduler.FromCurrentSynchronizationContext());
     }
 
