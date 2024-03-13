@@ -11,7 +11,7 @@
         FontFamily="{materialDesign:MaterialDesignFont}"
         xmlns:local="clr-namespace:WPF"
         mc:Ignorable="d"
-        Title="MainWindow" MinHeight="700" MinWidth="1800">
+        Title="MainWindow" MinHeight="700" MinWidth="1200">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="15*"/>
