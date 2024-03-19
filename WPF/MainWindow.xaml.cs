@@ -16,13 +16,9 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
 
-        // /!\ A DECOMMENTER POUR LA DEMONSTRATION ET LES TESTS EN SITUATION REELLE /!\ 
-
         // Connexion à l'application
         BtnConnexion.Click += BtnConnexion_Click;
         BtnConnexion_Click(BtnConnexion, null!);
-
-        // /!\ A DECOMMENTER POUR LA DEMONSTRATION ET LES TESTS EN SITUATION REELLE /!\ 
     }
 
     private void BtnInventaire_Click(object sender, RoutedEventArgs e)
