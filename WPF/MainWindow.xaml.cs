@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using WPF.Services;
 using WPF.ViewModels;
 using WPF.Views.Accueil;
 using WPF.Views.Client;
@@ -15,6 +16,8 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+
+        Task.Run(async () => await HttpClientService.Register("admin@stive.fr", "AdminStive1."));
 
         // Connexion à l'application
         BtnConnexion.Click += BtnConnexion_Click;
