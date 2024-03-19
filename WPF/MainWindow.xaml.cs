@@ -19,12 +19,10 @@ public partial class MainWindow : Window
         // /!\ A DECOMMENTER POUR LA DEMONSTRATION ET LES TESTS EN SITUATION REELLE /!\ 
 
         // Connexion à l'application
-        //BtnConnexion.Click += BtnConnexion_Click;
-        //BtnConnexion_Click(BtnConnexion, null!);
+        BtnConnexion.Click += BtnConnexion_Click;
+        BtnConnexion_Click(BtnConnexion, null!);
 
         // /!\ A DECOMMENTER POUR LA DEMONSTRATION ET LES TESTS EN SITUATION REELLE /!\ 
-
-        //this.DataContext = MainViewModel.Instance; // Sur cette branche, MainViewModel est créé (David l'a créé)
     }
 
     private void BtnInventaire_Click(object sender, RoutedEventArgs e)
@@ -35,7 +33,7 @@ public partial class MainWindow : Window
         mainCC.Content = uc;
     }
 
-    private void BtnAccueil_Click(object sender, RoutedEventArgs e)
+    private void BtnAccueil_Click(object sender, RoutedEventArgs? e)
     {
         mainCC.Content = null;
         var uc = new UcAccueil();
@@ -86,21 +84,17 @@ public partial class MainWindow : Window
 
     private void Uc_ConnexionChange(object? sender, EventArgs e)
     {
-        BtnAccueil.Visibility = Visibility.Visible;
-        BtnStocks.Visibility = Visibility.Visible;
-        BtnClient.Visibility = Visibility.Visible;
         BtnFournisseur.Visibility = Visibility.Visible;
         BtnUtilisateur.Visibility = Visibility.Visible;
-        BtnInventaire.Visibility = Visibility.Visible;
-
-        // Boutons relatifs au compte utilisateur
+        
         BtnConnexion.Visibility = Visibility.Collapsed;
-        BtnNouvelleUtilisateur.Visibility = Visibility.Visible;
+        BtnNouvelUtilisateur.Visibility = Visibility.Visible; // Il est possible de créer un utilisateur seuelemnt si l'on est connecté (seul le gérant a un compte et peut se connecter)
+
         // Redirection vers L'acceuil
         BtnAccueil_Click(BtnAccueil, null);
     }
 
-    private void BtnNouvelleUtilisateur_Click(object sender, RoutedEventArgs e)
+    private void BtnNouvelUtilisateur_Click(object sender, RoutedEventArgs e)
     {
         mainCC.Content = null;
         var uc = new ucEnregistrementUtilisateur();
