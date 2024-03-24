@@ -1,5 +1,6 @@
-﻿
-using System.Windows;
+﻿using System.Windows;
+using WPF.Services;
+using WPF.ViewModels;
 using WPF.Views.Accueil;
 using WPF.Views.Client;
 using WPF.Views.Fournisseur;
@@ -19,54 +20,80 @@ namespace WPF
             InitializeComponent();
             //initier les variables run ce code lors du démarrage de la page
 
-            //Task.Run(async () => await HttpClientService.Login("jeff.harbeng@stive.com", "Jeff1."));
+        Task.Run(async () => await HttpClientService.Register("admin@stive.fr", "AdminStive1."));
 
-        }
-
-        private void BtnAccueil_Click(object sender, RoutedEventArgs e)
-        {
-            mainCC.Content = null;
-            var uc = new UcAccueil();
-            uc.DataContext = uc;
-            mainCC.Content = uc;
-
-        }
-
-        private void BtnStocks_Click(object sender, RoutedEventArgs e)
-        {
-            mainCC.Content = null;
-            var uc = new UcStock();
-            uc.DataContext = uc;
-            mainCC.Content = uc;
-
-        }
-
-        private void BtnClient_Click(object sender, RoutedEventArgs e)
-        {
-            mainCC.Content = null;
-            var uc = new UcClient();
-            uc.DataContext = new ClientsViewModel();
-            mainCC.Content = uc;
-
-        }
-
-        private void BtnFournisseur_Click(object sender, RoutedEventArgs e)
-        {
-            mainCC.Content = null;
-            var uc = new UcFournisseur();
-            uc.DataContext = new FournisseursViewModel();
-            mainCC.Content = uc;
-        }
-
-        private void BtnUtilisateur_Click(object sender, RoutedEventArgs e)
-        {
-            mainCC.Content = null;
-            var uc = new UcUtilisateur();
-            uc.DataContext = new UtilisateursViewModel();
-            mainCC.Content = uc;
-        }
-
+        // Connexion à l'application
+        BtnConnexion.Click += BtnConnexion_Click;
+        BtnConnexion_Click(BtnConnexion, null!);
     }
 
 
+    private void BtnAccueil_Click(object sender, RoutedEventArgs? e)
+    {
+        mainCC.Content = null;
+        var uc = new UcAccueil();
+        uc.DataContext = uc;
+        mainCC.Content = uc;
+    }
+
+    private void BtnStocks_Click(object sender, RoutedEventArgs e)
+    {
+        mainCC.Content = null;
+        var uc = new UcStock();
+        uc.DataContext = uc;
+        mainCC.Content = uc;
+    }
+
+    private void BtnClient_Click(object sender, RoutedEventArgs e)
+    {
+        mainCC.Content = null;
+        var uc = new UcClient();
+        uc.DataContext = new ClientsViewModel();
+        mainCC.Content = uc;
+    }
+
+    private void BtnFournisseur_Click(object sender, RoutedEventArgs e)
+    {
+        mainCC.Content = null;
+        var uc = new UcFournisseur();
+        uc.DataContext = new FournisseursViewModel();
+        mainCC.Content = uc;
+    }
+
+    private void BtnUtilisateur_Click(object sender, RoutedEventArgs e)
+    {
+        mainCC.Content = null;
+        var uc = new UcUtilisateur();
+        uc.DataContext = new UtilisateursViewModel();
+        mainCC.Content = uc;
+    }
+
+    private void BtnConnexion_Click(object sender, RoutedEventArgs e)
+    {
+        mainCC.Content = null;
+        var uc = new ucConnexionUtilisateur();
+        uc.ConnexionChange += Uc_ConnexionChange;
+        uc.DataContext = new UtilisateursAuthViewModel();
+        mainCC.Content = uc;
+    }
+
+    private void Uc_ConnexionChange(object? sender, EventArgs e)
+    {
+        BtnFournisseur.Visibility = Visibility.Visible;
+        BtnUtilisateur.Visibility = Visibility.Visible;
+        
+        BtnConnexion.Visibility = Visibility.Collapsed;
+        BtnNouvelUtilisateur.Visibility = Visibility.Visible; // Il est possible de créer un utilisateur seuelemnt si l'on est connecté (seul le gérant a un compte et peut se connecter)
+
+        // Redirection vers L'acceuil
+        BtnAccueil_Click(BtnAccueil, null);
+    }
+
+    private void BtnNouvelUtilisateur_Click(object sender, RoutedEventArgs e)
+    {
+        mainCC.Content = null;
+        var uc = new ucEnregistrementUtilisateur();
+        uc.DataContext = new UtilisateursAuthViewModel();
+        mainCC.Content = uc;
+    }
 }

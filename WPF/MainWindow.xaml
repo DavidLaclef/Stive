@@ -29,9 +29,13 @@
                 <Button Name="BtnAccueil"  Click="BtnAccueil_Click" BorderThickness="0" Foreground="Black" Background="Transparent"  Content="Accueil"/>
                 <Button Name="BtnStocks" Click="BtnStocks_Click" BorderThickness="0"  Foreground="Black" Background="Transparent"  Content="Stock"/>
                 <Button Name="BtnClient" Click="BtnClient_Click"  BorderThickness="0"  Foreground="Black" Background="Transparent" Content="Client"/>
-                <Button Name="BtnFournisseur" Click="BtnFournisseur_Click" BorderThickness="0"  Foreground="Black" Background="Transparent" Content="Fournisseur"/>
-                <Button Name="BtnUtilisateur" Click="BtnUtilisateur_Click" BorderThickness="0"  Foreground="Black" Background="Transparent"  Content="Utilisateur"/>
+                <Button Visibility="Collapsed" Name="BtnFournisseur" Click="BtnFournisseur_Click" BorderThickness="0"  Foreground="Black" Background="Transparent" Content="Fournisseur"/>
+                <Button Visibility="Collapsed" Name="BtnUtilisateur" Click="BtnUtilisateur_Click" BorderThickness="0"  Foreground="Black" Background="Transparent"  Content="Utilisateur"/>
+                <Button Name="BtnInventaire" Click="BtnInventaire_Click" BorderThickness="0"  Foreground="Black" Background="Transparent"  Content="Inventaire"/>
+                <Button Name="BtnConnexion" BorderThickness="0"  Foreground="Black" Background="Transparent"  Content="Connexion"/>
+                <Button Visibility="Collapsed" Name="BtnNouvelUtilisateur" Click="BtnNouvelUtilisateur_Click" BorderThickness="0"  Foreground="Black" Background="Transparent"  Content="Nouvel utilisateur"/>
             </StackPanel>
+
         </Grid>
     
 
