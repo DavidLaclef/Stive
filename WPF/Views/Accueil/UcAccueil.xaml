@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPF.Views.Accueil"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+                          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
 
     <Grid Background="Transparent">
         <Grid.RowDefinitions>
@@ -52,7 +53,7 @@
             <TextBlock Text="Vente en ligne" FontSize="18" FontWeight="Normal" Margin="20,15,10,20"/>
             <Rectangle Grid.Row="1"  Fill="DarkGray" />
 
-            <ListBox ItemsSource="{Binding ListClientLights}" Margin="5,20,20,20" Grid.Row="3" >
+            <ListBox ItemsSource="{Binding ListProduitLights}" Margin="5,20,20,20" Grid.Row="3" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -63,7 +64,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <TextBlock Grid.Column="0" Text="{Binding CodeClient}"/>
+                            <TextBlock Grid.Column="0" Text="{Binding Nom}"/>
                             <TextBlock Grid.Column="1" Text="{Binding Nom}"/>
                             <TextBlock Grid.Column="2" Text="{Binding Prenom}"/>
                             <TextBlock Grid.Column="3" Text="{Binding Entreprise}"/>
@@ -103,34 +104,68 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Column="0" Text="Date"/>
-                <TextBlock Grid.Column="1" Text="Numéro"/>
-                <TextBlock Grid.Column="2" Text="Client"/>
-                <TextBlock Grid.Column="3" Text="Statut"/>
+                <TextBlock Grid.Column="0" Text="Familles"/>
+                <TextBlock Grid.Column="1" Text="Château"/>
+                <TextBlock Grid.Column="2" Text="Nom"/>
+                <TextBlock Grid.Column="3" Text="Millesime"/>
+                <TextBlock Grid.Column="4" Text="Quantité"/>
+                <TextBlock Grid.Column="5" Text="Seuil"/>
+                <TextBlock Grid.Column="6" Text="Statut"/>
+                <TextBlock Grid.Column="7" Text="Prix unitaire"/>
+                <TextBlock Grid.Column="8" Text="Prix carton"/>
+                <TextBlock Grid.Column="9" Text="Commander" Margin="0,0,10,0"/>
+                <TextBlock Grid.Column="10" Text="Supprimer"/>
             </Grid>
 
             <TextBlock Text="Commande automatique" FontSize="18" FontWeight="Normal" Margin="20,15,10,20"/>
             <Rectangle Grid.Row="1"  Fill="DarkGray" />
 
-            <ListBox ItemsSource="{Binding ListClientLights}" Margin="5,20,20,20" Grid.Row="3" >
+            <ListBox ItemsSource="{Binding ListProduitLights}" Margin="5,20,20,20" Grid.Row="3" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
-                            <TextBlock Grid.Column="0" Text="{Binding CodeClient}"/>
-                            <TextBlock Grid.Column="1" Text="{Binding Nom}"/>
-                            <TextBlock Grid.Column="2" Text="{Binding Prenom}"/>
-                            <TextBlock Grid.Column="3" Text="{Binding Entreprise}"/>
+                            <TextBlock Grid.Column="0" Text="{Binding FamillesConcatenees}"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Chateau.Nom}"/>
+                            <TextBlock Grid.Column="2" Text="{Binding Nom}"/>
+                            <TextBlock Grid.Column="3" Text="{Binding Millesime}"/>
+                            <TextBlock Grid.Column="4" Text="{Binding Quantite}"/>
+                            <TextBlock Grid.Column="5" Text="{Binding SeuilReapprovisionnement}"/>
+                            <TextBlock Grid.Column="6" Text="{Binding Statut}"/>
+                            <StackPanel Grid.Column="7" Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock Grid.Column="7" Text="{Binding PrixUnitaireVente}"/>
+                                <materialDesign:PackIcon Kind="Euro"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="8" Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock Grid.Column="8" Text="{Binding PrixCartonVente}"/>
+                                <materialDesign:PackIcon Kind="Euro"/>
+                            </StackPanel>
+                            <Button Grid.Column="9" Content="V" Name="ModifierProduit"  CommandParameter="{Binding Id}" Margin="0,0,10,0" />
+                            <Button Grid.Column="10" Content="X"   Name="SupprimerProduit" CommandParameter="{Binding Id}" />
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

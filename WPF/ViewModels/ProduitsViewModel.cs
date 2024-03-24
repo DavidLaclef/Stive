@@ -25,6 +25,8 @@ public class ProduitsViewModel : BaseViewModel
             OnPropertyChanged(nameof(ProduitSelected));
         }
     }
+
+    
     public ObservableCollection<ProduitLightDto> ListProduitLights { get; set; } = new();
 
     public int NombreProduits { get => ListProduitLights.Count(); }
@@ -110,6 +112,7 @@ public class ProduitsViewModel : BaseViewModel
             OnPropertyChanged(nameof(NombreChateaux));
         }, TaskScheduler.FromCurrentSynchronizationContext());
     }
+
 
     public void LoadFamilles()
     {
