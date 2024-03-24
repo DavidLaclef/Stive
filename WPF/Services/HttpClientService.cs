@@ -375,7 +375,7 @@ public static class HttpClientService
     }
 
 
-    /*
+
     public static async Task<bool> PutUtilisateur(Utilisateur utilisateur)
     {
         string uri = $"Utilisateurs/{utilisateur.Id}";
@@ -388,7 +388,7 @@ public static class HttpClientService
             return true;
         }
         throw new Exception(response.ReasonPhrase);
-    }*/
+    }
 
     public static async Task<List<MouvementStockLightDto>> GetMouvementStockLights()
     {
