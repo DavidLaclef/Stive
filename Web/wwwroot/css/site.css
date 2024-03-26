@@ -47,3 +47,7 @@ body {
     gap: 8px;
     padding: 0 20px 20px 20px;
 }
+
+.compte-info {
+    color: var(--couleur-principale);
+}
