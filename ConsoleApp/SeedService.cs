@@ -258,7 +258,7 @@ public static class SeedService
         #region Produits
         context.Produit.Add(new Produit
         {
-            //Familles = new[] { Famille1!, Famille4! },
+            Familles = new[] { Famille1!, Famille4! },
             ChateauId = 1,
             Nom = "Château Montrose",
             Quantite = 40,

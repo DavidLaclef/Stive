@@ -29,7 +29,7 @@ public class ProduitsController : ControllerBase
             .ToListAsync();
     }
 
-        // GET: api/Produits
+    // GET: api/Produits/SousSeuilReapprovisionnement
     [HttpGet]
     [Route("SousSeuilReapprovisionnement")]
     public async Task<ActionResult<IEnumerable<ProduitLightDto>>> GetProduitSousSeuilReapprovisionnement()

@@ -102,6 +102,7 @@ namespace Models.Extensions
                 Id = produit.Id,
                 Nom = produit.Nom,
                 Millesime = produit.Millesime.ToString("yyyy"),
+                Description = produit.Description,
                 Quantite = produit.Quantite,
                 QuantiteReapprovisionnement = produit.QuantiteReapprovisionnement,
                 SeuilReapprovisionnement = produit.SeuilReapprovisionnement,

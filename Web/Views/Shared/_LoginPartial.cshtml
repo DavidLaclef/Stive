@@ -7,9 +7,14 @@
     {
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                @User.Identity!.Name!
+                Mon compte
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                    <a class="dropdown-item" asp-action="Logout" asp-controller="Account">
+                        Mon Panier
+                    </a>
+                </li>
                 <li>
                     <a class="dropdown-item" asp-action="Logout" asp-controller="Account">
                         Se déconnecter
