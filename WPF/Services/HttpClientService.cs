@@ -186,6 +186,20 @@ public static class HttpClientService
         throw new Exception(response.ReasonPhrase);
     }
 
+    public static async Task<bool> PostCommande(Commande commande)
+    {
+        string uri = "Commandes";
+        var json = JsonConvert.SerializeObject(commande);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        var response = await Client.PostAsync(uri, content);
+        if (response.IsSuccessStatusCode)
+        {
+            return true;
+        }
+        throw new Exception(response.ReasonPhrase);
+    }
+
     public static async Task<List<CommandeDto>> GetCommandeLights()
     {
         string uri = "Commandes";
