@@ -13,27 +13,27 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="mb-1">
                 <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
+                <input asp-for="Name" class="form-control" value="Elijah" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="mb-1">
                 <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
+                <input asp-for="Email" class="form-control" value="elijah@mail.fr" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="mb-1">
                 <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
+                <input asp-for="Password" class="form-control" value="Elijah1." />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="mb-1">
                 <label asp-for="ConfirmPassword" class="control-label"></label>
-                <input asp-for="ConfirmPassword" class="form-control" />
+                <input asp-for="ConfirmPassword" class="form-control" value="Elijah1." />
                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
             </div>
             <div class="row">
                 <div class="col-8">
-                    <a asp-action="Login" class="text-decoration-none float-start mt-2">Have account?</a>
+                    <a asp-action="Login" class="text-decoration-none float-start mt-2">Vous avez un compte ?</a>
                 </div>
                 <div class="col-4">
                     <input type="submit" value="Register" class="btn btn-primary btn-sm float-end" />
@@ -42,7 +42,6 @@
         </form>
     </div>
 </div>
-
 
 @section Scripts {
     @{

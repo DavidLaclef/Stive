@@ -7,21 +7,17 @@
 
 <div class="row d-flex align-items-center justify-content-center">
     <div class="col-md-3 card p-3">
-        @* REVOIR LE STYLE *@
-        @* REVOIR LE STYLE *@
         <h2 class="compte-info text-center">Connexion</h2>
-        @* REVOIR LE STYLE *@
-        @* REVOIR LE STYLE *@
         <form asp-action="Login" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="mb-1">
                 <label asp-for="Username" class="control-label"></label>
-                <input asp-for="Username" class="form-control" />
+                <input asp-for="Username" class="form-control" value="elijah@mail.fr" />
                 <span asp-validation-for="Username" class="text-danger"></span>
             </div>
             <div class="mb-1">
                 <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
+                <input asp-for="Password" class="form-control" value="Elijah1." />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="row">

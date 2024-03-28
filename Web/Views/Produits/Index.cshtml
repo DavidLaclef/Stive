@@ -6,14 +6,17 @@
 
 <h1>Nos bouteilles</h1>
 
-<div class="bouteilles-container mb-3" style="">
-    @foreach (var item in Model)
-    {
-        <div class="card-body text-secondary">
-            <div class="card-header">@Html.DisplayFor(modelItem => item.FamillesConcatenees)</div>
-            <h5 class="card-title">@Html.DisplayFor(modelItem => item.Nom)</h5>
-            <h5 class="card-text">@Html.DisplayFor(modelItem => item.Chateau!.Nom)</h5>
-            <p class="card-title">@Html.DisplayFor(modelItem => item.PrixUnitaireVente)</p>
-        </div>
-    }
+<div class="container">
+    <div class="bouteilles-container mb-3" style="">
+        @foreach (var item in Model)
+        {
+            <div class="bouteille card-body text-secondary">
+                <div class="card-header">@Html.DisplayFor(modelItem => item.FamillesConcatenees)</div>
+                <h5 class="card-title">@Html.DisplayFor(modelItem => item.Nom)</h5>
+                <h5 class="card-text">@Html.DisplayFor(modelItem => item.Chateau!.Nom)</h5>
+                <p class="card-title">@Html.DisplayFor(modelItem => item.PrixUnitaireVente)</p>
+                <a asp-action="Details" asp-route-id="@item.Id">Consulter</a>
+            </div>
+        }
+    </div>
 </div>

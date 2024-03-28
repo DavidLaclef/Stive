@@ -41,5 +41,22 @@ public class ProduitsController : Controller
         return View(await GetProduitLights());
     }
 
+    public static async Task<ProduitDto> GetProduitById(int produitId)
+    {
+        string route = $"api/Produits/{produitId}";
+        var response = await Client.GetAsync(route);
+        if (response.IsSuccessStatusCode)
+        {
+            string resultat = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<ProduitDto>(resultat)
+                ?? throw new FormatException($"Erreur http : {route} ");
+        }
+        throw new Exception(response.ReasonPhrase);
+    }
 
+    // Action
+    public async Task<IActionResult> Details(int Id)
+    {
+        return View(await GetProduitById(Id));
+    }
 }

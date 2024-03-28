@@ -484,7 +484,6 @@ public static class SeedService
         // Commande
         context.MouvementStock.Add(new MouvementStock
         {
-            Id = 1,
             NumeroMouvement = "COM-000002",
             Date = DateTime.Parse("2024 - 01 - 20T18:45:00.000Z"),
             Quantite = 2,
@@ -494,7 +493,6 @@ public static class SeedService
         // Commande
         context.MouvementStock.Add(new MouvementStock
         {
-            Id = 2,
             NumeroMouvement = "COM-000002",
             Date = DateTime.Parse("2024 - 01 - 20T18:45:00.000Z"),
             Quantite = 1,
@@ -504,7 +502,6 @@ public static class SeedService
         // Commande
         context.MouvementStock.Add(new MouvementStock
         {
-            Id = 3,
             NumeroMouvement = "COM-000002",
             Date = DateTime.Parse("2024 - 01 - 20T18:45:00.000Z"),
             Quantite = 2,
@@ -514,7 +511,6 @@ public static class SeedService
         // Vente
         context.MouvementStock.Add(new MouvementStock
         {
-            Id = 4,
             NumeroMouvement = "VEN-000001",
             Date = DateTime.Parse("2024 - 01 - 28T12:20:00.000Z"),
             Quantite = 3,
@@ -524,7 +520,6 @@ public static class SeedService
         // Vente
         context.MouvementStock.Add(new MouvementStock
         {
-            Id = 5,
             NumeroMouvement = "VEN-000001",
             Date = DateTime.Parse("2024 - 01 - 28T12:20:00.000Z"),
             Quantite = 5,

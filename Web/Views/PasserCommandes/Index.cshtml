@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Models.Dao.Commande>
+﻿@model IEnumerable<Models.Dao.MouvementStock>
 
 @{
     ViewData["Title"] = "Index";
@@ -12,12 +12,6 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NumeroCommande)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fournisseur)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.NumeroMouvement)
             </th>
@@ -42,12 +36,6 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumeroCommande)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fournisseur.AdresseMail)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NumeroMouvement)
             </td>

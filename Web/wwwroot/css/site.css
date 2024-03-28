@@ -41,6 +41,11 @@ body {
     color: var(--couleur-principale);
 }
 
+.bouteille a {
+    text-decoration: none;
+    color: var(--couleur-principale);
+}
+
 .bouteilles-container {
     display: grid;
     grid-template-columns: repeat(6, 2fr);

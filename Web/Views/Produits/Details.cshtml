@@ -1,0 +1,44 @@
+﻿@model Models.Dto.ProduitDto
+
+@{
+    ViewData["Title"] = "Stive | " + @Html.DisplayNameFor(model => model.Nom);
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>MouvementStock</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nom)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(model => model.PhotoProduit)
+        </dt>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Millesime)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dt>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Quantite)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(model => model.PrixUnitaireVente)
+        </dt>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PrixCartonVente)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(model => model.Chateau!.Nom)
+        </dt>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FamillesConcatenees)
+        </dt>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Retourner à l'accueil'</a>
+</div>

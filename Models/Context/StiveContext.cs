@@ -23,6 +23,8 @@ public class StiveContext(DbContextOptions<StiveContext> options) : IdentityDbCo
     public DbSet<Utilisateur> Utilisateur { get; set; }
     public DbSet<Vente> Vente { get; set; }
 
+    public DbSet<Panier> Panier { get; set; }
+
 }
 
 public class StiveContextFactory : IDesignTimeDbContextFactory<StiveContext>

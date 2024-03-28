@@ -1,26 +1,18 @@
-﻿@model Models.Dao.Commande
+﻿@model Models.Dao.MouvementStock
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
 
-<h1>Create</h1>
+<h1>Edit</h1>
 
-<h4>Commande</h4>
+<h4>MouvementStock</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="NumeroCommande" class="control-label"></label>
-                <input asp-for="NumeroCommande" class="form-control" />
-                <span asp-validation-for="NumeroCommande" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FournisseurId" class="control-label"></label>
-                <select asp-for="FournisseurId" class ="form-control" asp-items="ViewBag.FournisseurId"></select>
-            </div>
+            <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="NumeroMouvement" class="control-label"></label>
                 <input asp-for="NumeroMouvement" class="form-control" />
@@ -48,10 +40,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="ProduitId" class="control-label"></label>
-                <select asp-for="ProduitId" class ="form-control" asp-items="ViewBag.ProduitId"></select>
+                <select asp-for="ProduitId" class="form-control" asp-items="ViewBag.ProduitId"></select>
+                <span asp-validation-for="ProduitId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
